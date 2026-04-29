@@ -1,0 +1,2491 @@
+{
+  "nodes": [
+    {
+      "id": "4",
+      "type": "BALLMImage",
+      "inputs": [
+        {
+          "name": "extra_inputs.size",
+          "type": "STRING",
+          "value": "2048x2730"
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "format": "slot"
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "format": "slot"
+        },
+        {
+          "name": "user_prompt",
+          "label": "user_prompt",
+          "type": "STRING",
+          "value": "A high-end fashion portrait photography masterpiece, focusing on the earrings in the image. Young East Asian female model, her face half-covered by a burgundy glitter tulle hat; wearing the earrings shown in the image; dressed in a black turtleneck top, with burgundy glitter tulle wrapped around her wrists. Her hands are folded and gently supporting her chin, with delicate and smooth skin texture. Solid rich burgundy background; side lighting highlights the face and hands, forming a strong contrast between light and shadow. Close-up composition. High-end fashion photography, retro luxury, cinematic atmosphere."
+        },
+        {
+          "name": "model",
+          "label": "model",
+          "type": "STRING",
+          "value": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "meta": {
+        "title": "图片生成",
+        "pos": [
+          1910.9193443436436,
+          1084.1096707619852
+        ],
+        "size": [
+          350,
+          740
+        ],
+        "extra": {
+          "output_preview_names": [],
+          "status": 2,
+          "uiHeightMap": {
+            "user_prompt": 118
+          },
+          "model": {
+            "model_name": "ByteDance-Seedream-5.0",
+            "gpt_model_name": "",
+            "product_name": "ByteDance-Seedream-5.0",
+            "max_token": 1000,
+            "cache_ep": false,
+            "endpoint": null,
+            "username_lumi": "",
+            "schema": [
+              {
+                "name": "prompt",
+                "label": "prompt",
+                "tips": "用于生成图像的提示词，支持中英文。建议不超过300个汉字或600个英文单词。字数过多信息容易分散，模型可能因此忽略细节，只关注重点，造成图片缺失部分元素。",
+                "internal_name": "prompt",
+                "format": "text_area",
+                "type": "string",
+                "visible": true,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "risk_predict_type": "text",
+                "json_path": "prompt",
+                "omitempty": false
+              },
+              {
+                "name": "negative_prompt",
+                "label": "negative_prompt",
+                "tips": "负向提示词，用于描述不想要生成效果的提示词",
+                "internal_name": "negative_prompt",
+                "format": "text_area",
+                "type": "string",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "negative_prompt",
+                "omitempty": false
+              },
+              {
+                "name": "image",
+                "label": "image",
+                "tips": "输入的图片信息，支持 URL 或 Base64 编码。支持多图输入",
+                "internal_name": "image",
+                "format": "img",
+                "type": "string_list",
+                "visible": true,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "risk_predict_type": "image",
+                "json_path": "image",
+                "transformer": "store_id_to_url",
+                "omitempty": false
+              },
+              {
+                "name": "optimize_prompt",
+                "label": "optimize_prompt",
+                "tips": "控制是否启用VLM模型对用户输入的提示信息（prompt）进行改写，对应的参数为use_pre_llm。不对外透出",
+                "internal_name": "optimize_prompt",
+                "format": "boolean",
+                "type": "boolean",
+                "visible": false,
+                "default_value": true,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "optimize_prompt",
+                "omitempty": false
+              },
+              {
+                "name": "optimize_prompt_options.thinking",
+                "label": "optimize_prompt_options.thinking",
+                "tips": "控制Seedream agent中的VLM模型是否开启深度思考模式",
+                "internal_name": "optimize_prompt_options.thinking",
+                "format": "select",
+                "type": "string",
+                "visible": false,
+                "default_value": "auto",
+                "props": {
+                  "required": false,
+                  "enums": [
+                    {
+                      "value": "auto",
+                      "label": "auto"
+                    },
+                    {
+                      "value": "enabled",
+                      "label": "enabled"
+                    },
+                    {
+                      "value": "disabled",
+                      "label": "disabled"
+                    }
+                  ],
+                  "support_smart_duration": null
+                },
+                "json_path": "optimize_prompt_options.thinking",
+                "omitempty": false
+              },
+              {
+                "name": "optimize_prompt_options.mode",
+                "label": "optimize_prompt_options.mode",
+                "tips": "设置提示词优化功能使用的模式。standard：标准模式，生成内容的质量更高，耗时较长。fast：快速模式，生成内容的耗时更短，质量一般。",
+                "internal_name": "optimize_prompt_options.mode",
+                "format": "select",
+                "type": "string",
+                "visible": true,
+                "default_value": "standard",
+                "props": {
+                  "required": false,
+                  "enums": [
+                    {
+                      "value": "standard",
+                      "label": "standard"
+                    },
+                    {
+                      "value": "fast",
+                      "label": "fast"
+                    }
+                  ],
+                  "support_smart_duration": null
+                },
+                "json_path": "optimize_prompt_options.mode",
+                "omitempty": false
+              },
+              {
+                "name": "tools.type",
+                "label": "tools.type",
+                "tips": "模型可以调用的工具",
+                "internal_name": "tools.type",
+                "format": "text_area",
+                "type": "string",
+                "visible": true,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "tools.type",
+                "omitempty": false
+              },
+              {
+                "name": "inner_pre_llm_result",
+                "label": "inner_pre_llm_result",
+                "tips": "VLM输出的改写后prompt，仅在optimize_prompt为false时生效",
+                "internal_name": "inner_pre_llm_result",
+                "format": "text_area",
+                "type": "string",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_pre_llm_result",
+                "omitempty": false
+              },
+              {
+                "name": "inner_image_offset_start",
+                "label": "inner_image_offset_start",
+                "tips": "流式场景下生成或者部分重试场景下，跳过组图的头几个图，跳过的图需要传入到image，拼接在用户的参考图后面",
+                "internal_name": "inner_image_offset_start",
+                "format": "input_box",
+                "type": "integer",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_image_offset_start",
+                "omitempty": false
+              },
+              {
+                "name": "sequential_image_generation",
+                "label": "sequential_image_generation",
+                "tips": "控制是否关闭组图功能。auto：自动判断模式，模型会根据用户提供的提示词自主判断是否返回组图以及组图包含的图片数量。disabled：关闭组图功能，模型只会生成一张图。",
+                "internal_name": "sequential_image_generation",
+                "format": "select",
+                "type": "string",
+                "visible": true,
+                "default_value": "disabled",
+                "props": {
+                  "required": false,
+                  "enums": [
+                    {
+                      "value": "auto",
+                      "label": "auto"
+                    },
+                    {
+                      "value": "disabled",
+                      "label": "disabled"
+                    }
+                  ],
+                  "support_smart_duration": null
+                },
+                "json_path": "sequential_image_generation",
+                "omitempty": false
+              },
+              {
+                "name": "sequential_image_generation_options.max_images",
+                "label": "sequential_image_generation_options.max_images",
+                "tips": "指定本次请求，最多可生成的图片数量。仅当sequential_image_generation为auto时生效。",
+                "internal_name": "sequential_image_generation_options.max_images",
+                "format": "slide",
+                "type": "integer",
+                "visible": true,
+                "default_value": 15,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 15,
+                  "support_smart_duration": null
+                },
+                "json_path": "sequential_image_generation_options.max_images",
+                "omitempty": false
+              },
+              {
+                "name": "size",
+                "label": "size",
+                "tips": "指定生成图像的尺寸信息，支持以下两种方式，不可混用。1.指定生成图像的分辨率，并在prompt中用自然语言描述图片宽高比、图片形状或图片用途，最终由模型判断生成图片的大小，可选值：2K、4K。2.指定生成图像的宽高像素值，总像素取值范围：[2560x1440, 4096x4096] 宽高比取值范围：[1/16, 16]",
+                "internal_name": "size",
+                "format": "text",
+                "type": "string",
+                "visible": true,
+                "default_value": "2048x2048",
+                "props": {
+                  "required": false,
+                  "min_width": 1024,
+                  "max_width": 4096,
+                  "min_height": 1024,
+                  "max_height": 4096,
+                  "support_smart_duration": null
+                },
+                "json_path": "size",
+                "omitempty": false
+              },
+              {
+                "name": "inner_min_ratio",
+                "label": "inner_min_ratio",
+                "tips": "宽/高>=min_ratio，如果智能选比例<min_ratio，则用min_ratio。取值范围[1/16,16)",
+                "internal_name": "inner_min_ratio",
+                "format": "input_box",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_min_ratio",
+                "omitempty": false
+              },
+              {
+                "name": "inner_max_ratio",
+                "label": "inner_max_ratio",
+                "tips": "宽/高>=min_ratio，如果智能选比例<min_ratio，则用min_ratio。取值范围[1/16,16)",
+                "internal_name": "inner_max_ratio",
+                "format": "input_box",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_max_ratio",
+                "omitempty": false
+              },
+              {
+                "name": "output_format",
+                "label": "output_format",
+                "tips": "返回生成图像的文件格式。",
+                "internal_name": "output_format",
+                "format": "select",
+                "type": "string",
+                "visible": true,
+                "default_value": "jpeg",
+                "props": {
+                  "required": false,
+                  "enums": [
+                    {
+                      "value": "jpeg",
+                      "label": "jpeg"
+                    },
+                    {
+                      "value": "png",
+                      "label": "png"
+                    }
+                  ],
+                  "support_smart_duration": null
+                },
+                "json_path": "output_format",
+                "omitempty": false
+              },
+              {
+                "name": "watermark",
+                "label": "watermark",
+                "tips": "是否包含水印",
+                "internal_name": "watermark",
+                "format": "input_boolean",
+                "type": "boolean",
+                "visible": true,
+                "default_value": false,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "watermark",
+                "omitempty": false
+              },
+              {
+                "name": "seed",
+                "label": "seed",
+                "tips": "随机数种子",
+                "internal_name": "seed",
+                "format": "input_seed",
+                "type": "integer",
+                "visible": true,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": -1,
+                  "max": 2147483647,
+                  "support_smart_duration": null
+                },
+                "json_path": "seed",
+                "omitempty": false
+              },
+              {
+                "name": "guidance_scale",
+                "label": "guidance_scale",
+                "tips": "模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。",
+                "internal_name": "guidance_scale",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "guidance_scale",
+                "omitempty": false
+              },
+              {
+                "name": "image_guidance_scale",
+                "label": "image_guidance_scale",
+                "tips": "模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的参考图片相关性越强。",
+                "internal_name": "image_guidance_scale",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "image_guidance_scale",
+                "omitempty": false
+              },
+              {
+                "name": "inner_guidance_scale_options.guidance_scale",
+                "label": "inner_guidance_scale_options.guidance_scale",
+                "tips": "文生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。",
+                "internal_name": "inner_guidance_scale_options.guidance_scale",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.guidance_scale",
+                "omitempty": false
+              },
+              {
+                "name": "inner_guidance_scale_options.single_edit_guidance_weight",
+                "label": "inner_guidance_scale_options.single_edit_guidance_weight",
+                "tips": "单输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。",
+                "internal_name": "inner_guidance_scale_options.single_edit_guidance_weight",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.single_edit_guidance_weight",
+                "omitempty": false
+              },
+              {
+                "name": "inner_guidance_scale_options.multi_edit_guidance_weight",
+                "label": "inner_guidance_scale_options.multi_edit_guidance_weight",
+                "tips": "多输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。",
+                "internal_name": "inner_guidance_scale_options.multi_edit_guidance_weight",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.multi_edit_guidance_weight",
+                "omitempty": false
+              },
+              {
+                "name": "inner_guidance_scale_options.single_edit_guidance_weight_image",
+                "label": "inner_guidance_scale_options.single_edit_guidance_weight_image",
+                "tips": "单输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。",
+                "internal_name": "inner_guidance_scale_options.single_edit_guidance_weight_image",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.single_edit_guidance_weight_image",
+                "omitempty": false
+              },
+              {
+                "name": "inner_guidance_scale_options.multi_edit_guidance_weight_image",
+                "label": "inner_guidance_scale_options.multi_edit_guidance_weight_image",
+                "tips": "多输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。",
+                "internal_name": "inner_guidance_scale_options.multi_edit_guidance_weight_image",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.multi_edit_guidance_weight_image",
+                "omitempty": false
+              },
+              {
+                "name": "single_min_cfg_time",
+                "label": "single_min_cfg_time",
+                "tips": "单输入图edit专用。",
+                "internal_name": "single_min_cfg_time",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 0,
+                  "max": 1,
+                  "support_smart_duration": null
+                },
+                "json_path": "single_min_cfg_time",
+                "omitempty": false
+              },
+              {
+                "name": "multi_edit_guidance_weight",
+                "label": "multi_edit_guidance_weight",
+                "tips": "多输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。",
+                "internal_name": "multi_edit_guidance_weight",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.multi_edit_guidance_weight",
+                "omitempty": false
+              },
+              {
+                "name": "multi_edit_guidance_weight_image",
+                "label": "multi_edit_guidance_weight_image",
+                "tips": "多输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。",
+                "internal_name": "multi_edit_guidance_weight_image",
+                "format": "slide",
+                "type": "float32",
+                "visible": false,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "min": 1,
+                  "max": 10,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_guidance_scale_options.multi_edit_guidance_weight_image",
+                "omitempty": false
+              },
+              {
+                "name": "inner_return_dual_stack_url",
+                "label": "inner_return_dual_stack_url",
+                "tips": "是否返回内网图片URL",
+                "internal_name": "inner_return_dual_stack_url",
+                "format": "input_boolean",
+                "type": "boolean",
+                "visible": true,
+                "default_value": null,
+                "props": {
+                  "required": false,
+                  "support_smart_duration": null
+                },
+                "json_path": "inner_return_dual_stack_url",
+                "omitempty": false
+              }
+            ],
+            "cover_url": "https://sf16-sg.tiktokcdn.com/obj/eden-sg/azpayhlafi/ljhwZthlaukjlkulzlp/cover/bytedance.svg",
+            "name": "ByteDance-Seedream-5.0",
+            "name_en": "ByteDance-Seedream-5.0",
+            "base_url": "https://ark.ap-southeast.bytepluses.com/api/v3/images/generations",
+            "inference_types": [
+              "t2i",
+              "i2i"
+            ],
+            "price_configs": null,
+            "description": "",
+            "required_lumi_resource_uri": "",
+            "image_multiple": true,
+            "image_max_count": -1,
+            "key": "ByteDance-Seedream-5.0",
+            "origin": "egress"
+          },
+          "modelConfig": {
+            "size": {
+              "switch": true,
+              "value": "2048x2730"
+            },
+            "aspect_ratio": {
+              "switch": true,
+              "value": "3:4"
+            },
+            "resolution": {
+              "switch": true
+            },
+            "custom_aspect": {
+              "switch": true,
+              "value": false
+            }
+          },
+          "inputImages": [
+            {
+              "nodeId": "5",
+              "edgeId": "3",
+              "handler": "IMAGE",
+              "targetHandler": "image",
+              "values": []
+            }
+          ],
+          "user_prompt": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "A high-end fashion portrait photography masterpiece, focusing on the earrings in the image. Young East Asian female model, her face half-covered by a burgundy glitter tulle hat; wearing the earrings shown in the image; dressed in a black turtleneck top, with burgundy glitter tulle wrapped around her wrists. Her hands are folded and gently supporting her chin, with delicate and smooth skin texture. Solid rich burgundy background; side lighting highlights the face and hands, forming a strong contrast between light and shadow. Close-up composition. High-end fashion photography, retro luxury, cinematic atmosphere."
+                }
+              ]
+            }
+          ],
+          "pinList": [
+            "size"
+          ],
+          "value": [
+            "output/ba_llm/0e5dff4f-25f2-4702-bf59-d4c48d9396a7.jpeg"
+          ],
+          "failed": false
+        }
+      }
+    },
+    {
+      "id": "5",
+      "type": "LoadImage",
+      "inputs": [
+        {
+          "name": "image",
+          "label": "image",
+          "type": "STRING",
+          "value": "12_trg.png"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE"
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "label": "MASK"
+        }
+      ],
+      "meta": {
+        "title": "Load Image",
+        "pos": [
+          414.8784049498237,
+          1048.8445104745501
+        ],
+        "size": [
+          350,
+          470
+        ],
+        "extra": {
+          "output_preview_names": []
+        }
+      }
+    },
+    {
+      "id": "6",
+      "type": "SaveImage",
+      "inputs": [
+        {
+          "name": "images",
+          "label": "images",
+          "type": "IMAGE",
+          "format": "slot"
+        },
+        {
+          "name": "filename_prefix",
+          "label": "filename_prefix",
+          "type": "STRING",
+          "value": "ComfyUI"
+        }
+      ],
+      "outputs": [],
+      "meta": {
+        "title": "Save Image",
+        "pos": [
+          2643.8789933712396,
+          1087.0304969114725
+        ],
+        "size": [
+          350,
+          125
+        ],
+        "extra": {
+          "output_preview_names": []
+        }
+      }
+    },
+    {
+      "id": "7",
+      "type": "StringFunction|pysssss",
+      "inputs": [
+        {
+          "name": "action",
+          "label": "action",
+          "type": "STRING",
+          "value": "append"
+        },
+        {
+          "name": "tidy_tags",
+          "label": "tidy_tags",
+          "type": "STRING",
+          "value": "no"
+        },
+        {
+          "name": "text_a",
+          "label": "text_a",
+          "type": "STRING",
+          "value": ""
+        },
+        {
+          "name": "text_b",
+          "label": "text_b",
+          "type": "STRING",
+          "value": "x"
+        },
+        {
+          "name": "text_c",
+          "label": "text_c",
+          "type": "STRING",
+          "value": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "label": "STRING"
+        }
+      ],
+      "meta": {
+        "title": "String Function 🐍",
+        "pos": [
+          1547.22907684184,
+          1083.4895885709254
+        ],
+        "size": [
+          350,
+          717
+        ],
+        "extra": {
+          "output_preview_names": [
+            "STRING"
+          ],
+          "uiHeightMap": {
+            "text_a": 114,
+            "text_b": 114,
+            "text_c": 114,
+            "text-view-height-0-0": 82
+          }
+        }
+      }
+    },
+    {
+      "id": "8",
+      "type": "GetImageSize",
+      "inputs": [
+        {
+          "name": "image",
+          "label": "image",
+          "type": "IMAGE",
+          "format": "slot"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "label": "width"
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "label": "height"
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "label": "batch_size"
+        }
+      ],
+      "meta": {
+        "title": "GetImageSize",
+        "pos": [
+          1176.7395738509026,
+          1082.3938602281955
+        ],
+        "size": [
+          350,
+          109
+        ],
+        "extra": {
+          "output_preview_names": [
+            "width",
+            "height"
+          ]
+        }
+      }
+    },
+    {
+      "id": "9",
+      "type": "ImageRescale",
+      "inputs": [
+        {
+          "name": "image",
+          "label": "image",
+          "type": "IMAGE",
+          "format": "slot"
+        },
+        {
+          "name": "mode",
+          "label": "mode",
+          "type": "STRING",
+          "value": "rescale"
+        },
+        {
+          "name": "supersample",
+          "label": "supersample",
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "name": "resampling",
+          "label": "resampling",
+          "type": "STRING",
+          "value": "lanczos"
+        },
+        {
+          "name": "rescale_factor",
+          "label": "rescale_factor",
+          "type": "FLOAT",
+          "value": 2
+        },
+        {
+          "name": "resize_width",
+          "label": "resize_width",
+          "type": "INT",
+          "value": 1024
+        },
+        {
+          "name": "resize_height",
+          "label": "resize_height",
+          "type": "INT",
+          "value": 1536
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE"
+        }
+      ],
+      "meta": {
+        "title": "ImageRescale",
+        "pos": [
+          2276.1636800091246,
+          1087.760013696245
+        ],
+        "size": [
+          350,
+          385
+        ],
+        "extra": {
+          "output_preview_names": [
+            "IMAGE"
+          ]
+        }
+      }
+    },
+    {
+      "id": "10",
+      "type": "AIPResizeImageLongEdge",
+      "inputs": [
+        {
+          "name": "image",
+          "label": "image",
+          "type": "IMAGE",
+          "format": "slot"
+        },
+        {
+          "name": "long_resolution",
+          "label": "long_resolution",
+          "type": "INT",
+          "value": 3000
+        },
+        {
+          "name": "mode",
+          "label": "mode",
+          "type": "STRING",
+          "value": "always_scale"
+        },
+        {
+          "name": "multiple_of",
+          "label": "multiple_of",
+          "type": "INT",
+          "value": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE"
+        }
+      ],
+      "meta": {
+        "title": "AIPResizeImageLongEdge",
+        "pos": [
+          793.4462062541687,
+          1079.295612248192
+        ],
+        "size": [
+          350,
+          229
+        ],
+        "extra": {
+          "output_preview_names": [
+            "IMAGE"
+          ]
+        }
+      }
+    },
+    {
+      "id": "11",
+      "type": "GetImageSize",
+      "inputs": [
+        {
+          "name": "image",
+          "label": "image",
+          "type": "IMAGE",
+          "format": "slot"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "label": "width"
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "label": "height"
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "label": "batch_size"
+        }
+      ],
+      "meta": {
+        "title": "GetImageSize",
+        "pos": [
+          791.4135450794921,
+          1340.1175469748173
+        ],
+        "size": [
+          350,
+          109
+        ],
+        "extra": {
+          "output_preview_names": [
+            "width",
+            "height"
+          ]
+        }
+      }
+    },
+    {
+      "id": "12",
+      "type": "easy showAnything",
+      "inputs": [
+        {
+          "name": "anything",
+          "label": "anything",
+          "type": "*",
+          "format": "slot"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "label": "output"
+        }
+      ],
+      "meta": {
+        "title": "Show Any",
+        "pos": [
+          1166.9062657798888,
+          1259.258733238264
+        ],
+        "size": [
+          350,
+          57
+        ],
+        "extra": {
+          "output_preview_names": []
+        }
+      }
+    },
+    {
+      "id": "13",
+      "type": "easy showAnything",
+      "inputs": [
+        {
+          "name": "anything",
+          "label": "anything",
+          "type": "*",
+          "format": "slot"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "label": "output"
+        }
+      ],
+      "meta": {
+        "title": "Show Any",
+        "pos": [
+          1168.940535779633,
+          1371.8480468517457
+        ],
+        "size": [
+          350,
+          57
+        ],
+        "extra": {
+          "output_preview_names": []
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      "3",
+      "5",
+      "IMAGE",
+      "4",
+      "image",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "5",
+      "5",
+      "IMAGE",
+      "8",
+      "image",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "6",
+      "8",
+      "width",
+      "9",
+      "resize_width",
+      {
+        "type": "INT"
+      }
+    ],
+    [
+      "7",
+      "8",
+      "height",
+      "9",
+      "resize_height",
+      {
+        "type": "INT"
+      }
+    ],
+    [
+      "8",
+      "4",
+      "image",
+      "9",
+      "image",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "9",
+      "9",
+      "IMAGE",
+      "6",
+      "images",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "10",
+      "5",
+      "IMAGE",
+      "10",
+      "image",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "11",
+      "10",
+      "IMAGE",
+      "11",
+      "image",
+      {
+        "type": "IMAGE"
+      }
+    ],
+    [
+      "12",
+      "11",
+      "width",
+      "12",
+      "anything",
+      {
+        "type": "INT"
+      }
+    ],
+    [
+      "13",
+      "11",
+      "height",
+      "13",
+      "anything",
+      {
+        "type": "INT"
+      }
+    ],
+    [
+      "14",
+      "13",
+      "output",
+      "7",
+      "text_c",
+      {
+        "type": "STRING"
+      }
+    ],
+    [
+      "15",
+      "12",
+      "output",
+      "7",
+      "text_a",
+      {
+        "type": "STRING"
+      }
+    ],
+    [
+      "16",
+      "7",
+      "STRING",
+      "4",
+      "extra_inputs.size",
+      {
+        "type": "STRING"
+      }
+    ]
+  ],
+  "groups": [],
+  "version": 1,
+  "ba_extra": {
+    "slot_info": {
+      "inputs": [
+        {
+          "name": "input",
+          "internal_name": "input",
+          "visible": true,
+          "label": "input",
+          "format": "image_upload",
+          "props": {},
+          "default_value": "12_trg.png",
+          "extra": {
+            "node_id": "5",
+            "input_key": "image",
+            "class_type": "LoadImage",
+            "random_default_value": false,
+            "ui_order": 0
+          }
+        }
+      ],
+      "outputs": []
+    },
+    "slot_info_schema": {
+      "input": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "input": {
+            "default": "12_trg.png",
+            "title": "input",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    "prompt": {
+      "4": {
+        "class_type": "BALLMImage",
+        "inputs": {
+          "extra_inputs.size": [
+            "7",
+            0
+          ],
+          "image0": [
+            "5",
+            0
+          ],
+          "user_prompt": "A high-end fashion portrait photography masterpiece, focusing on the earrings in the image. Young East Asian female model, her face half-covered by a burgundy glitter tulle hat; wearing the earrings shown in the image; dressed in a black turtleneck top, with burgundy glitter tulle wrapped around her wrists. Her hands are folded and gently supporting her chin, with delicate and smooth skin texture. Solid rich burgundy background; side lighting highlights the face and hands, forming a strong contrast between light and shadow. Close-up composition. High-end fashion photography, retro luxury, cinematic atmosphere.",
+          "model": "{\"model_name\":\"ByteDance-Seedream-5.0\",\"gpt_model_name\":\"\",\"product_name\":\"ByteDance-Seedream-5.0\",\"max_token\":1000,\"cache_ep\":false,\"endpoint\":null,\"username_lumi\":\"\",\"schema\":[{\"name\":\"prompt\",\"label\":\"prompt\",\"tips\":\"用于生成图像的提示词，支持中英文。建议不超过300个汉字或600个英文单词。字数过多信息容易分散，模型可能因此忽略细节，只关注重点，造成图片缺失部分元素。\",\"internal_name\":\"prompt\",\"format\":\"text_area\",\"type\":\"string\",\"visible\":true,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"risk_predict_type\":\"text\",\"json_path\":\"prompt\",\"omitempty\":false},{\"name\":\"negative_prompt\",\"label\":\"negative_prompt\",\"tips\":\"负向提示词，用于描述不想要生成效果的提示词\",\"internal_name\":\"negative_prompt\",\"format\":\"text_area\",\"type\":\"string\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"negative_prompt\",\"omitempty\":false},{\"name\":\"image\",\"label\":\"image\",\"tips\":\"输入的图片信息，支持 URL 或 Base64 编码。支持多图输入\",\"internal_name\":\"image\",\"format\":\"img\",\"type\":\"string_list\",\"visible\":true,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"risk_predict_type\":\"image\",\"json_path\":\"image\",\"transformer\":\"store_id_to_url\",\"omitempty\":false},{\"name\":\"optimize_prompt\",\"label\":\"optimize_prompt\",\"tips\":\"控制是否启用VLM模型对用户输入的提示信息（prompt）进行改写，对应的参数为use_pre_llm。不对外透出\",\"internal_name\":\"optimize_prompt\",\"format\":\"boolean\",\"type\":\"boolean\",\"visible\":false,\"default_value\":true,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"optimize_prompt\",\"omitempty\":false},{\"name\":\"optimize_prompt_options.thinking\",\"label\":\"optimize_prompt_options.thinking\",\"tips\":\"控制Seedream agent中的VLM模型是否开启深度思考模式\",\"internal_name\":\"optimize_prompt_options.thinking\",\"format\":\"select\",\"type\":\"string\",\"visible\":false,\"default_value\":\"auto\",\"props\":{\"required\":false,\"enums\":[{\"value\":\"auto\",\"label\":\"auto\"},{\"value\":\"enabled\",\"label\":\"enabled\"},{\"value\":\"disabled\",\"label\":\"disabled\"}],\"support_smart_duration\":null},\"json_path\":\"optimize_prompt_options.thinking\",\"omitempty\":false},{\"name\":\"optimize_prompt_options.mode\",\"label\":\"optimize_prompt_options.mode\",\"tips\":\"设置提示词优化功能使用的模式。standard：标准模式，生成内容的质量更高，耗时较长。fast：快速模式，生成内容的耗时更短，质量一般。\",\"internal_name\":\"optimize_prompt_options.mode\",\"format\":\"select\",\"type\":\"string\",\"visible\":true,\"default_value\":\"standard\",\"props\":{\"required\":false,\"enums\":[{\"value\":\"standard\",\"label\":\"standard\"},{\"value\":\"fast\",\"label\":\"fast\"}],\"support_smart_duration\":null},\"json_path\":\"optimize_prompt_options.mode\",\"omitempty\":false},{\"name\":\"tools.type\",\"label\":\"tools.type\",\"tips\":\"模型可以调用的工具\",\"internal_name\":\"tools.type\",\"format\":\"text_area\",\"type\":\"string\",\"visible\":true,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"tools.type\",\"omitempty\":false},{\"name\":\"inner_pre_llm_result\",\"label\":\"inner_pre_llm_result\",\"tips\":\"VLM输出的改写后prompt，仅在optimize_prompt为false时生效\",\"internal_name\":\"inner_pre_llm_result\",\"format\":\"text_area\",\"type\":\"string\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"inner_pre_llm_result\",\"omitempty\":false},{\"name\":\"inner_image_offset_start\",\"label\":\"inner_image_offset_start\",\"tips\":\"流式场景下生成或者部分重试场景下，跳过组图的头几个图，跳过的图需要传入到image，拼接在用户的参考图后面\",\"internal_name\":\"inner_image_offset_start\",\"format\":\"input_box\",\"type\":\"integer\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"inner_image_offset_start\",\"omitempty\":false},{\"name\":\"sequential_image_generation\",\"label\":\"sequential_image_generation\",\"tips\":\"控制是否关闭组图功能。auto：自动判断模式，模型会根据用户提供的提示词自主判断是否返回组图以及组图包含的图片数量。disabled：关闭组图功能，模型只会生成一张图。\",\"internal_name\":\"sequential_image_generation\",\"format\":\"select\",\"type\":\"string\",\"visible\":true,\"default_value\":\"disabled\",\"props\":{\"required\":false,\"enums\":[{\"value\":\"auto\",\"label\":\"auto\"},{\"value\":\"disabled\",\"label\":\"disabled\"}],\"support_smart_duration\":null},\"json_path\":\"sequential_image_generation\",\"omitempty\":false},{\"name\":\"sequential_image_generation_options.max_images\",\"label\":\"sequential_image_generation_options.max_images\",\"tips\":\"指定本次请求，最多可生成的图片数量。仅当sequential_image_generation为auto时生效。\",\"internal_name\":\"sequential_image_generation_options.max_images\",\"format\":\"slide\",\"type\":\"integer\",\"visible\":true,\"default_value\":15,\"props\":{\"required\":false,\"min\":1,\"max\":15,\"support_smart_duration\":null},\"json_path\":\"sequential_image_generation_options.max_images\",\"omitempty\":false},{\"name\":\"size\",\"label\":\"size\",\"tips\":\"指定生成图像的尺寸信息，支持以下两种方式，不可混用。1.指定生成图像的分辨率，并在prompt中用自然语言描述图片宽高比、图片形状或图片用途，最终由模型判断生成图片的大小，可选值：2K、4K。2.指定生成图像的宽高像素值，总像素取值范围：[2560x1440, 4096x4096] 宽高比取值范围：[1/16, 16]\",\"internal_name\":\"size\",\"format\":\"text\",\"type\":\"string\",\"visible\":true,\"default_value\":\"2048x2048\",\"props\":{\"required\":false,\"min_width\":1024,\"max_width\":4096,\"min_height\":1024,\"max_height\":4096,\"support_smart_duration\":null},\"json_path\":\"size\",\"omitempty\":false},{\"name\":\"inner_min_ratio\",\"label\":\"inner_min_ratio\",\"tips\":\"宽/高>=min_ratio，如果智能选比例<min_ratio，则用min_ratio。取值范围[1/16,16)\",\"internal_name\":\"inner_min_ratio\",\"format\":\"input_box\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"inner_min_ratio\",\"omitempty\":false},{\"name\":\"inner_max_ratio\",\"label\":\"inner_max_ratio\",\"tips\":\"宽/高>=min_ratio，如果智能选比例<min_ratio，则用min_ratio。取值范围[1/16,16)\",\"internal_name\":\"inner_max_ratio\",\"format\":\"input_box\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"inner_max_ratio\",\"omitempty\":false},{\"name\":\"output_format\",\"label\":\"output_format\",\"tips\":\"返回生成图像的文件格式。\",\"internal_name\":\"output_format\",\"format\":\"select\",\"type\":\"string\",\"visible\":true,\"default_value\":\"jpeg\",\"props\":{\"required\":false,\"enums\":[{\"value\":\"jpeg\",\"label\":\"jpeg\"},{\"value\":\"png\",\"label\":\"png\"}],\"support_smart_duration\":null},\"json_path\":\"output_format\",\"omitempty\":false},{\"name\":\"watermark\",\"label\":\"watermark\",\"tips\":\"是否包含水印\",\"internal_name\":\"watermark\",\"format\":\"input_boolean\",\"type\":\"boolean\",\"visible\":true,\"default_value\":false,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"watermark\",\"omitempty\":false},{\"name\":\"seed\",\"label\":\"seed\",\"tips\":\"随机数种子\",\"internal_name\":\"seed\",\"format\":\"input_seed\",\"type\":\"integer\",\"visible\":true,\"default_value\":null,\"props\":{\"required\":false,\"min\":-1,\"max\":2147483647,\"support_smart_duration\":null},\"json_path\":\"seed\",\"omitempty\":false},{\"name\":\"guidance_scale\",\"label\":\"guidance_scale\",\"tips\":\"模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。\",\"internal_name\":\"guidance_scale\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"guidance_scale\",\"omitempty\":false},{\"name\":\"image_guidance_scale\",\"label\":\"image_guidance_scale\",\"tips\":\"模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的参考图片相关性越强。\",\"internal_name\":\"image_guidance_scale\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"image_guidance_scale\",\"omitempty\":false},{\"name\":\"inner_guidance_scale_options.guidance_scale\",\"label\":\"inner_guidance_scale_options.guidance_scale\",\"tips\":\"文生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。\",\"internal_name\":\"inner_guidance_scale_options.guidance_scale\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.guidance_scale\",\"omitempty\":false},{\"name\":\"inner_guidance_scale_options.single_edit_guidance_weight\",\"label\":\"inner_guidance_scale_options.single_edit_guidance_weight\",\"tips\":\"单输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。\",\"internal_name\":\"inner_guidance_scale_options.single_edit_guidance_weight\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.single_edit_guidance_weight\",\"omitempty\":false},{\"name\":\"inner_guidance_scale_options.multi_edit_guidance_weight\",\"label\":\"inner_guidance_scale_options.multi_edit_guidance_weight\",\"tips\":\"多输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。\",\"internal_name\":\"inner_guidance_scale_options.multi_edit_guidance_weight\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.multi_edit_guidance_weight\",\"omitempty\":false},{\"name\":\"inner_guidance_scale_options.single_edit_guidance_weight_image\",\"label\":\"inner_guidance_scale_options.single_edit_guidance_weight_image\",\"tips\":\"单输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。\",\"internal_name\":\"inner_guidance_scale_options.single_edit_guidance_weight_image\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.single_edit_guidance_weight_image\",\"omitempty\":false},{\"name\":\"inner_guidance_scale_options.multi_edit_guidance_weight_image\",\"label\":\"inner_guidance_scale_options.multi_edit_guidance_weight_image\",\"tips\":\"多输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。\",\"internal_name\":\"inner_guidance_scale_options.multi_edit_guidance_weight_image\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.multi_edit_guidance_weight_image\",\"omitempty\":false},{\"name\":\"single_min_cfg_time\",\"label\":\"single_min_cfg_time\",\"tips\":\"单输入图edit专用。\",\"internal_name\":\"single_min_cfg_time\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":0,\"max\":1,\"support_smart_duration\":null},\"json_path\":\"single_min_cfg_time\",\"omitempty\":false},{\"name\":\"multi_edit_guidance_weight\",\"label\":\"multi_edit_guidance_weight\",\"tips\":\"多输入图生图场景下，模型输出结果与prompt的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。\",\"internal_name\":\"multi_edit_guidance_weight\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.multi_edit_guidance_weight\",\"omitempty\":false},{\"name\":\"multi_edit_guidance_weight_image\",\"label\":\"multi_edit_guidance_weight_image\",\"tips\":\"多输入图生图场景下，模型输出结果与输入参考图的一致程度，即生成图像的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。仅对内，外部不开放。\",\"internal_name\":\"multi_edit_guidance_weight_image\",\"format\":\"slide\",\"type\":\"float32\",\"visible\":false,\"default_value\":null,\"props\":{\"required\":false,\"min\":1,\"max\":10,\"support_smart_duration\":null},\"json_path\":\"inner_guidance_scale_options.multi_edit_guidance_weight_image\",\"omitempty\":false},{\"name\":\"inner_return_dual_stack_url\",\"label\":\"inner_return_dual_stack_url\",\"tips\":\"是否返回内网图片URL\",\"internal_name\":\"inner_return_dual_stack_url\",\"format\":\"input_boolean\",\"type\":\"boolean\",\"visible\":true,\"default_value\":null,\"props\":{\"required\":false,\"support_smart_duration\":null},\"json_path\":\"inner_return_dual_stack_url\",\"omitempty\":false}],\"cover_url\":\"https://sf16-sg.tiktokcdn.com/obj/eden-sg/azpayhlafi/ljhwZthlaukjlkulzlp/cover/bytedance.svg\",\"name\":\"ByteDance-Seedream-5.0\",\"name_en\":\"ByteDance-Seedream-5.0\",\"base_url\":\"https://ark.ap-southeast.bytepluses.com/api/v3/images/generations\",\"inference_types\":[\"t2i\",\"i2i\"],\"price_configs\":null,\"description\":\"\",\"required_lumi_resource_uri\":\"\",\"image_multiple\":true,\"image_max_count\":-1,\"key\":\"ByteDance-Seedream-5.0\",\"origin\":\"egress\"}",
+          "extra_inputs": {
+            "size": "2048x2730",
+            "aspect_ratio": "3:4",
+            "custom_aspect": false
+          }
+        },
+        "ba_meta": {
+          "default_value_map": {
+            "cache": {
+              "type": "array",
+              "values": [
+                {
+                  "type": "image",
+                  "values": [
+                    "output/ba_llm/0e5dff4f-25f2-4702-bf59-d4c48d9396a7.jpeg"
+                  ]
+                }
+              ],
+              "is_output_cache": true
+            }
+          },
+          "is_carrier": true
+        }
+      },
+      "5": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "12_trg.png"
+        }
+      },
+      "6": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "9",
+            0
+          ],
+          "filename_prefix": "ComfyUI"
+        }
+      },
+      "7": {
+        "class_type": "StringFunction|pysssss",
+        "inputs": {
+          "action": "append",
+          "tidy_tags": "no",
+          "text_a": [
+            "12",
+            0
+          ],
+          "text_b": "x",
+          "text_c": [
+            "13",
+            0
+          ]
+        }
+      },
+      "8": {
+        "class_type": "GetImageSize",
+        "inputs": {
+          "image": [
+            "5",
+            0
+          ]
+        }
+      },
+      "9": {
+        "class_type": "ImageRescale",
+        "inputs": {
+          "image": [
+            "4",
+            0
+          ],
+          "mode": "rescale",
+          "supersample": "false",
+          "resampling": "lanczos",
+          "rescale_factor": 2,
+          "resize_width": [
+            "8",
+            0
+          ],
+          "resize_height": [
+            "8",
+            1
+          ]
+        }
+      },
+      "10": {
+        "class_type": "AIPResizeImageLongEdge",
+        "inputs": {
+          "image": [
+            "5",
+            0
+          ],
+          "long_resolution": 3000,
+          "mode": "always_scale",
+          "multiple_of": 1
+        }
+      },
+      "11": {
+        "class_type": "GetImageSize",
+        "inputs": {
+          "image": [
+            "10",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "easy showAnything",
+        "inputs": {
+          "anything": [
+            "11",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "easy showAnything",
+        "inputs": {
+          "anything": [
+            "11",
+            1
+          ]
+        }
+      }
+    },
+    "venv_comfyui": null,
+    "service_name": "byteartist_comfyui_non_tt",
+    "ba_comfyui_version": "0.0.6",
+    "comfyui_commit": "866f6cdab4bd5de95ee6296d1b418c455f67f929",
+    "ba_manager_commit": "e67d96f535218375c55a27151ea0c6597c268d45",
+    "created_at": 1775635315726,
+    "node_info": {
+      "BALLMImage": {
+        "input": {
+          "required": {},
+          "optional": {
+            "prompt": [
+              "STRING",
+              {
+                "tooltip": "文本",
+                "label": "文本",
+                "support_multiple_input": true,
+                "forceInput": true
+              }
+            ],
+            "image": [
+              "IMAGE",
+              {
+                "tooltip": "图片",
+                "label": "图片",
+                "support_multiple_input": true
+              }
+            ],
+            "user_prompt": [
+              "STRING",
+              {
+                "multiline": true,
+                "ba_ui_props": {
+                  "format": "input_prompt",
+                  "height": 80
+                }
+              }
+            ],
+            "model": [
+              "STRING",
+              {
+                "multiline": true,
+                "baNextHidden": true,
+                "remote": {
+                  "route": "/api/ba/llm/llm_images"
+                }
+              }
+            ],
+            "extra_inputs": [
+              "DICT",
+              {
+                "baNextHidden": true,
+                "default": "",
+                "multiline": true
+              }
+            ]
+          },
+          "hidden": {
+            "prompt": "PROMPT",
+            "unique_id": "UNIQUE_ID"
+          }
+        },
+        "input_order": {
+          "required": [],
+          "optional": [
+            "prompt",
+            "image",
+            "user_prompt",
+            "model",
+            "extra_inputs"
+          ],
+          "hidden": [
+            "prompt",
+            "unique_id"
+          ]
+        },
+        "output": [
+          "IMAGE"
+        ],
+        "output_is_list": [
+          true
+        ],
+        "output_name": [
+          "image"
+        ],
+        "name": "BALLMImage",
+        "display_name": "图片生成",
+        "description": "",
+        "python_module": "custom_nodes.ba-manager",
+        "category": "LLM/image",
+        "output_node": false
+      },
+      "LoadImage": {
+        "input": {
+          "required": {
+            "image": [
+              [
+                "12_trg.png"
+              ],
+              {
+                "image_upload": true
+              }
+            ]
+          }
+        },
+        "input_order": {
+          "required": [
+            "image"
+          ]
+        },
+        "output": [
+          "IMAGE",
+          "MASK"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "IMAGE",
+          "MASK"
+        ],
+        "name": "LoadImage",
+        "display_name": "Load Image",
+        "description": "",
+        "python_module": "nodes",
+        "category": "image",
+        "output_node": false
+      },
+      "SaveImage": {
+        "input": {
+          "required": {
+            "images": [
+              "IMAGE",
+              {
+                "tooltip": "The images to save."
+              }
+            ],
+            "filename_prefix": [
+              "STRING",
+              {
+                "default": "ComfyUI",
+                "tooltip": "The prefix for the file to save. This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes."
+              }
+            ]
+          },
+          "hidden": {
+            "prompt": "PROMPT",
+            "extra_pnginfo": "EXTRA_PNGINFO"
+          }
+        },
+        "input_order": {
+          "required": [
+            "images",
+            "filename_prefix"
+          ],
+          "hidden": [
+            "prompt",
+            "extra_pnginfo"
+          ]
+        },
+        "output": [],
+        "output_is_list": [],
+        "output_name": [],
+        "name": "SaveImage",
+        "display_name": "Save Image",
+        "description": "Saves the input images to your ComfyUI output directory.",
+        "python_module": "nodes",
+        "category": "image",
+        "output_node": true
+      },
+      "StringFunction|pysssss": {
+        "input": {
+          "required": {
+            "action": [
+              [
+                "append",
+                "replace"
+              ],
+              {}
+            ],
+            "tidy_tags": [
+              [
+                "yes",
+                "no"
+              ],
+              {}
+            ]
+          },
+          "optional": {
+            "text_a": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": false
+              }
+            ],
+            "text_b": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": false
+              }
+            ],
+            "text_c": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": false
+              }
+            ]
+          }
+        },
+        "input_order": {
+          "required": [
+            "action",
+            "tidy_tags"
+          ],
+          "optional": [
+            "text_a",
+            "text_b",
+            "text_c"
+          ]
+        },
+        "output": [
+          "STRING"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "STRING"
+        ],
+        "name": "StringFunction|pysssss",
+        "display_name": "String Function 🐍",
+        "description": "",
+        "python_module": "custom_nodes.ComfyUI-Custom-Scripts",
+        "category": "utils",
+        "output_node": true
+      },
+      "GetImageSize": {
+        "input": {
+          "required": {
+            "image": [
+              "IMAGE"
+            ]
+          },
+          "hidden": {
+            "unique_id": "UNIQUE_ID"
+          }
+        },
+        "input_order": {
+          "required": [
+            "image"
+          ],
+          "hidden": [
+            "unique_id"
+          ]
+        },
+        "output": [
+          "INT",
+          "INT",
+          "INT"
+        ],
+        "output_is_list": [
+          false,
+          false,
+          false
+        ],
+        "output_name": [
+          "width",
+          "height",
+          "batch_size"
+        ],
+        "name": "GetImageSize",
+        "display_name": "GetImageSize",
+        "description": "Returns width and height of the image, and passes it through unchanged.",
+        "python_module": "comfy_extras.nodes_images",
+        "category": "image",
+        "output_node": false
+      },
+      "ImageRescale": {
+        "input": {
+          "required": {
+            "image": [
+              "IMAGE"
+            ],
+            "mode": [
+              [
+                "rescale",
+                "resize"
+              ]
+            ],
+            "supersample": [
+              [
+                "true",
+                "false"
+              ]
+            ],
+            "resampling": [
+              [
+                "lanczos",
+                "nearest",
+                "bilinear",
+                "bicubic"
+              ]
+            ],
+            "rescale_factor": [
+              "FLOAT",
+              {
+                "default": 2,
+                "min": 0.01,
+                "max": 16,
+                "step": 0.01
+              }
+            ],
+            "resize_width": [
+              "INT",
+              {
+                "default": 1024,
+                "min": 1,
+                "max": 48000,
+                "step": 1
+              }
+            ],
+            "resize_height": [
+              "INT",
+              {
+                "default": 1536,
+                "min": 1,
+                "max": 48000,
+                "step": 1
+              }
+            ]
+          }
+        },
+        "input_order": {
+          "required": [
+            "image",
+            "mode",
+            "supersample",
+            "resampling",
+            "rescale_factor",
+            "resize_width",
+            "resize_height"
+          ]
+        },
+        "output": [
+          "IMAGE"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "IMAGE"
+        ],
+        "name": "ImageRescale",
+        "display_name": "ImageRescale",
+        "description": "",
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "category": "IC-AIP-AIGC/ImageUtils",
+        "output_node": false
+      },
+      "AIPResizeImageLongEdge": {
+        "input": {
+          "required": {
+            "image": [
+              "IMAGE"
+            ],
+            "long_resolution": [
+              "INT",
+              {
+                "default": 832,
+                "min": 128,
+                "max": 8192,
+                "step": 8
+              }
+            ],
+            "mode": [
+              [
+                "keep_small_origin",
+                "always_scale"
+              ],
+              {
+                "default": "keep_small_origin"
+              }
+            ],
+            "multiple_of": [
+              "INT",
+              {
+                "default": 1,
+                "min": 1,
+                "max": 128,
+                "step": 1
+              }
+            ]
+          }
+        },
+        "input_order": {
+          "required": [
+            "image",
+            "long_resolution",
+            "mode",
+            "multiple_of"
+          ]
+        },
+        "output": [
+          "IMAGE"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "IMAGE"
+        ],
+        "name": "AIPResizeImageLongEdge",
+        "display_name": "AIPResizeImageLongEdge",
+        "description": "",
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "category": "IC-AIP-AIGC/ImageUtils",
+        "output_node": false
+      },
+      "easy showAnything": {
+        "input": {
+          "required": {},
+          "optional": {
+            "anything": [
+              "*",
+              {}
+            ]
+          },
+          "hidden": {
+            "unique_id": "UNIQUE_ID",
+            "extra_pnginfo": "EXTRA_PNGINFO"
+          }
+        },
+        "input_order": {
+          "required": [],
+          "optional": [
+            "anything"
+          ],
+          "hidden": [
+            "unique_id",
+            "extra_pnginfo"
+          ]
+        },
+        "output": [
+          "*"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "output"
+        ],
+        "name": "easy showAnything",
+        "display_name": "Show Any",
+        "description": "",
+        "python_module": "custom_nodes.ComfyUI-Easy-Use",
+        "category": "EasyUse/Logic",
+        "output_node": true
+      }
+    },
+    "custom_node_versions": [],
+    "pip_freeze": [
+      "absl-py==2.3.1",
+      "accelerate==1.5.2",
+      "addict==2.4.0",
+      "aiofiles==23.2.1",
+      "aiohappyeyeballs==2.6.1",
+      "aiohttp==3.9.1",
+      "aiosignal==1.3.1",
+      "albucore==0.0.24",
+      "albumentations==1.3.0",
+      "annotated-doc==0.0.4",
+      "annotated-types==0.7.0",
+      "antlr4-python3-runtime==4.9.3",
+      "anyio==4.4.0",
+      "async-timeout==4.0.3",
+      "attrs==24.2.0",
+      "av==14.4.0",
+      "basicsr==1.4.2",
+      "beautifulsoup4==4.13.5",
+      "bitsandbytes==0.43.3",
+      "black==24.8.0",
+      "boltons==25.0.0",
+      "brotli==1.2.0",
+      "byted-pypprof==0.0.5",
+      "byted-wandb==0.13.60",
+      "byted_automl_plugin==0.1.3",
+      "byted_lighten_validator==0.2.14",
+      "byted_pydev==0.0.20",
+      "bytedance-context==0.7.1",
+      "bytedance-ivory==1.1.3.post4",
+      "bytedance-metrics==0.5.1",
+      "bytedance.ba-download==0.6.7",
+      "bytedance.bach==21.2.0.9",
+      "bytedance.uploader==0.4.0a15",
+      "bytedance.vcloud==1.0.21",
+      "bytedance.versioncollect==0.2.0",
+      "bytedbackgrounds==0.0.6",
+      "byteddatabus==1.0.8",
+      "byteddps==0.1.2",
+      "bytedenv==0.7.3",
+      "bytedeuler==2.4.3",
+      "bytedivory==0.0.11.post13",
+      "bytedlogger==0.15.1",
+      "bytedlogid==0.2.1",
+      "bytedmeinheld==1.0.2",
+      "bytedmemfd==0.2",
+      "bytedmetrics==0.10.2",
+      "bytedpypolaris==3.0.48",
+      "bytedpyrocketmq==2.3.26",
+      "bytedservicediscovery==0.18.0",
+      "bytedsinfmetacenter==1.4.3",
+      "bytedtcc==1.4.4",
+      "bytedtos==1.1.14",
+      "bytedtrace==0.3.0",
+      "bytedturbox==0.8.0+torch2.5.1",
+      "bytedunicorn==0.9.3",
+      "bytedurllibsec==0.4.0",
+      "bytedwsgimiddleware==0.9.0",
+      "bytedztijwthelper==0.0.21",
+      "bytedztispiffe==0.0.16",
+      "cacheout==0.16.0",
+      "cachetools==5.3.2",
+      "certifi==2024.8.30",
+      "cffi==1.16.0",
+      "chardet==5.2.0",
+      "charset-normalizer==3.3.2",
+      "clean-fid==0.1.35",
+      "click==8.1.7",
+      "clip-interrogator==0.6.0",
+      "coloredlogs==15.0.1",
+      "comfyui-embedded-docs==0.2.0",
+      "comfyui_frontend_package==1.21.7",
+      "comfyui_workflow_templates==0.1.25",
+      "contourpy==1.3.2",
+      "coverage==7.10.5",
+      "cramjam==2.6.2",
+      "crcmod==1.7",
+      "cryptography==45.0.6",
+      "ctranslate2==4.2.1",
+      "cuda-bindings==13.2.0",
+      "cuda-pathfinder==1.5.0",
+      "cuda-toolkit==13.0.2",
+      "cycler==0.12.1",
+      "Cython==3.1.3",
+      "dacite==1.9.2",
+      "datasets==2.18.0",
+      "decorator==5.2.1",
+      "Deprecated==1.2.18",
+      "diffusers==0.32.2",
+      "dill==0.3.8",
+      "distro==1.9.0",
+      "dnspython==2.7.0",
+      "docker-pycreds==0.4.0",
+      "easydict==1.13",
+      "einops==0.7.0",
+      "et_xmlfile==2.0.0",
+      "exceptiongroup==1.3.0",
+      "facexlib==0.3.0",
+      "fastapi==0.108.0",
+      "ffmpy==1.0.0",
+      "file-magic==0.4.0",
+      "filelock==3.19.1",
+      "filetype==1.2.0",
+      "filterpy==1.4.5",
+      "flatbuffers==25.2.10",
+      "fonttools==4.59.1",
+      "frozenlist==1.4.1",
+      "fsspec==2024.2.0",
+      "ftfy==6.3.1",
+      "future==1.0.0",
+      "fvcore==0.1.5.post20221221",
+      "gdown==4.7.1",
+      "gevent==22.10.2",
+      "gfpgan==1.3.8",
+      "gitdb==4.0.12",
+      "GitPython==3.1.42",
+      "GPUtil==1.4.0",
+      "gradio==6.10.0",
+      "gradio_client==2.4.0",
+      "greenlet==3.2.4",
+      "groovy==0.1.2",
+      "grpcio==1.74.0",
+      "gunicorn==20.1.0",
+      "h11==0.14.0",
+      "hf-gradio==0.3.0",
+      "hf-xet==1.1.8",
+      "httpcore==1.0.5",
+      "httpx==0.25.2",
+      "huggingface-hub==0.31.1",
+      "humanfriendly==10.0",
+      "idna==3.10",
+      "imageio==2.37.0",
+      "imageio-ffmpeg==0.6.0",
+      "importlib_metadata==8.7.0",
+      "inflection==0.5.1",
+      "iniconfig==2.0.0",
+      "insightface==0.7.3",
+      "iopath==0.1.10",
+      "ipaddress==1.0.23",
+      "Jinja2==3.1.6",
+      "jiter==0.13.0",
+      "joblib==1.5.1",
+      "jsonc-parser==1.1.5",
+      "jsonmerge==1.8.0",
+      "jsonschema==4.25.1",
+      "jsonschema-specifications==2025.4.1",
+      "kiwisolver==1.4.9",
+      "kornia==0.6.7",
+      "kornia_rs==0.1.9",
+      "lark==1.1.2",
+      "lazy_loader==0.4",
+      "lightning-utilities==0.15.2",
+      "llvmlite==0.44.0",
+      "lmdb==1.7.3",
+      "lz4==3.1.10",
+      "Markdown==3.8.2",
+      "markdown-it-py==4.0.0",
+      "MarkupSafe==3.0.2",
+      "matplotlib==3.10.5",
+      "mdurl==0.1.2",
+      "ml_dtypes==0.5.4",
+      "mmcv==2.2.0",
+      "mmengine==0.10.7",
+      "moviepy==2.2.1",
+      "mpmath==1.3.0",
+      "mprofile==0.0.15",
+      "msgpack==1.0.8",
+      "multidict==6.0.5",
+      "multiprocess==0.70.16",
+      "mypy-extensions==1.0.0",
+      "networkx==3.4.2",
+      "numba==0.61.2",
+      "numpy==1.26.2",
+      "nvidia-cublas==13.1.0.3",
+      "nvidia-cublas-cu12==12.8.4.1",
+      "nvidia-cuda-cupti==13.0.85",
+      "nvidia-cuda-cupti-cu12==12.8.90",
+      "nvidia-cuda-nvrtc==13.0.88",
+      "nvidia-cuda-nvrtc-cu12==12.8.93",
+      "nvidia-cuda-runtime==13.0.96",
+      "nvidia-cuda-runtime-cu12==12.8.90",
+      "nvidia-cudnn-cu12==9.10.2.21",
+      "nvidia-cudnn-cu13==9.19.0.56",
+      "nvidia-cufft==12.0.0.61",
+      "nvidia-cufft-cu12==11.3.3.83",
+      "nvidia-cufile==1.15.1.6",
+      "nvidia-cufile-cu12==1.13.1.3",
+      "nvidia-curand==10.4.0.35",
+      "nvidia-curand-cu12==10.3.9.90",
+      "nvidia-cusolver==12.0.4.66",
+      "nvidia-cusolver-cu12==11.7.3.90",
+      "nvidia-cusparse==12.6.3.3",
+      "nvidia-cusparse-cu12==12.5.8.93",
+      "nvidia-cusparselt-cu12==0.7.1",
+      "nvidia-cusparselt-cu13==0.8.0",
+      "nvidia-nccl-cu12==2.27.3",
+      "nvidia-nccl-cu13==2.28.9",
+      "nvidia-nvjitlink==13.0.88",
+      "nvidia-nvjitlink-cu12==12.8.93",
+      "nvidia-nvshmem-cu13==3.4.5",
+      "nvidia-nvtx==13.0.85",
+      "nvidia-nvtx-cu12==12.8.90",
+      "objprint==0.3.0",
+      "omegaconf==2.3.0",
+      "onnx==1.16.1",
+      "onnxruntime==1.20.1",
+      "open-clip-torch==2.20.0",
+      "openai==1.57.1",
+      "opencv-python==4.8.1.78",
+      "opencv-python-headless==4.11.0.86",
+      "openpyxl==3.1.2",
+      "orjson==3.11.7",
+      "packaging==24.1",
+      "pandas==2.3.2",
+      "pathspec==0.12.1",
+      "pathtools==0.1.2",
+      "peft==0.17.1",
+      "piexif==1.1.3",
+      "Pillow==10.1.0",
+      "pip-autoremove==0.10.0",
+      "pipdeptree==2.14.0",
+      "platformdirs==4.2.1",
+      "pluggy==1.5.0",
+      "ply==3.11",
+      "portalocker==3.2.0",
+      "prettytable==3.16.0",
+      "proglog==0.1.12",
+      "promise==2.3",
+      "propcache==0.3.2",
+      "protobuf==3.20.2",
+      "psutil==6.1.1",
+      "py==1.11.0",
+      "py-cpuinfo==9.0.0",
+      "pyarrow==21.0.0",
+      "pyarrow-hotfix==0.7",
+      "pycparser==2.22",
+      "pycryptodome==3.14.1",
+      "pycryptodomex==3.23.0",
+      "pydantic==2.11.7",
+      "pydantic_core==2.33.2",
+      "pydub==0.25.1",
+      "Pygments==2.19.2",
+      "PyJWT==2.10.1",
+      "PyOpenGL==3.1.5",
+      "pyOpenSSL==25.1.0",
+      "pyparsing==3.2.3",
+      "PySocks==1.7.1",
+      "pytest==8.3.2",
+      "pytest-cov==6.2.1",
+      "pytest-cover==3.0.0",
+      "pytest-coverage==0.0",
+      "python-dateutil==2.9.0.post0",
+      "python-dotenv==1.2.2",
+      "python-etcd==0.4.5",
+      "python-magic==0.4.27",
+      "python-multipart==0.0.22",
+      "python-snappy==0.7.3",
+      "pytorch-lightning==1.9.4",
+      "pytz==2022.1",
+      "PyWavelets==1.8.0",
+      "PyYAML==6.0.1",
+      "qudida==0.0.4",
+      "realesrgan==0.3.0",
+      "referencing==0.36.2",
+      "regex==2025.7.34",
+      "requests==2.31.0",
+      "resize-right==0.0.2",
+      "retry==0.9.2",
+      "retrying==1.4.2",
+      "rfc3986==1.5.0",
+      "rich==14.1.0",
+      "rotary-embedding-torch==0.8.9",
+      "rpds-py==0.27.0",
+      "safehttpx==0.1.7",
+      "safetensors==0.5.3",
+      "schedule==1.2.2",
+      "scikit-image==0.21.0",
+      "scikit-learn==1.7.1",
+      "scipy==1.11.4",
+      "seaborn==0.13.2",
+      "semantic-version==2.10.0",
+      "sentencepiece==0.2.1",
+      "sentry-sdk==2.35.0",
+      "setproctitle==1.3.6",
+      "shellingham==1.5.4",
+      "shortuuid==1.0.13",
+      "simsimd==6.5.16",
+      "six==1.16.0",
+      "smmap==5.0.2",
+      "sniffio==1.3.1",
+      "soundfile==0.13.1",
+      "soupsieve==2.7",
+      "spandrel==0.4.0",
+      "starlette==0.32.0.post1",
+      "stringzilla==4.6.0",
+      "sympy==1.13.1",
+      "tabulate==0.9.0",
+      "tb-nightly==2.21.0a20250824",
+      "tensorboard-data-server==0.7.2",
+      "termcolor==3.1.0",
+      "threadpoolctl==3.6.0",
+      "thriftpy2==0.4.17",
+      "tifffile==2025.5.10",
+      "timm==0.9.16",
+      "tokenizers==0.21.4",
+      "tomesd==0.1.3",
+      "toml==0.10.2",
+      "tomli==2.2.1",
+      "tomlkit==0.13.3",
+      "torch==2.5.1+cpu",
+      "torchao==0.12.0",
+      "torchaudio==2.5.1+cpu",
+      "torchdiffeq==0.2.3",
+      "torchmetrics==1.1.2",
+      "torchsde==0.2.5",
+      "torchvision==0.20.1+cpu",
+      "tqdm==4.67.1",
+      "trampoline==0.1.2",
+      "transformers==4.49.0",
+      "triton==3.4.0",
+      "ttvcloud==0.0.39",
+      "typer==0.24.1",
+      "typing-inspection==0.4.1",
+      "typing_extensions==4.12.2",
+      "tzdata==2025.2",
+      "ultralytics==8.3.40",
+      "ultralytics-thop==2.0.14",
+      "urllib3==1.26.20",
+      "uv==0.8.12",
+      "uvicorn==0.42.0",
+      "viztracer==0.16.3",
+      "volcengine-python-sdk==5.0.20",
+      "voluptuous==0.13.1",
+      "watchdog==3.0.0",
+      "wcwidth==0.2.13",
+      "websockets==16.0",
+      "Werkzeug==3.1.3",
+      "wrapt==1.17.3",
+      "xcffib==1.5.0",
+      "xlrd==2.0.1",
+      "xxhash==3.5.0",
+      "yacs==0.1.8",
+      "yapf==0.43.0",
+      "yarl==1.11.1",
+      "zipp==3.23.0",
+      "zope.event==5.1.1",
+      "zope.interface==8.2",
+      "zprofile==1.0.13",
+      "zstd==1.5.7.2"
+    ],
+    "preserve_pip_freeze": [
+      "absl-py==2.3.1",
+      "accelerate==1.5.2",
+      "addict==2.4.0",
+      "aiofiles==23.2.1",
+      "aiohappyeyeballs==2.6.1",
+      "aiohttp==3.9.1",
+      "aiosignal==1.3.1",
+      "albumentations==1.3.0",
+      "annotated-types==0.7.0",
+      "antlr4-python3-runtime==4.9.3",
+      "anyio==4.4.0",
+      "async-timeout==4.0.3",
+      "attrs==24.2.0",
+      "basicsr==1.4.2",
+      "beautifulsoup4==4.13.5",
+      "bitsandbytes==0.43.3",
+      "black==24.8.0",
+      "boltons==25.0.0",
+      "byted-pypprof==0.0.5",
+      "byted_pydev==0.0.20",
+      "bytedance-context==0.7.1",
+      "bytedance-ivory==1.1.3.post4",
+      "bytedance.ba-download==0.6.7",
+      "bytedance.metrics==0.4.0",
+      "bytedance.vcloud==1.0.21",
+      "bytedance.versioncollect==0.2.0",
+      "bytedbackgrounds==0.0.6",
+      "byteddps==0.1.2",
+      "bytedenv==0.7.3",
+      "bytedeuler==2.4.3",
+      "bytedlogger==0.15.1",
+      "bytedlogid==0.2.1",
+      "bytedmeinheld==1.0.2",
+      "bytedmemfd==0.2",
+      "bytedmetrics==0.10.2",
+      "bytedpypolaris==3.0.48",
+      "bytedpyrocketmq==2.3.26",
+      "bytedservicediscovery==0.18.0",
+      "bytedsinfmetacenter==1.4.3",
+      "bytedtcc==1.4.4",
+      "bytedtos==1.1.14",
+      "bytedtrace==0.3.0",
+      "bytedunicorn==0.9.3",
+      "bytedurllibsec==0.4.0",
+      "bytedwsgimiddleware==0.9.0",
+      "bytedztijwthelper==0.0.21",
+      "bytedztispiffe==0.0.16",
+      "cacheout==0.16.0",
+      "cachetools==5.3.2",
+      "certifi==2024.8.30",
+      "cffi==1.16.0",
+      "chardet==5.2.0",
+      "charset-normalizer==3.3.2",
+      "clean-fid==0.1.35",
+      "click==8.1.7",
+      "coloredlogs==15.0.1",
+      "contourpy==1.3.2",
+      "coverage==7.10.5",
+      "cramjam==2.6.2",
+      "crcmod==1.7",
+      "cryptography==45.0.6",
+      "ctranslate2==4.2.1",
+      "cycler==0.12.1",
+      "datasets==2.18.0",
+      "decorator==5.2.1",
+      "Deprecated==1.2.18",
+      "diffusers==0.32.2",
+      "dill==0.3.8",
+      "dnspython==2.7.0",
+      "einops==0.7.0",
+      "exceptiongroup==1.3.0",
+      "facexlib==0.3.0",
+      "fastapi==0.108.0",
+      "file-magic==0.4.0",
+      "filelock==3.19.1",
+      "filterpy==1.4.5",
+      "flatbuffers==25.2.10",
+      "fonttools==4.59.1",
+      "frozenlist==1.4.1",
+      "fsspec==2024.2.0",
+      "ftfy==6.3.1",
+      "future==1.0.0",
+      "fvcore==0.1.5.post20221221",
+      "gdown==4.7.1",
+      "gevent==22.10.2",
+      "gfpgan==1.3.8",
+      "gitdb==4.0.12",
+      "GitPython==3.1.42",
+      "greenlet==3.2.4",
+      "grpcio==1.74.0",
+      "gunicorn==20.1.0",
+      "h11==0.14.0",
+      "hf-xet==1.1.8",
+      "httpcore==1.0.5",
+      "httpx==0.25.2",
+      "huggingface-hub==0.31.1",
+      "humanfriendly==10.0",
+      "idna==3.10",
+      "imageio==2.37.0",
+      "importlib_metadata==8.7.0",
+      "inflection==0.5.1",
+      "iniconfig==2.0.0",
+      "iopath==0.1.10",
+      "ipaddress==1.0.23",
+      "Jinja2==3.1.6",
+      "joblib==1.5.1",
+      "jsonmerge==1.8.0",
+      "jsonschema==4.25.1",
+      "jsonschema-specifications==2025.4.1",
+      "kiwisolver==1.4.9",
+      "kornia==0.6.7",
+      "lark==1.1.2",
+      "lazy_loader==0.4",
+      "lightning-utilities==0.15.2",
+      "llvmlite==0.44.0",
+      "lmdb==1.7.3",
+      "lz4==3.1.10",
+      "Markdown==3.8.2",
+      "markdown-it-py==4.0.0",
+      "MarkupSafe==3.0.2",
+      "matplotlib==3.10.5",
+      "mdurl==0.1.2",
+      "mmcv==2.2.0",
+      "mmengine==0.10.7",
+      "mpmath==1.3.0",
+      "mprofile==0.0.15",
+      "multidict==6.0.5",
+      "multiprocess==0.70.16",
+      "mypy-extensions==1.0.0",
+      "networkx==3.4.2",
+      "numba==0.61.2",
+      "numpy==1.26.2",
+      "nvidia-cublas-cu12==12.8.4.1",
+      "nvidia-cuda-cupti-cu12==12.8.90",
+      "nvidia-cuda-nvrtc-cu12==12.8.93",
+      "nvidia-cuda-runtime-cu12==12.8.90",
+      "nvidia-cudnn-cu12==9.10.2.21",
+      "nvidia-cufft-cu12==11.3.3.83",
+      "nvidia-cufile-cu12==1.13.1.3",
+      "nvidia-curand-cu12==10.3.9.90",
+      "nvidia-cusolver-cu12==11.7.3.90",
+      "nvidia-cusparse-cu12==12.5.8.93",
+      "nvidia-cusparselt-cu12==0.7.1",
+      "nvidia-nccl-cu12==2.27.3",
+      "nvidia-nvjitlink-cu12==12.8.93",
+      "nvidia-nvtx-cu12==12.8.90",
+      "omegaconf==2.3.0",
+      "onnx==1.16.1",
+      "onnxruntime==1.20.1",
+      "open-clip-torch==2.20.0",
+      "opencv-python==4.8.1.78",
+      "opencv-python-headless==4.11.0.86",
+      "packaging==24.1",
+      "pandas==2.3.2",
+      "pathspec==0.12.1",
+      "piexif==1.1.3",
+      "Pillow==10.1.0",
+      "pip-autoremove==0.10.0",
+      "pipdeptree==2.14.0",
+      "platformdirs==4.2.1",
+      "pluggy==1.5.0",
+      "ply==3.11",
+      "portalocker==3.2.0",
+      "propcache==0.3.2",
+      "protobuf==3.20.2",
+      "psutil==6.1.1",
+      "py==1.11.0",
+      "py-cpuinfo==9.0.0",
+      "pyarrow==21.0.0",
+      "pyarrow-hotfix==0.7",
+      "pycparser==2.22",
+      "pycryptodome==3.14.1",
+      "pydantic==2.11.7",
+      "pydantic_core==2.33.2",
+      "Pygments==2.19.2",
+      "PyJWT==2.10.1",
+      "PyOpenGL==3.1.5",
+      "pyOpenSSL==25.1.0",
+      "pyparsing==3.2.3",
+      "PySocks==1.7.1",
+      "pytest==8.3.2",
+      "pytest-cov==6.2.1",
+      "pytest-cover==3.0.0",
+      "pytest-coverage==0.0",
+      "python-dateutil==2.9.0.post0",
+      "python-etcd==0.4.5",
+      "python-magic==0.4.27",
+      "pytorch-lightning==1.9.4",
+      "pytz==2022.1",
+      "PyWavelets==1.8.0",
+      "PyYAML==6.0.1",
+      "qudida==0.0.4",
+      "realesrgan==0.3.0",
+      "referencing==0.36.2",
+      "regex==2025.7.34",
+      "requests==2.31.0",
+      "resize-right==0.0.2",
+      "retry==0.9.2",
+      "rfc3986==1.5.0",
+      "rich==14.1.0",
+      "rpds-py==0.27.0",
+      "safetensors==0.5.3",
+      "schedule==1.2.2",
+      "scikit-image==0.21.0",
+      "scikit-learn==1.7.1",
+      "scipy==1.11.4",
+      "seaborn==0.13.2",
+      "sentencepiece==0.2.1",
+      "six==1.16.0",
+      "smmap==5.0.2",
+      "sniffio==1.3.1",
+      "soupsieve==2.7",
+      "spandrel==0.4.0",
+      "starlette==0.32.0.post1",
+      "sympy==1.13.1",
+      "tabulate==0.9.0",
+      "tb-nightly==2.21.0a20250824",
+      "tensorboard-data-server==0.7.2",
+      "termcolor==3.1.0",
+      "threadpoolctl==3.6.0",
+      "thriftpy2==0.4.17",
+      "tifffile==2025.5.10",
+      "timm==0.9.16",
+      "tokenizers==0.21.4",
+      "tomesd==0.1.3",
+      "toml==0.10.2",
+      "tomli==2.2.1",
+      "torch==2.5.1+cpu",
+      "torchaudio==2.5.1+cpu",
+      "torchdiffeq==0.2.3",
+      "torchmetrics==1.1.2",
+      "torchsde==0.2.5",
+      "torchvision==0.20.1+cpu",
+      "tqdm==4.67.1",
+      "trampoline==0.1.2",
+      "transformers==4.49.0",
+      "triton==3.4.0",
+      "ttvcloud==0.0.39",
+      "typing-inspection==0.4.1",
+      "typing_extensions==4.12.2",
+      "tzdata==2025.2",
+      "ultralytics==8.3.40",
+      "ultralytics-thop==2.0.14",
+      "urllib3==1.26.20",
+      "uv==0.8.12",
+      "voluptuous==0.13.1",
+      "watchdog==3.0.0",
+      "wcwidth==0.2.13",
+      "Werkzeug==3.1.3",
+      "wrapt==1.17.3",
+      "xcffib==1.5.0",
+      "xxhash==3.5.0",
+      "yacs==0.1.8",
+      "yapf==0.43.0",
+      "yarl==1.11.1",
+      "zipp==3.23.0",
+      "zope.event==5.1.1",
+      "zope.interface==7.2",
+      "zprofile==1.0.13",
+      "zstd==1.5.7.2"
+    ],
+    "device_info": {
+      "cudaVersion": "",
+      "gpuName": "cpu",
+      "system": "Linux",
+      "version": "#5.4.143.bsk.8 SMP Debian 5.4.143.bsk.8 Wed Jul 20 08:43:36 UTC ",
+      "cuda_version": "",
+      "gpu_name": "cpu",
+      "xpu_num": "0"
+    },
+    "base_image": "hub.byted.org/aip_image_factory/custom.image.combo_infer:cpu_infer-20250825-175833",
+    "comfy_args": {
+      "--listen": "fd02::6:0:0:4c5",
+      "--port": "9001"
+    },
+    "comfyui_tag": "release_0.3.40",
+    "ba_combo": "581629710648240578",
+    "workflow_name": "0408丨Virtual Try On Earrings",
+    "workflow_id": "614212079309599276:4",
+    "config_id": "614223470485615148",
+    "workflow_version_id": "614223470502392364",
+    "workflow_identity": "614212079309599276:4"
+  },
+  "source": "ba_next",
+  "identity_sign": {
+    "nonce": "dfad2d17-edc2-4e2e-bbe1-5a3080f67a8b",
+    "access_key": "322275c9ae7a4450bd665af49a9e51fe",
+    "signature": "ohAOW/pSAbuUwSU+d4j66DvwySafs8oa7d6Qq9/D5l4="
+  }
+}
