@@ -1,0 +1,2961 @@
+{
+  "last_node_id": 17,
+  "last_link_id": 24,
+  "nodes": [
+    {
+      "id": 14,
+      "type": "BANodeLLMText",
+      "pos": {
+        "0": -1917.583251953125,
+        "1": -1715.30078125
+      },
+      "size": {
+        "0": 266.0146484375,
+        "1": 384.697265625
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19,
+          "slot_index": 4,
+          "label": "images"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result/positive",
+          "type": "STRING",
+          "links": [
+            18
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BANodeLLMText",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "提示词反推",
+        "Seedream-PE-250815",
+        2000,
+        0.7,
+        "",
+        "你是一名顶级的视觉内容法证分析师 (Forensic Analyst)。你的 唯一任务 是用高度精确、客观、无情感色彩的自然语言，记录 图像中的 所有物理特征、空间关系和环境要素。你的输出将直接用于一个黑暗、悬疑风格的图像生成任务，因此你必须主动规避和替换所有与该风格冲突的元素。\n核心任务：精确记录物理事实，并主动净化不合规的背景\n你的输出 必须只包含 对画面中人物、动物、场景的客观物理属性描述。\n严禁使用 任何与风格相关的词汇，例如 anime, retro, 80s, cinematic, moody, cartoon, illustration, painting 等。\n\n内容细节强制要求 (必须全部遵循)：\n强制识别主体类别与数量：在描述开头，必须 明确指出主体类型和数量，如 a young woman..., two people a girl and a boy, three people and a dog...，a Siamese cat…。\n宠物品种描述：若遇到图片中有宠物或动物等情况，需要清楚的描述宠物的品种及毛色特征。如：a brown teddy，a black and white border collie，a ginger cat。\n识别画面构图信息：识别图片中的特殊视角，若图片中的拍摄视角有比较明显的构图信息需要准确描述，如：Bird's-eye view, downward shooting, wide-angle lens, close-up。\n强制描述所有主体的物理特征 (强制物理属性协议)：\n对于画面中的每一个人物，都必须单独、明确地描述其关键特征。例如a tall\nman ,a fat women with yellow dress.\n肤色: 必须为每个深色皮肤的人物指定一个明确的肤色描述，白色或黄色皮肤需要额外描述(例如 a man with dark black skin, a woman with brown skin)。此项没有例外。\n发型/发色: 必须 描述每个人的发型和发色 (例如 short black hair, long curly brown hair)。\n服装 (含纹理): 必须 详细描述每个人的上身关键服装、颜色以及任何可识别的 独特纹理或图案 (例如 wearing a blue denim jacket, wearing a white cable-knit sweater)。\n强制描述精确的姿势与空间关系：\n必须 使用明确的方位词（in front of, behind, next to）和动作来描述主体间的位置和互动。\n禁止 使用模糊的互动词（如with）。必须 描述具体的动作（如 a man stands behind a woman, hugging her from the back, his cheek close to hers）。\n清晰描述人物表情的物理特征：如 smiling, Pouting, looking to the left, tail slightly raised, laughingfrowning, eyes wide open, a neutral expression。\n背景净化协议 (The Purification Protocol)：\n必须 简要描述背景的关键元素，如 in front of a tiled wall, on a city street at night。\n如果 原始图片的背景包含任何与项目核心“红黑暗”、“昏暗悬疑”主题 冲突 的元素，例如：明亮的蓝天、灿烂的阳光、白天的场景、洁白的云朵、绿色的草地、欢乐的沙滩等……\n你必须 主动将它们 替换 为符合项目风格的、从中性到黑暗的描述。\n看到 蓝天/白天 -> 替换为 under a dark ominous sky with a giant  monster或 under a dark red sky with a giant monster 或 at night。\n看到 绿草地/沙滩 -> 替换为 on desolate ground 或 in a dark forest。\n看到 明亮的室内 -> 替换为 in a dimly lit room。\n如果背景过于明亮且无特征 -> 替换为 against a simple dark backdrop。\n输出格式：\n纯中文自然语言短语，结尾不加句号。\n不附加任何解释、说明或标签。\n严禁出现 the image shows... 等引导性短语。\n语言要像一份精确的物证报告，总长度控制在200个token以内。\n参考格式示例 (覆盖所有情况)：\n示例1：单人 (肤色白，服装纹理细节，背景替换)\n原图描述：一个白人女性，穿着白色麻花纹毛衣，站在白天繁华的城市街道上。\n正确输出: a woman with fair skin and long dark brown hair, looking slightly to her left with a neutral expression, she is wearing a thick white cable-knit sweater and white pants, standing on a city street at night\n示例2：双人 (不同肤色，精确姿势还原，背景保留)\n原图描述：一个深黑色皮肤的男性从背后拥抱着一个浅棕色皮肤的女性。\n正确输出: two people, a man with dark black skin stands behind a Overweight woman with light brown skin and long curly hair, They laughed and looked at each other, their eyes closed,he is hugging her from the back with his cheek close to hers, the man wears a blue denim jacket and a black cap with a white logo, the woman wears a black t-shirt, in front of a classical building under a dark sky with a giant monster\n示例3：多人 (构图与互动)\n原图描述：四个男孩围坐在桌子旁玩游戏，光线昏暗。\n正确输出: a scene with a group of four young boys huddled around a wooden table in a dimly lit basement, They have serious expressions, with smiles on their lips.their faces illuminated from below by a single lantern as they study a map for a board game\n示例4：动物 (宠物特写，背景净化)\n原图描述：一只柯基犬的特写，背景是白天明亮的森林。\n正确输出: a corgi dog with large expressive eyes, Looking at the camera happily,tilting its head with a curious expression, in a dark forest at night\n示例5：人与动物 (合照)\n原图描述：一个女孩抱着一只橘猫。\n正确输出: a young girl with fair skin and brown hair tied back with a red ribbon, smil， open mouth。thin body，she is cuddling a striped orange tabby cat in her arms, both looking at the viewer, in a dimly lit room"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 12,
+      "type": "BAComponent",
+      "pos": {
+        "0": -1637.583251953125,
+        "1": -1705.30078125
+      },
+      "size": {
+        "0": 245.27896118164062,
+        "1": 98
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "16::text_a",
+          "type": "STRING",
+          "link": 14,
+          "slot_index": 0
+        },
+        {
+          "name": "16::text_b",
+          "type": "STRING",
+          "link": 18,
+          "slot_index": 1
+        },
+        {
+          "name": "16::text_c",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "15::STRING",
+          "type": "STRING",
+          "links": [
+            16,
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "提示词组合(prompt_merge)",
+      "properties": {
+        "Node name for S&R": "BAComponent",
+        "ba-component-id": "585527218835320839",
+        "ba-component-protocol": "{\"graph\":{\"nodes\":[{\"id\":15,\"type\":\"AIP TextList2Text\",\"inputs\":[{\"label\":\"text_list\",\"name\":\"text_list\",\"type\":\"LIST\",\"slot_index\":1,\"link\":17}],\"outputs\":[{\"name\":\"STRING\",\"type\":\"STRING\",\"links\":null,\"slot_index\":0}],\"widgets_values\":[\", \",false,false],\"pos\":[570.5488074804867,2105.8509491619925],\"size\":[350,216],\"mode\":0,\"order\":0,\"flags\":{},\"properties\":{\"Node name for S&R\":\"AIP TextList2Text\",\"inputTipsMap\":{},\"outputTipsMap\":{}}},{\"id\":16,\"type\":\"AIP TextListMerge\",\"inputs\":[{\"label\":\"text_a\",\"name\":\"text_a\",\"type\":\"STRING\",\"slot_index\":1,\"link\":null},{\"label\":\"text_b\",\"name\":\"text_b\",\"type\":\"STRING\",\"slot_index\":2,\"link\":null},{\"label\":\"text_c\",\"name\":\"text_c\",\"type\":\"STRING\",\"slot_index\":3,\"link\":null},{\"label\":\"text_d\",\"name\":\"text_d\",\"type\":\"STRING\",\"slot_index\":4,\"link\":null},{\"label\":\"text_e\",\"name\":\"text_e\",\"type\":\"STRING\",\"slot_index\":5,\"link\":null},{\"label\":\"text_f\",\"name\":\"text_f\",\"type\":\"STRING\",\"slot_index\":6,\"link\":null},{\"label\":\"text_g\",\"name\":\"text_g\",\"type\":\"STRING\",\"slot_index\":7,\"link\":null}],\"outputs\":[{\"name\":\"LIST\",\"type\":\"LIST\",\"links\":[17],\"slot_index\":0}],\"widgets_values\":[false],\"pos\":[191.1020438351349,2097.939303877519],\"size\":[350,276],\"mode\":0,\"order\":0,\"flags\":{},\"properties\":{\"Node name for S&R\":\"AIP TextListMerge\",\"inputTipsMap\":{},\"outputTipsMap\":{}}}],\"links\":[[17,16,0,15,0,\"LIST\"]]},\"inputs\":[{\"class_type\":\"AIP TextListMerge\",\"format\":\"slot\",\"group_id\":\"BAgHoom9hPNV1zHQsPZu_\",\"label\":\"prompt1\",\"name\":\"text_a\",\"node_id\":\"16\",\"type\":\"STRING\"},{\"class_type\":\"AIP TextListMerge\",\"format\":\"slot\",\"group_id\":\"VVEeYAoEX5JViuNStdCUV\",\"label\":\"prompt2\",\"name\":\"text_b\",\"node_id\":\"16\",\"type\":\"STRING\"},{\"class_type\":\"AIP TextListMerge\",\"format\":\"slot\",\"group_id\":\"3vPeGLtAyOfHaXAozwau5\",\"label\":\"prompt3\",\"name\":\"text_c\",\"node_id\":\"16\",\"type\":\"STRING\"}],\"outputs\":[{\"label\":\"prompt\",\"name\":\"STRING\",\"node_id\":\"15\",\"slot_index\":0,\"type\":\"STRING\"}],\"prompt\":{\"15\":{\"class_type\":\"AIP TextList2Text\",\"inputs\":{\"delimiter\":\", \",\"merge_comma\":false,\"merge_space\":false,\"text_list\":[\"16\",0]}},\"16\":{\"class_type\":\"AIP TextListMerge\",\"inputs\":{\"skip_null\":false}}},\"r2l\":[{\"extra\":{\"requirements\":[\"bytedance.context\",\"bytedance.ivory\",\"bytedance.vcloud\",\"bytedivory\",\"python-magic\",\"pillow\",\"retrying\",\"websockets\",\"openai\"]},\"git_commit\":\"73529c12646108e9b634c74adaf9c4708de13ccf\",\"git_url\":\"https://code.byted.org/lab-cv/ComfyUI-Aip-Aigc.git\",\"is_dir\":true,\"local_path\":\"custom_nodes/ComfyUI-Aip-Aigc\",\"md5\":\"\",\"size\":1812480,\"type\":\"custom_node\",\"uri\":\"uri://custom_node?package_id=588888818938061197&version_id=588875420502388899&repo_id=525058341475474111\"}],\"version\":1}",
+        "ba-component-reboot": "",
+        "ba-component-version-id": "588888822863929741",
+        "description": "多个文本以, 组合",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "{\"id\":\"585527218835320839\",\"version_id\":\"588888822863929741\",\"prompt\":{\"15\":{\"class_type\":\"AIP TextList2Text\",\"inputs\":{\"delimiter\":\", \",\"merge_comma\":false,\"merge_space\":false,\"text_list\":[\"16\",0]}},\"16\":{\"class_type\":\"AIP TextListMerge\",\"inputs\":{\"skip_null\":false}}},\"outputs\":[{\"node_id\":\"15\",\"slot_index\":0}],\"version\":1}"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 7,
+      "type": "Seed4RemoteT2ITextEncoder",
+      "pos": {
+        "0": -1637.583251953125,
+        "1": -1565.30078125
+      },
+      "size": {
+        "0": 252,
+        "1": 237.19671630859375
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 16,
+          "slot_index": 0,
+          "label": "prompt",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "embeddings",
+          "type": "EMBEDDINGS",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "binary_var_names",
+          "type": "EMBEDDING_NAMES",
+          "links": [
+            8
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4RemoteT2ITextEncoder",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "",
+        "nsfw",
+        "vg_seed4_textencoder"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 1,
+      "type": "Seed4DITLoader",
+      "pos": {
+        "0": -1341.548583984375,
+        "1": -1710.1806640625
+      },
+      "size": {
+        "0": 321.96514892578125,
+        "1": 103.73497009277344
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "dit_model",
+          "type": "SEED_DIT_MODEL",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "pipe_config",
+          "type": "SEED_PIPE_CONFIG",
+          "links": [
+            3
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4DITLoader",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "v4.0_s_edit_6nfe",
+        "cuda:0"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 2,
+      "type": "Seed4Sampler",
+      "pos": {
+        "0": -991.548583984375,
+        "1": -1700.1806640625
+      },
+      "size": {
+        "0": 373.1645202636719,
+        "1": 632.8616333007812
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 17,
+          "slot_index": 1,
+          "label": "prompt",
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 23,
+          "slot_index": 2,
+          "label": "height",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 22,
+          "slot_index": 3,
+          "label": "width",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "pipe_config",
+          "type": "SEED_PIPE_CONFIG",
+          "link": 3,
+          "slot_index": 16,
+          "label": "pipe_config"
+        },
+        {
+          "name": "embeddings",
+          "type": "EMBEDDINGS",
+          "link": 7,
+          "slot_index": 17,
+          "label": "embeddings"
+        },
+        {
+          "name": "embedding_binary_var_name",
+          "type": "EMBEDDING_NAMES",
+          "link": 8,
+          "slot_index": 18,
+          "label": "embedding_binary_var_name"
+        },
+        {
+          "name": "dit_model",
+          "type": "SEED_DIT_MODEL",
+          "link": 4,
+          "slot_index": 19,
+          "label": "dit_model"
+        },
+        {
+          "name": "vae_model",
+          "type": "SEED_VAE_MODEL",
+          "link": 5,
+          "slot_index": 20,
+          "label": "vae_model"
+        },
+        {
+          "name": "latents",
+          "type": "LATENTS",
+          "link": 12,
+          "slot_index": 23,
+          "label": "latents"
+        },
+        {
+          "name": "latent_binary_var_name",
+          "type": "LATENT_NAMES",
+          "link": 13,
+          "slot_index": 24,
+          "label": "latent_binary_var_name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            24
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4Sampler",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "t2i",
+        "",
+        2048,
+        2048,
+        42,
+        "fixed",
+        1.1500000000000001,
+        3,
+        0.7,
+        3.5,
+        1.5,
+        0.98,
+        0.98,
+        3.5,
+        1,
+        0.6,
+        1,
+        6,
+        0.6
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 4,
+      "type": "Seed4VAELoader",
+      "pos": {
+        "0": -1331.548583984375,
+        "1": -1550.1806640625
+      },
+      "size": {
+        "0": 318.400146484375,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "vae_model",
+          "type": "SEED_VAE_MODEL",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4VAELoader",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "v4.0_s_edit_6nfe",
+        "cuda:0"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 11,
+      "type": "Seed4RemoteVaeEncoder",
+      "pos": {
+        "0": -1331.548583984375,
+        "1": -1410.1806640625
+      },
+      "size": {
+        "0": 312.55877685546875,
+        "1": 102
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "tensors",
+          "type": "IMAGE",
+          "link": 11,
+          "slot_index": 0,
+          "label": "tensors"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latents",
+          "type": "LATENTS",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "binary_var_names",
+          "type": "LATENT_NAMES",
+          "links": [
+            13
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4RemoteVaeEncoder",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "JPEG",
+        "vg_seed4_vae"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 15,
+      "type": "AIPResizeImageLongEdge",
+      "pos": {
+        "0": -1331.548583984375,
+        "1": -1250.1806640625
+      },
+      "size": {
+        "0": 305.93292236328125,
+        "1": 82
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20,
+          "slot_index": 0,
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AIPResizeImageLongEdge",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        3040,
+        "keep_small_origin"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 16,
+      "type": "AIPGetImageSize",
+      "pos": {
+        "0": -1331.548583984375,
+        "1": -1120.1806640625
+      },
+      "size": {
+        "0": 298.927734375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 21,
+          "slot_index": 0,
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            23
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AIPGetImageSize",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 8,
+      "type": "AIPStringInput",
+      "pos": {
+        "0": -1933.275390625,
+        "1": -2189.091796875
+      },
+      "size": [
+        210,
+        348.9274071825571
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AIPStringInput",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "暗黑怪奇物语，日式动画风格，整体氛围紧张而充满力量感，线条清晰，色彩对比强烈，营造出一种略带紧张和神秘的氛围。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "Seed4LoRALoader",
+      "pos": {
+        "0": -1670,
+        "1": -2200
+      },
+      "size": {
+        "0": 344.3945007324219,
+        "1": 111.59762573242188
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ADAPTER",
+          "type": "ADAPTER",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Seed4 Lora Loader(需要替换为业务自己的Lora)",
+      "properties": {
+        "Node name for S&R": "Seed4LoRALoader",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "怪奇_长触发@v10.safetensors",
+        "",
+        "torch.bfloat16"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 5,
+      "type": "Seed4ApplyLora",
+      "pos": {
+        "0": -1670,
+        "1": -2030
+      },
+      "size": {
+        "0": 341.0782775878906,
+        "1": 174
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dit_model",
+          "type": "SEED_DIT_MODEL",
+          "link": 2,
+          "slot_index": 0,
+          "label": "dit_model"
+        },
+        {
+          "name": "lora_info",
+          "type": "ADAPTER",
+          "link": 1,
+          "slot_index": 3,
+          "label": "lora_info"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dit_model",
+          "type": "SEED_DIT_MODEL",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed4ApplyLora",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        1,
+        32,
+        "base_model.model"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 10,
+      "type": "LoadImage",
+      "pos": {
+        "0": -1266.63671875,
+        "1": -2200.15625
+      },
+      "size": [
+        270.627815424539,
+        361.3092955880959
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11,
+            19,
+            20
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "inputTipsMap": {},
+        "outputTipsMap": {}
+      },
+      "widgets_values": [
+        "04.jpg",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 17,
+      "type": "SaveImage",
+      "pos": {
+        "0": -941.935546875,
+        "1": -2200.859375
+      },
+      "size": [
+        318.2316417739705,
+        365.2200732869587
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 24
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      6,
+      0,
+      5,
+      1,
+      "ADAPTER"
+    ],
+    [
+      2,
+      1,
+      0,
+      5,
+      0,
+      "SEED_DIT_MODEL"
+    ],
+    [
+      3,
+      1,
+      1,
+      2,
+      3,
+      "SEED_PIPE_CONFIG"
+    ],
+    [
+      4,
+      5,
+      0,
+      2,
+      6,
+      "SEED_DIT_MODEL"
+    ],
+    [
+      5,
+      4,
+      0,
+      2,
+      7,
+      "SEED_VAE_MODEL"
+    ],
+    [
+      7,
+      7,
+      0,
+      2,
+      4,
+      "EMBEDDINGS"
+    ],
+    [
+      8,
+      7,
+      1,
+      2,
+      5,
+      "EMBEDDING_NAMES"
+    ],
+    [
+      11,
+      10,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      11,
+      0,
+      2,
+      8,
+      "LATENTS"
+    ],
+    [
+      13,
+      11,
+      1,
+      2,
+      9,
+      "LATENT_NAMES"
+    ],
+    [
+      14,
+      8,
+      0,
+      12,
+      0,
+      "STRING"
+    ],
+    [
+      16,
+      12,
+      0,
+      7,
+      0,
+      "STRING"
+    ],
+    [
+      17,
+      12,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      18,
+      14,
+      0,
+      12,
+      1,
+      "STRING"
+    ],
+    [
+      19,
+      10,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      10,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      15,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      16,
+      0,
+      2,
+      2,
+      "INT"
+    ],
+    [
+      23,
+      16,
+      1,
+      2,
+      1,
+      "INT"
+    ],
+    [
+      24,
+      2,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Loadimage | 输入图",
+      "bounding": [
+        -1297,
+        -2290,
+        312,
+        462
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "l5KcLrMxCWYVlFnK71m75"
+    },
+    {
+      "title": "提示词反推",
+      "bounding": [
+        -1956,
+        -1804,
+        583,
+        495
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "svz94BHdRHjXUDG-V5T0-"
+    },
+    {
+      "title": "Seed4 |采样推理",
+      "bounding": [
+        -1363,
+        -1806,
+        765,
+        765
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "dH8HBqqxKdTweAEeqUuTo"
+    },
+    {
+      "title": "LoRA | 按需选择LORA",
+      "bounding": [
+        -1690,
+        -2290,
+        384,
+        462
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "FGDZxA4Z9KjF39Ag2WDlD"
+    },
+    {
+      "title": "Prompt | 输入提示词",
+      "bounding": [
+        -1953,
+        -2289,
+        253,
+        460
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "qjnHXdJLQUCFjrCHWjmML"
+    },
+    {
+      "title": "Saveimage | 生成图",
+      "bounding": [
+        -972,
+        -2291,
+        369,
+        466
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {},
+      "_ba_id": "QzOg6lci0_LpbQnEOcPLW"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6209213230591556,
+      "offset": [
+        3017.271239220385,
+        2582.6581594518784
+      ]
+    }
+  },
+  "version": 0.4,
+  "ba_extra": {
+    "slot_info": {
+      "inputs": [
+        {
+          "name": "prompt",
+          "internal_name": "prompt",
+          "visible": true,
+          "format": "text_area",
+          "props": {},
+          "default_value": "暗黑怪奇物语，日式动画风格，整体氛围紧张而充满力量感，线条清晰，色彩对比强烈，营造出一种略带紧张和神秘的氛围。",
+          "extra": {
+            "node_id": "8",
+            "input_key": "string",
+            "class_type": "AIPStringInput",
+            "random_default_value": false
+          }
+        }
+      ],
+      "outputs": []
+    },
+    "slot_info_schema": {
+      "input": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "prompt": {
+            "default": "暗黑怪奇物语，日式动画风格，整体氛围紧张而充满力量感，线条清晰，色彩对比强烈，营造出一种略带紧张和神秘的氛围。",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    "ba_comfyui_version": "0.0.6",
+    "prompt": {
+      "1": {
+        "inputs": {
+          "model_config": "v4.0_s_edit_6nfe",
+          "device": "cuda:0"
+        },
+        "class_type": "Seed4DITLoader"
+      },
+      "2": {
+        "inputs": {
+          "process_type": "t2i",
+          "prompt": [
+            "12",
+            0
+          ],
+          "height": [
+            "16",
+            1
+          ],
+          "width": [
+            "16",
+            0
+          ],
+          "seed": 42,
+          "max_shift": 1.1500000000000001,
+          "guidance_scale": 3,
+          "cfg_rescale_factor": 0.7,
+          "single_edit_guidance_weight": 3.5,
+          "single_edit_guidance_weight_image": 1.5,
+          "single_min_cfg_time": 0.98,
+          "single_max_cfg_time": 0.98,
+          "multi_edit_guidance_weight": 3.5,
+          "multi_edit_guidance_weight_image": 1,
+          "multi_min_cfg_time": 0.6,
+          "multi_max_cfg_time": 1,
+          "steps": 6,
+          "denoise_strength": 0.6,
+          "pipe_config": [
+            "1",
+            1
+          ],
+          "embeddings": [
+            "7",
+            0
+          ],
+          "embedding_binary_var_name": [
+            "7",
+            1
+          ],
+          "dit_model": [
+            "5",
+            0
+          ],
+          "vae_model": [
+            "4",
+            0
+          ],
+          "latents": [
+            "11",
+            0
+          ],
+          "latent_binary_var_name": [
+            "11",
+            1
+          ]
+        },
+        "class_type": "Seed4Sampler"
+      },
+      "4": {
+        "inputs": {
+          "model_config": "v4.0_s_edit_6nfe",
+          "device": "cuda:0"
+        },
+        "class_type": "Seed4VAELoader"
+      },
+      "5": {
+        "inputs": {
+          "use_lora": true,
+          "fuse_lora": false,
+          "lora_weight": 1,
+          "transformer_scale": 32,
+          "prefix": "base_model.model",
+          "dit_model": [
+            "1",
+            0
+          ],
+          "lora_info": [
+            "6",
+            0
+          ]
+        },
+        "class_type": "Seed4ApplyLora"
+      },
+      "6": {
+        "inputs": {
+          "local_lora_name": "怪奇_长触发@v10.safetensors",
+          "extra_lora_name": "",
+          "dtype": "torch.bfloat16"
+        },
+        "class_type": "Seed4LoRALoader"
+      },
+      "7": {
+        "inputs": {
+          "prompt": [
+            "12",
+            0
+          ],
+          "negative_prompt": "nsfw",
+          "req_key": "vg_seed4_textencoder"
+        },
+        "class_type": "Seed4RemoteT2ITextEncoder"
+      },
+      "8": {
+        "inputs": {
+          "string": "暗黑怪奇物语，日式动画风格，整体氛围紧张而充满力量感，线条清晰，色彩对比强烈，营造出一种略带紧张和神秘的氛围。"
+        },
+        "class_type": "AIPStringInput"
+      },
+      "10": {
+        "inputs": {
+          "image": "04.jpg",
+          "upload": "image"
+        },
+        "class_type": "LoadImage"
+      },
+      "11": {
+        "inputs": {
+          "format": "JPEG",
+          "req_key": "vg_seed4_vae",
+          "tensors": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "Seed4RemoteVaeEncoder"
+      },
+      "12": {
+        "inputs": {
+          "definition": "{\"id\":\"585527218835320839\",\"version_id\":\"588888822863929741\",\"prompt\":{\"15\":{\"class_type\":\"AIP TextList2Text\",\"inputs\":{\"delimiter\":\", \",\"merge_comma\":false,\"merge_space\":false,\"text_list\":[\"16\",0]}},\"16\":{\"class_type\":\"AIP TextListMerge\",\"inputs\":{\"skip_null\":false}}},\"outputs\":[{\"node_id\":\"15\",\"slot_index\":0}],\"version\":1}",
+          "16::text_a": [
+            "8",
+            0
+          ],
+          "16::text_b": [
+            "14",
+            0
+          ]
+        },
+        "class_type": "BAComponent"
+      },
+      "14": {
+        "inputs": {
+          "feature": "提示词反推",
+          "model": "Seedream-PE-250815",
+          "max_tokens": 2000,
+          "temperature": 0.7,
+          "prompt": "",
+          "system_prompt": "你是一名顶级的视觉内容法证分析师 (Forensic Analyst)。你的 唯一任务 是用高度精确、客观、无情感色彩的自然语言，记录 图像中的 所有物理特征、空间关系和环境要素。你的输出将直接用于一个黑暗、悬疑风格的图像生成任务，因此你必须主动规避和替换所有与该风格冲突的元素。\n核心任务：精确记录物理事实，并主动净化不合规的背景\n你的输出 必须只包含 对画面中人物、动物、场景的客观物理属性描述。\n严禁使用 任何与风格相关的词汇，例如 anime, retro, 80s, cinematic, moody, cartoon, illustration, painting 等。\n\n内容细节强制要求 (必须全部遵循)：\n强制识别主体类别与数量：在描述开头，必须 明确指出主体类型和数量，如 a young woman..., two people a girl and a boy, three people and a dog...，a Siamese cat…。\n宠物品种描述：若遇到图片中有宠物或动物等情况，需要清楚的描述宠物的品种及毛色特征。如：a brown teddy，a black and white border collie，a ginger cat。\n识别画面构图信息：识别图片中的特殊视角，若图片中的拍摄视角有比较明显的构图信息需要准确描述，如：Bird's-eye view, downward shooting, wide-angle lens, close-up。\n强制描述所有主体的物理特征 (强制物理属性协议)：\n对于画面中的每一个人物，都必须单独、明确地描述其关键特征。例如a tall\nman ,a fat women with yellow dress.\n肤色: 必须为每个深色皮肤的人物指定一个明确的肤色描述，白色或黄色皮肤需要额外描述(例如 a man with dark black skin, a woman with brown skin)。此项没有例外。\n发型/发色: 必须 描述每个人的发型和发色 (例如 short black hair, long curly brown hair)。\n服装 (含纹理): 必须 详细描述每个人的上身关键服装、颜色以及任何可识别的 独特纹理或图案 (例如 wearing a blue denim jacket, wearing a white cable-knit sweater)。\n强制描述精确的姿势与空间关系：\n必须 使用明确的方位词（in front of, behind, next to）和动作来描述主体间的位置和互动。\n禁止 使用模糊的互动词（如with）。必须 描述具体的动作（如 a man stands behind a woman, hugging her from the back, his cheek close to hers）。\n清晰描述人物表情的物理特征：如 smiling, Pouting, looking to the left, tail slightly raised, laughingfrowning, eyes wide open, a neutral expression。\n背景净化协议 (The Purification Protocol)：\n必须 简要描述背景的关键元素，如 in front of a tiled wall, on a city street at night。\n如果 原始图片的背景包含任何与项目核心“红黑暗”、“昏暗悬疑”主题 冲突 的元素，例如：明亮的蓝天、灿烂的阳光、白天的场景、洁白的云朵、绿色的草地、欢乐的沙滩等……\n你必须 主动将它们 替换 为符合项目风格的、从中性到黑暗的描述。\n看到 蓝天/白天 -> 替换为 under a dark ominous sky with a giant  monster或 under a dark red sky with a giant monster 或 at night。\n看到 绿草地/沙滩 -> 替换为 on desolate ground 或 in a dark forest。\n看到 明亮的室内 -> 替换为 in a dimly lit room。\n如果背景过于明亮且无特征 -> 替换为 against a simple dark backdrop。\n输出格式：\n纯中文自然语言短语，结尾不加句号。\n不附加任何解释、说明或标签。\n严禁出现 the image shows... 等引导性短语。\n语言要像一份精确的物证报告，总长度控制在200个token以内。\n参考格式示例 (覆盖所有情况)：\n示例1：单人 (肤色白，服装纹理细节，背景替换)\n原图描述：一个白人女性，穿着白色麻花纹毛衣，站在白天繁华的城市街道上。\n正确输出: a woman with fair skin and long dark brown hair, looking slightly to her left with a neutral expression, she is wearing a thick white cable-knit sweater and white pants, standing on a city street at night\n示例2：双人 (不同肤色，精确姿势还原，背景保留)\n原图描述：一个深黑色皮肤的男性从背后拥抱着一个浅棕色皮肤的女性。\n正确输出: two people, a man with dark black skin stands behind a Overweight woman with light brown skin and long curly hair, They laughed and looked at each other, their eyes closed,he is hugging her from the back with his cheek close to hers, the man wears a blue denim jacket and a black cap with a white logo, the woman wears a black t-shirt, in front of a classical building under a dark sky with a giant monster\n示例3：多人 (构图与互动)\n原图描述：四个男孩围坐在桌子旁玩游戏，光线昏暗。\n正确输出: a scene with a group of four young boys huddled around a wooden table in a dimly lit basement, They have serious expressions, with smiles on their lips.their faces illuminated from below by a single lantern as they study a map for a board game\n示例4：动物 (宠物特写，背景净化)\n原图描述：一只柯基犬的特写，背景是白天明亮的森林。\n正确输出: a corgi dog with large expressive eyes, Looking at the camera happily,tilting its head with a curious expression, in a dark forest at night\n示例5：人与动物 (合照)\n原图描述：一个女孩抱着一只橘猫。\n正确输出: a young girl with fair skin and brown hair tied back with a red ribbon, smil， open mouth。thin body，she is cuddling a striped orange tabby cat in her arms, both looking at the viewer, in a dimly lit room",
+          "images": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "BANodeLLMText"
+      },
+      "15": {
+        "inputs": {
+          "long_resolution": 3040,
+          "mode": "keep_small_origin",
+          "image": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "AIPResizeImageLongEdge"
+      },
+      "16": {
+        "inputs": {
+          "image": [
+            "15",
+            0
+          ]
+        },
+        "class_type": "AIPGetImageSize"
+      },
+      "17": {
+        "inputs": {
+          "filename_prefix": "ComfyUI",
+          "images": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "SaveImage"
+      }
+    },
+    "r2l": [
+      {
+        "local_path": "models/seed4/vae_fp8/qsvae_f32ch64.pth",
+        "type": "model",
+        "is_dir": false,
+        "md5": "",
+        "size": 487498718,
+        "uri": "uri://model?package_id=594209801794237600&md5=566fc6ed9a3d7004aa8faed1fec3d0f1"
+      },
+      {
+        "local_path": "models/seed4/vae_fp8/config.json",
+        "type": "model",
+        "is_dir": false,
+        "md5": "",
+        "size": 1348,
+        "uri": "uri://model?package_id=594209801425142730&md5=eb511e7039ea8841b1a465796b055ef2"
+      },
+      {
+        "local_path": "models/loras/怪奇_长触发@v10.safetensors",
+        "type": "model",
+        "is_dir": false,
+        "md5": "",
+        "size": 284284384,
+        "uri": "uri://model?package_id=594209801492329609&md5=b36d5323dfa2e1fa64852ae05efb315f"
+      },
+      {
+        "local_path": "custom_nodes/ComfyUI-Seed4",
+        "type": "custom_node",
+        "is_dir": true,
+        "git_url": "https://code.byted.org/lab-cv/ComfyUI-Seed4.git",
+        "git_branch": "main",
+        "git_commit": "2bba680ba2b71dd10d6e2d7d3cfe84af3e7d9d0e",
+        "extra": {
+          "requirements": [
+            "-i https://bytedpypi.byted.org/simple",
+            "jsonc_parser==1.1.5",
+            "bs4==0.0.1              # Needed for text cleaning",
+            "byted-dataloader==0.3.6",
+            "diffusers==0.33.0",
+            "ftfy==6.1.1             # Needed for text cleaning",
+            "kornia==0.6.12",
+            "lpips==0.1.4",
+            "sentencepiece==0.1.99   # Needed for T5 tokenizer",
+            "tensorboard==2.11.2",
+            "tensorflow==2.11.0      # Needed for tensorboard hdfs support",
+            "tensorflow-io==0.30.0   # Needed for tensorboard hdfs support",
+            "transformers==4.46.1",
+            "tqdm==4.64.1",
+            "torchgeometry==0.1.2           # Needed for ssim loss",
+            "byted-wandb==0.13.60    # Needed for wandb",
+            "accelerate==1.1.1",
+            "tiktoken==0.7",
+            "scipy==1.11.3",
+            "transformers_stream_generator==0.0.4",
+            "peft==0.15.0",
+            "av==10.0.0",
+            "pims==0.6.1",
+            "basicsr==1.4.2",
+            "einops==0.8.0",
+            "OmegaConf",
+            "GPUtil",
+            "facexlib==0.3.0",
+            "insightface==0.7.3",
+            "langchain==0.3.23",
+            "langchain-openai==0.3.14",
+            "bytedoptimx==0.1.4",
+            "bytedturbox==0.9.0+torch2.5.1"
+          ]
+        },
+        "md5": "",
+        "size": 6904238080,
+        "uri": "uri://custom_node?package_id=594209880227742643&version_id=590220423115848954&repo_id=588107857719749310"
+      },
+      {
+        "local_path": "custom_nodes/ComfyUI-Aip-Aigc",
+        "type": "custom_node",
+        "is_dir": true,
+        "git_url": "https://code.byted.org/lab-cv/ComfyUI-Aip-Aigc.git",
+        "git_branch": "master",
+        "git_commit": "f5ae45c632fdf1fda6d40ae65ee3365ff2b8e6af",
+        "extra": {
+          "requirements": [
+            "bytedance.context",
+            "bytedance.ivory",
+            "bytedance.vcloud",
+            "bytedivory",
+            "python-magic",
+            "pillow",
+            "retrying",
+            "websockets",
+            "openai"
+          ]
+        },
+        "md5": "",
+        "size": 1976320,
+        "uri": "uri://custom_node?package_id=594209817346762285&version_id=593631592241683461&repo_id=525058341475474111"
+      },
+      {
+        "local_path": "custom_nodes/ComfyUI-Byteartist-Node",
+        "type": "custom_node",
+        "is_dir": true,
+        "git_url": "https://code.byted.org/aiplatform/ComfyUI-Byteartist-Node.git",
+        "git_commit": "38af2290b775f163d51f16e96164e3bdc31ab208",
+        "extra": {
+          "requirements": [
+            "openai==1.57.1",
+            "httpx==0.23.1",
+            "bytedmetrics==0.10.2",
+            "Pillow",
+            "bytedtos==1.1.17",
+            "torchaudio"
+          ]
+        },
+        "md5": "",
+        "size": 972800,
+        "uri": "uri://custom_node?package_id=594209817279636579&version_id=591905421296417009&repo_id=547977533161799187"
+      },
+      {
+        "local_path": "input/04.jpg",
+        "type": "image",
+        "is_dir": false,
+        "md5": "",
+        "size": 546138,
+        "uri": "uri://model?package_id=594209801425188548&md5=7b0ecf2c4c7f3d80a7272cae7e47290f"
+      }
+    ],
+    "venv_comfyui": null,
+    "service_name": "byteartist_comfyui_online",
+    "comfyui_commit": "7366292fa29b7de63d5207762ed0f2b4ad6b0881",
+    "ba_manager_commit": "1b15e6aa8e1f9e8dad570346a5525aad9ebcd033",
+    "created_at": 1763706291189,
+    "node_info": {
+      "BANodeLLMText": {
+        "input": {
+          "required": {
+            "feature": [
+              [
+                "提示词反推",
+                "灵感扩写",
+                "正反提示词"
+              ],
+              {
+                "default": "提示词反推",
+                "tooltip": "功能名称"
+              }
+            ],
+            "model": [
+              [
+                "GPT-5.1",
+                "GPT-5.1-Chat",
+                "豆包1.6",
+                "豆包1.6 Vision",
+                "豆包1.5 pro",
+                "Qwen3",
+                "DeepSeek-R1",
+                "GPT-5-Chat",
+                "GPT-4o",
+                "GPT-4.1",
+                "GPT-4.1mini",
+                "gemini-2.5 pro(深度思考)",
+                "gemini-2.5 flash(回复更快)",
+                "Seedream-PE-250815"
+              ],
+              {
+                "default": "GPT-5.1",
+                "tooltip": "模型名称"
+              }
+            ],
+            "max_tokens": [
+              "INT",
+              {
+                "default": 2000,
+                "min": 1,
+                "max": 4096,
+                "step": 1
+              }
+            ],
+            "temperature": [
+              "FLOAT",
+              {
+                "default": 0.7,
+                "min": 0,
+                "max": 2,
+                "step": 0.01
+              }
+            ]
+          },
+          "optional": {
+            "images": [
+              "IMAGE",
+              {
+                "forceInput": true,
+                "tooltip": "图片"
+              }
+            ],
+            "prompt": [
+              "STRING",
+              {
+                "default": "",
+                "multiline": true,
+                "dynamicPrompts": true,
+                "tooltip": "提示词"
+              }
+            ],
+            "system_prompt": [
+              "STRING",
+              {
+                "default": "",
+                "multiline": true,
+                "dynamicPrompts": true,
+                "tooltip": "系统指令"
+              }
+            ]
+          },
+          "hidden": {
+            "node_id": "UNIQUE_ID"
+          }
+        },
+        "output": [
+          "STRING",
+          "STRING"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "result/positive",
+          "negative"
+        ],
+        "name": "BANodeLLMText",
+        "display_name": "BA LLM Text",
+        "description": "",
+        "category": "byteartist/llm",
+        "output_node": true,
+        "python_module": "custom_nodes.ComfyUI-Byteartist-Node",
+        "origin_display_name": "BA LLM Text"
+      },
+      "AIP TextList2Text": {
+        "input": {
+          "required": {
+            "delimiter": [
+              "STRING",
+              {
+                "default": ", "
+              }
+            ],
+            "text_list": [
+              "LIST",
+              {
+                "forceInput": true
+              }
+            ],
+            "merge_space": [
+              "BOOLEAN",
+              {
+                "default": false
+              }
+            ],
+            "merge_comma": [
+              "BOOLEAN",
+              {
+                "default": false
+              }
+            ]
+          }
+        },
+        "output": [
+          "STRING"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "STRING"
+        ],
+        "name": "AIP TextList2Text",
+        "display_name": "AIP TextList2Text",
+        "description": "",
+        "category": "IC-AIP-AIGC/DataTypeUtils",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "origin_display_name": "AIP TextList2Text"
+      },
+      "AIP TextListMerge": {
+        "input": {
+          "required": {
+            "skip_null": [
+              "BOOLEAN",
+              {
+                "default": false
+              }
+            ]
+          },
+          "optional": {
+            "text_a": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_b": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_c": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_d": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_e": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_f": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ],
+            "text_g": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        },
+        "output": [
+          "LIST"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "LIST"
+        ],
+        "name": "AIP TextListMerge",
+        "display_name": "AIP TextListMerge",
+        "description": "",
+        "category": "IC-AIP-AIGC/DataTypeUtils",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "origin_display_name": "AIP TextListMerge"
+      },
+      "BAComponent": {
+        "input": {
+          "required": {},
+          "optional": {},
+          "hidden": {
+            "definition": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ],
+            "unique_id": "UNIQUE_ID"
+          }
+        },
+        "output": [],
+        "output_is_list": [],
+        "output_name": [],
+        "name": "BAComponent",
+        "display_name": "BA Component",
+        "description": "",
+        "category": "ba-component",
+        "output_node": true,
+        "python_module": "custom_nodes.ba-manager",
+        "origin_display_name": "BA Component"
+      },
+      "Seed4RemoteT2ITextEncoder": {
+        "input": {
+          "required": {
+            "prompt": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": true
+              }
+            ],
+            "negative_prompt": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": true
+              }
+            ],
+            "req_key": [
+              "STRING",
+              {
+                "default": "vg_seed4_textencoder"
+              }
+            ]
+          }
+        },
+        "output": [
+          "EMBEDDINGS",
+          "EMBEDDING_NAMES"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "embeddings",
+          "binary_var_names"
+        ],
+        "name": "Seed4RemoteT2ITextEncoder",
+        "display_name": "Seed4 T2I Text Encoder(Remote)",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 T2I Text Encoder(Remote)"
+      },
+      "Seed4DITLoader": {
+        "input": {
+          "required": {
+            "model_config": [
+              [
+                "v4.0_s_edit_25nfe",
+                "v4.0_s_edit_6nfe"
+              ],
+              {}
+            ],
+            "device": [
+              [
+                "cuda:0"
+              ],
+              {}
+            ]
+          },
+          "optional": {}
+        },
+        "output": [
+          "SEED_DIT_MODEL",
+          "SEED_PIPE_CONFIG"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "dit_model",
+          "pipe_config"
+        ],
+        "name": "Seed4DITLoader",
+        "display_name": "Seed4 DiT Loader",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 DiT Loader"
+      },
+      "Seed4Sampler": {
+        "input": {
+          "required": {
+            "process_type": [
+              [
+                "edit",
+                "t2i"
+              ],
+              {}
+            ],
+            "prompt": [
+              "STRING",
+              {
+                "multiline": true,
+                "dynamicPrompts": true
+              }
+            ],
+            "height": [
+              "INT",
+              {
+                "default": 2048,
+                "min": 1024,
+                "max": 4096,
+                "step": 8
+              }
+            ],
+            "width": [
+              "INT",
+              {
+                "default": 2048,
+                "min": 1024,
+                "max": 4096,
+                "step": 8
+              }
+            ],
+            "seed": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ],
+            "max_shift": [
+              "FLOAT",
+              {
+                "default": 1.15,
+                "min": 0,
+                "max": 4,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "guidance_scale": [
+              "FLOAT",
+              {
+                "default": 3,
+                "min": 1,
+                "max": 10,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "cfg_rescale_factor": [
+              "FLOAT",
+              {
+                "default": 0.7,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "single_edit_guidance_weight": [
+              "FLOAT",
+              {
+                "default": 3.5,
+                "min": 1,
+                "max": 10,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "single_edit_guidance_weight_image": [
+              "FLOAT",
+              {
+                "default": 1.5,
+                "min": 1,
+                "max": 10,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "single_min_cfg_time": [
+              "FLOAT",
+              {
+                "default": 0.98,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "single_max_cfg_time": [
+              "FLOAT",
+              {
+                "default": 0.98,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "multi_edit_guidance_weight": [
+              "FLOAT",
+              {
+                "default": 3.5,
+                "min": 1,
+                "max": 10,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "multi_edit_guidance_weight_image": [
+              "FLOAT",
+              {
+                "default": 1,
+                "min": 1,
+                "max": 10,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "multi_min_cfg_time": [
+              "FLOAT",
+              {
+                "default": 0.6,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "multi_max_cfg_time": [
+              "FLOAT",
+              {
+                "default": 1,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "pipe_config": [
+              "SEED_PIPE_CONFIG",
+              {}
+            ],
+            "embeddings": [
+              "EMBEDDINGS",
+              {}
+            ],
+            "embedding_binary_var_name": [
+              "EMBEDDING_NAMES",
+              {}
+            ],
+            "dit_model": [
+              "SEED_DIT_MODEL",
+              {}
+            ],
+            "vae_model": [
+              "SEED_VAE_MODEL",
+              {}
+            ],
+            "steps": [
+              "INT",
+              {
+                "default": 6,
+                "min": 6,
+                "max": 100
+              }
+            ],
+            "denoise_strength": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0,
+                "max": 1,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ]
+          },
+          "optional": {
+            "latents": [
+              "LATENTS",
+              {}
+            ],
+            "latent_binary_var_name": [
+              "LATENT_NAMES",
+              {}
+            ]
+          }
+        },
+        "output": [
+          "IMAGE"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "images"
+        ],
+        "name": "Seed4Sampler",
+        "display_name": "Seed4 Sampler",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 Sampler"
+      },
+      "Seed4VAELoader": {
+        "input": {
+          "required": {
+            "model_config": [
+              [
+                "v4.0_s_edit_25nfe",
+                "v4.0_s_edit_6nfe"
+              ],
+              {}
+            ],
+            "device": [
+              [
+                "cuda:0"
+              ],
+              {}
+            ]
+          }
+        },
+        "output": [
+          "SEED_VAE_MODEL"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "vae_model"
+        ],
+        "name": "Seed4VAELoader",
+        "display_name": "Seed4 VAE Loader",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 VAE Loader"
+      },
+      "Seed4RemoteVaeEncoder": {
+        "input": {
+          "required": {
+            "tensors": [
+              "IMAGE",
+              {}
+            ],
+            "format": [
+              [
+                "JPEG",
+                "PNG"
+              ],
+              {}
+            ],
+            "req_key": [
+              "STRING",
+              {
+                "default": "vg_seed4_vae"
+              }
+            ]
+          }
+        },
+        "output": [
+          "LATENTS",
+          "LATENT_NAMES"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "latents",
+          "binary_var_names"
+        ],
+        "name": "Seed4RemoteVaeEncoder",
+        "display_name": "Seed4 VAE Encoder(Remote)",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 VAE Encoder(Remote)"
+      },
+      "AIPResizeImageLongEdge": {
+        "input": {
+          "required": {
+            "image": [
+              "IMAGE",
+              {}
+            ],
+            "long_resolution": [
+              "INT",
+              {
+                "default": 832,
+                "min": 128,
+                "max": 8192,
+                "step": 8
+              }
+            ],
+            "mode": [
+              [
+                "keep_small_origin",
+                "always_scale"
+              ],
+              {
+                "default": "keep_small_origin"
+              }
+            ]
+          }
+        },
+        "output": [
+          "IMAGE"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "IMAGE"
+        ],
+        "name": "AIPResizeImageLongEdge",
+        "display_name": "AIPResizeImageLongEdge",
+        "description": "",
+        "category": "IC-AIP-AIGC/ImageUtils",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "origin_display_name": "AIPResizeImageLongEdge"
+      },
+      "AIPGetImageSize": {
+        "input": {
+          "required": {
+            "image": [
+              "IMAGE",
+              {}
+            ]
+          }
+        },
+        "output": [
+          "INT",
+          "INT"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "width",
+          "height"
+        ],
+        "name": "AIPGetImageSize",
+        "display_name": "AIPGetImageSize",
+        "description": "",
+        "category": "IC-AIP-AIGC/image",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "origin_display_name": "AIPGetImageSize"
+      },
+      "AIPStringInput": {
+        "input": {
+          "required": {
+            "string": [
+              "STRING",
+              {
+                "default": "",
+                "multiline": true
+              }
+            ]
+          }
+        },
+        "output": [
+          "STRING"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "STRING"
+        ],
+        "name": "AIPStringInput",
+        "display_name": "AIPStringInput",
+        "description": "",
+        "category": "IC-AIP-AIGC/DataTypeUtils",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Aip-Aigc",
+        "origin_display_name": "AIPStringInput"
+      },
+      "Seed4LoRALoader": {
+        "input": {
+          "required": {
+            "local_lora_name": [
+              [
+                "wangshengjie.123-1720593574061-gongbihua-000150.safetensors",
+                "超泛化美人鱼_美人鱼V1.0.safetensors",
+                "乙女0923分辨率.safetensors",
+                "C_hanfu.safetensors",
+                "ipadapter/ip-adapter-faceid-plusv2_sdxl_lora.safetensors",
+                "3.0L_idlora/zq.new_aug/h20-fa3-stable/H20-FA3-zjz/0/bingbing3/final/lora_model/pytorch_lora_weights.safetensors",
+                "高饱和插画_size3轮次500_6432-000010.safetensors",
+                "日系美漫@F2.safetensors",
+                "[XL]trendy_3D.safetensors",
+                "zhangyawen.516268-1716173284064-粘土世界SD1.5_v1.5.safetensors",
+                "3.0L_idlora/zq.new_aug/h20-fa3-stable/H20-FA3-zjz/0/amei3/final/lora_model/pytorch_lora_weights.safetensors",
+                "抖臀@v1.0.pth",
+                "纹理图案logo包装@v8.safetensors",
+                "CCD摄影_1732671216372@v3.safetensors",
+                "S4_Illustration_Notion_V2@V2.safetensors",
+                "orange_style_1701836079339560.safetensors",
+                "高饱和插画_size3轮次300-000030.safetensors",
+                "S4_2bicon_v4@v4.safetensors",
+                "yf_pattern_03@v3.safetensors",
+                "Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank32.safetensors",
+                "乙女2_v9.safetensors",
+                "Bubble Mart-000004.safetensors",
+                "40文生图若水测试@v10.safetensors",
+                "dreamo_sft_lora.safetensors",
+                "jihufluxV2@V2.20.safetensors",
+                "乙女V6第一版_v10.safetensors",
+                "高饱和插画_size3轮次300-000010.safetensors",
+                "black dress_v1.8.safetensors",
+                "风格名称_v5.safetensors",
+                "图案纹理提取test不同指令@v10.safetensors",
+                "林鹤-皮肤质感@V1.0 134.safetensors",
+                "zhangyawen.516268-1718707452026-水墨侠义.safetensors",
+                "F1美漫@F1.safetensors",
+                "jihu@v2.safetensors",
+                "dreamo_cfg_distill_comfyui.safetensors",
+                "怪奇_长触发@v10.safetensors",
+                "wangshengjie.123-1721619713345-gongbihua3.safetensors",
+                "flower_grass_lora_3.2w.pth",
+                "dreamo_quality_lora_neg_comfyui.safetensors",
+                "乙女_1@乙女_1_v10 138.safetensors",
+                "纹理图案logo包装@v6.safetensors",
+                "nienie@V10.pth",
+                "人像2@v3.safetensors",
+                "3.0L_idlora/zq.new_aug/h20-fa3-stable/H20-FA3/0/liunian3/final/lora_model/pytorch_lora_weights.safetensors",
+                "libu复古漫画@1.0.safetensors",
+                "乙女V5_V11.safetensors",
+                "64x3-05.safetensors",
+                "乙女@乙女_v10 138.safetensors",
+                "boom_ba@V10.pth",
+                "AICHANG|龍行龘龘_1.5龙年春节活动.safetensors"
+              ],
+              {}
+            ]
+          },
+          "optional": {
+            "extra_lora_name": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ],
+            "dtype": [
+              [
+                "torch.bfloat16",
+                "torch.float16",
+                "torch.float32"
+              ],
+              {
+                "default": "torch.bfloat16"
+              }
+            ]
+          }
+        },
+        "output": [
+          "ADAPTER"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "ADAPTER"
+        ],
+        "name": "Seed4LoRALoader",
+        "display_name": "Seed4 Lora Loader",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 Lora Loader"
+      },
+      "Seed4ApplyLora": {
+        "input": {
+          "required": {
+            "dit_model": [
+              "SEED_DIT_MODEL",
+              {}
+            ],
+            "use_lora": [
+              "BOOLEAN",
+              {
+                "default": true
+              }
+            ],
+            "fuse_lora": [
+              "BOOLEAN",
+              {
+                "default": false
+              }
+            ],
+            "lora_info": [
+              "ADAPTER",
+              {}
+            ],
+            "lora_weight": [
+              "FLOAT",
+              {
+                "default": 1,
+                "min": 0,
+                "max": 100,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "transformer_scale": [
+              "FLOAT",
+              {
+                "default": 32,
+                "min": -100000,
+                "max": 100000,
+                "step": 0.01,
+                "round": 0.01
+              }
+            ],
+            "prefix": [
+              "STRING",
+              {
+                "default": "base_model.model"
+              }
+            ]
+          }
+        },
+        "output": [
+          "SEED_DIT_MODEL"
+        ],
+        "output_is_list": [
+          false
+        ],
+        "output_name": [
+          "dit_model"
+        ],
+        "name": "Seed4ApplyLora",
+        "display_name": "Seed4 Apply Lora",
+        "description": "",
+        "category": "Seed4",
+        "output_node": false,
+        "python_module": "custom_nodes.ComfyUI-Seed4",
+        "origin_display_name": "Seed4 Apply Lora"
+      },
+      "LoadImage": {
+        "input": {
+          "required": {
+            "image": [
+              [
+                "00011.png",
+                "04.jpg",
+                "example.png"
+              ],
+              {
+                "image_upload": true
+              }
+            ],
+            "upload": [
+              "IMAGEUPLOAD"
+            ]
+          }
+        },
+        "output": [
+          "IMAGE",
+          "MASK"
+        ],
+        "output_is_list": [
+          false,
+          false
+        ],
+        "output_name": [
+          "IMAGE",
+          "MASK"
+        ],
+        "name": "LoadImage",
+        "display_name": "Load Image",
+        "description": "",
+        "category": "image",
+        "output_node": false,
+        "python_module": "nodes",
+        "origin_display_name": "Load Image"
+      },
+      "SaveImage": {
+        "input": {
+          "required": {
+            "images": [
+              "IMAGE",
+              {
+                "tooltip": "The images to save."
+              }
+            ],
+            "filename_prefix": [
+              "STRING",
+              {
+                "default": "ComfyUI",
+                "tooltip": "The prefix for the file to save. This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes."
+              }
+            ]
+          },
+          "hidden": {
+            "prompt": "PROMPT",
+            "extra_pnginfo": "EXTRA_PNGINFO"
+          }
+        },
+        "output": [],
+        "output_is_list": [],
+        "output_name": [],
+        "name": "SaveImage",
+        "display_name": "Save Image",
+        "description": "Saves the input images to your ComfyUI output directory.",
+        "category": "image",
+        "output_node": true,
+        "python_module": "nodes",
+        "origin_display_name": "Save Image"
+      }
+    },
+    "custom_node_versions": [],
+    "pip_freeze": [
+      "absl-py==2.3.1",
+      "accelerate==1.10.1",
+      "addict==2.4.0",
+      "aiofiles==23.2.1",
+      "aiohappyeyeballs==2.6.1",
+      "aiohttp==3.9.1",
+      "aiosignal==1.3.1",
+      "albucore==0.0.24",
+      "albumentations==2.0.8",
+      "altgraph==0.17.4",
+      "annotated-types==0.7.0",
+      "antlr4-python3-runtime==4.9.3",
+      "anyio==4.4.0",
+      "asn1crypto==1.5.1",
+      "attrs==24.2.0",
+      "av==16.0.1",
+      "basicsr==1.4.2",
+      "bitsandbytes==0.47.0",
+      "black==24.8.0",
+      "boto3==1.40.38",
+      "botocore==1.40.38",
+      "Brotli==1.1.0",
+      "byte-nvjpeg @ https://tosv.byted.org/obj/high-aes-depends/byte_nvjpeg-1.0.0-cp311-cp311-linux_x86_64.whl",
+      "byted-cruise==0.7.0",
+      "byted-kms-encryption==0.0.7",
+      "byted-kmsv2inner==0.1.21",
+      "byted-wandb==0.13.90",
+      "byted_automl_plugin==0.1.3",
+      "byted_encrypted_hdfs==0.7.2",
+      "byted_lighten_validator==0.2.14",
+      "byted_pydev==0.0.20",
+      "byted_pypprof==0.0.5",
+      "bytedance-context==0.7.1",
+      "bytedance-ivory==1.1.3.post38",
+      "bytedance-metrics==0.5.1",
+      "bytedance.ba-download==0.5.6",
+      "bytedance.bach==19.9.0.3",
+      "bytedance.uploader==0.4.0a15",
+      "bytedance.vcloud==2.0.17",
+      "bytedance.versioncollect==0.2.0",
+      "bytedbackgrounds==0.0.6",
+      "byteddatabus==1.0.8",
+      "byteddps==0.1.2",
+      "bytedenv==0.7.1",
+      "bytedeuler==2.7.4",
+      "bytedivory==0.0.11.post13",
+      "bytedkms==3.2.9",
+      "bytedkmsv2==0.10.60",
+      "bytedlogger==0.15.1",
+      "bytedlogid==0.2.1",
+      "bytedmeinheld==1.0.3",
+      "bytedmemfd==0.2",
+      "bytedmetrics==0.10.2",
+      "bytedoptimx==0.7.2",
+      "bytedpypolaris==3.0.49",
+      "bytedpyrocketmq==2.4.13",
+      "bytedservicediscovery==0.18.2",
+      "bytedsinfmetacenter==1.4.3",
+      "bytedtcc==1.4.4",
+      "bytedtos==1.1.22",
+      "bytedtrace==0.3.0",
+      "bytedturbox==0.22.0+cu12.6torch2.7.1",
+      "bytedunicorn==0.9.4",
+      "bytedurllibsec==0.4.1",
+      "bytedwsgimiddleware==0.9.0",
+      "bytedzti==1.0.15",
+      "bytedztijwthelper==0.0.21",
+      "bytedztispiffe==0.0.16",
+      "cacheout==0.16.0",
+      "cachetools==6.2.0",
+      "certifi==2024.8.30",
+      "cffi==2.0.0",
+      "chardet==5.2.0",
+      "charset-normalizer==3.3.2",
+      "click==8.1.7",
+      "cmake==4.1.0",
+      "coloredlogs==15.0.1",
+      "comfyui-embedded-docs==0.2.6",
+      "comfyui_frontend_package==1.28.2",
+      "comfyui_workflow_templates==0.1.86",
+      "contourpy==1.3.3",
+      "cramjam==2.6.2",
+      "crcmod==1.7",
+      "cryptography==39.0.2",
+      "cycler==0.12.1",
+      "Cython==3.1.4",
+      "dataclasses-json==0.6.7",
+      "decorator==5.2.1",
+      "deepspeed==0.17.6",
+      "Deprecated==1.2.18",
+      "diffusers==0.35.1",
+      "distro==1.9.0",
+      "dnspython==2.8.0",
+      "docker-pycreds==0.4.0",
+      "docstring_parser==0.17.0",
+      "easydict==1.13",
+      "ecdsa==0.19.1",
+      "einops==0.8.1",
+      "et_xmlfile==2.0.0",
+      "fastapi==0.117.1",
+      "ffmpy==0.6.1",
+      "file-magic==0.4.0",
+      "filelock==3.19.1",
+      "filetype==1.2.0",
+      "flash_attn @ https://tosv.byted.org/obj/high-aes-depends/flash_attn-2.8.3%2Bcu12torch2.7cxx11abiFALSE-cp311-cp311-linux_x86_64.whl",
+      "flatbuffers==25.9.23",
+      "fonttools==4.60.0",
+      "frozenlist==1.4.1",
+      "fsspec==2023.6.0",
+      "future==1.0.0",
+      "fvcore==0.1.5.post20221221",
+      "gevent==24.11.1",
+      "gitdb==4.0.12",
+      "GitPython==3.1.42",
+      "GPUtil==1.4.0",
+      "gradio==5.47.0",
+      "gradio_client==1.13.2",
+      "greenlet==3.2.4",
+      "groovy==0.1.2",
+      "grpcio==1.75.0",
+      "gunicorn==20.1.0",
+      "h11==0.14.0",
+      "hf-xet==1.1.10",
+      "hjson==3.1.0",
+      "httpcore==1.0.5",
+      "httpx==0.25.2",
+      "httpx-sse==0.4.3",
+      "huggingface-hub==0.35.1",
+      "humanfriendly==10.0",
+      "idna==3.10",
+      "imageio==2.37.0",
+      "imageio-ffmpeg==0.6.0",
+      "importlib_metadata==8.7.0",
+      "iniconfig==2.0.0",
+      "insightface==0.7.3",
+      "iopath==0.1.10",
+      "ipaddress==1.0.23",
+      "Jinja2==3.1.6",
+      "jiter==0.11.0",
+      "jmespath==1.0.1",
+      "joblib==1.5.2",
+      "jsonargparse==4.14.1",
+      "jsonc-parser==1.1.5",
+      "jsonpatch==1.33",
+      "jsonpointer==3.0.0",
+      "kiwisolver==1.4.9",
+      "kornia==0.8.1",
+      "kornia_rs==0.1.9",
+      "langchain==0.3.25",
+      "langchain-community==0.3.24",
+      "langchain-core==0.3.64",
+      "langchain-ollama==0.3.3",
+      "langchain-openai==0.3.21",
+      "langchain-text-splitters==0.3.8",
+      "langsmith==0.3.45",
+      "lark==1.3.0",
+      "lazy_loader==0.4",
+      "llvmlite==0.45.0",
+      "lmdb==1.7.3",
+      "lz4==3.1.10",
+      "Markdown==3.9",
+      "markdown-it-py==4.0.0",
+      "MarkupSafe==3.0.2",
+      "marshmallow==3.26.1",
+      "matplotlib==3.10.6",
+      "mdurl==0.1.2",
+      "megablocks==0.5.1",
+      "miscreant==0.3.0",
+      "moviepy==1.0.3",
+      "mpmath==1.3.0",
+      "mprofile==0.0.15",
+      "msgpack==1.0.8",
+      "multidict==6.0.5",
+      "mypy-extensions==1.0.0",
+      "networkx==3.5",
+      "ninja==1.13.0",
+      "numba==0.62.0",
+      "numpy==1.26.4",
+      "nvidia-cublas-cu12==12.6.4.1",
+      "nvidia-cuda-cupti-cu12==12.6.80",
+      "nvidia-cuda-nvrtc-cu12==12.6.77",
+      "nvidia-cuda-runtime-cu12==12.6.77",
+      "nvidia-cudnn-cu12==9.5.1.17",
+      "nvidia-cufft-cu12==11.3.0.4",
+      "nvidia-cufile-cu12==1.11.1.6",
+      "nvidia-curand-cu12==10.3.7.77",
+      "nvidia-cusolver-cu12==11.7.1.2",
+      "nvidia-cusparse-cu12==12.5.4.2",
+      "nvidia-cusparselt-cu12==0.6.3",
+      "nvidia-nccl-cu12==2.26.2",
+      "nvidia-nvjitlink-cu12==12.6.85",
+      "nvidia-nvshmem-cu12==3.3.20",
+      "nvidia-nvtx-cu12==12.6.77",
+      "objprint==0.3.0",
+      "ollama==0.6.0",
+      "omegaconf==2.3.0",
+      "onnx==1.17.0",
+      "onnxruntime-gpu==1.22.0",
+      "openai==1.109.1",
+      "opencv-python==4.11.0.86",
+      "opencv-python-headless==4.12.0.88",
+      "openpyxl==3.1.2",
+      "orjson==3.11.3",
+      "packaging==24.1",
+      "pandas==2.3.2",
+      "pathspec==0.12.1",
+      "pathtools==0.1.2",
+      "peft==0.17.1",
+      "pillow==11.3.0",
+      "pip-autoremove==0.10.0",
+      "pipdeptree==2.14.0",
+      "platformdirs==4.2.1",
+      "pluggy==1.5.0",
+      "ply==3.11",
+      "polars==1.33.1",
+      "portalocker==3.2.0",
+      "prettytable==3.16.0",
+      "proglog==0.1.12",
+      "promise==2.3",
+      "propcache==0.3.2",
+      "protobuf==3.20.3",
+      "psutil==6.0.0",
+      "py==1.11.0",
+      "py-cpuinfo==9.0.0",
+      "pyarrow==11.0.0",
+      "pyasn1==0.6.1",
+      "pycparser==2.23",
+      "pycryptodome==3.19.1",
+      "pycryptodomex==3.23.0",
+      "pydantic==2.11.9",
+      "pydantic-settings==2.11.0",
+      "pydantic_core==2.33.2",
+      "pydub==0.25.1",
+      "Pygments==2.19.2",
+      "PyJWT==2.10.1",
+      "pyope==0.2.2",
+      "pyOpenSSL==23.2.0",
+      "pyparsing==3.2.5",
+      "pytest==8.3.2",
+      "python-dateutil==2.9.0.post0",
+      "python-dotenv==1.1.1",
+      "python-etcd==0.4.5",
+      "python-jose==3.5.0",
+      "python-magic==0.4.27",
+      "python-multipart==0.0.20",
+      "python-snappy==0.7.3",
+      "pytz==2023.3",
+      "PyYAML==6.0.2",
+      "regex==2025.9.18",
+      "requests==2.31.0",
+      "requests-toolbelt==1.0.0",
+      "retry==0.9.2",
+      "retrying==1.4.2",
+      "rfc3986==1.5.0",
+      "rich==14.1.0",
+      "rotary-embedding-torch==0.8.9",
+      "rsa==4.9.1",
+      "ruff==0.13.1",
+      "s3transfer==0.14.0",
+      "safehttpx==0.1.6",
+      "safetensors==0.6.2",
+      "schedule==1.2.2",
+      "scikit-image==0.25.2",
+      "scikit-learn==1.7.2",
+      "scipy==1.16.2",
+      "semantic-version==2.10.0",
+      "sentencepiece==0.2.1",
+      "sentry-sdk==2.39.0",
+      "setproctitle==1.3.7",
+      "shellingham==1.5.4",
+      "shortuuid==1.0.13",
+      "simsimd==6.5.3",
+      "six==1.16.0",
+      "smmap==5.0.2",
+      "sniffio==1.3.1",
+      "soundfile==0.13.1",
+      "spandrel==0.4.1",
+      "SQLAlchemy==2.0.44",
+      "stanford-stk==0.7.1",
+      "starlette==0.48.0",
+      "stringzilla==4.2.1",
+      "sympy==1.14.0",
+      "tabulate==0.9.0",
+      "tb-nightly==2.21.0a20251014",
+      "tenacity==8.5.0",
+      "tensorboard-data-server==0.7.2",
+      "termcolor==3.1.0",
+      "threadpoolctl==3.6.0",
+      "thriftpy2==0.4.20",
+      "tifffile==2025.10.4",
+      "tiktoken==0.12.0",
+      "timm==1.0.20",
+      "tokenizers==0.22.1",
+      "toml==0.10.2",
+      "tomlkit==0.13.3",
+      "torch==2.7.1+cu126",
+      "torchao==0.9.0",
+      "torchaudio==2.7.1+cu126",
+      "torchsde==0.2.6",
+      "torchvision==0.22.1+cu126",
+      "tqdm==4.67.1",
+      "trampoline==0.1.2",
+      "transformers==4.56.2",
+      "triton==3.3.1",
+      "ttvcloud==0.0.39",
+      "typer==0.19.2",
+      "typing-inspect==0.9.0",
+      "typing-inspection==0.4.1",
+      "typing_extensions==4.12.2",
+      "tzdata==2025.2",
+      "ultralytics==8.3.203",
+      "ultralytics-thop==2.0.17",
+      "urllib3==1.26.20",
+      "uv==0.8.12",
+      "uvicorn==0.37.0",
+      "viztracer==0.16.3",
+      "watchdog==6.0.0",
+      "wcwidth==0.2.14",
+      "websockets==15.0.1",
+      "Werkzeug==3.1.3",
+      "wget==3.2",
+      "whatimage @ http://voffline.byted.org/download/tos/schedule/labcv.ftp/whatimage-0.0.3-py3-none-any.whl",
+      "wrapt==1.17.3",
+      "xlrd==2.0.1",
+      "yacs==0.1.8",
+      "yapf==0.43.0",
+      "yarl==1.11.1",
+      "zipp==3.23.0",
+      "zope.event==6.0",
+      "zope.interface==8.0.1",
+      "zprofile==1.0.13",
+      "zstandard==0.23.0",
+      "zstd==1.5.7.2"
+    ],
+    "preserve_pip_freeze": [
+      "accelerate==1.10.1",
+      "aiofiles==23.2.1",
+      "aiohappyeyeballs==2.6.1",
+      "aiohttp==3.9.1",
+      "aiosignal==1.3.1",
+      "altgraph==0.17.4",
+      "annotated-types==0.7.0",
+      "antlr4-python3-runtime==4.9.3",
+      "anyio==4.4.0",
+      "asn1crypto==1.5.1",
+      "attrs==24.2.0",
+      "av==16.0.1",
+      "bitsandbytes==0.47.0",
+      "black==24.8.0",
+      "boto3==1.40.38",
+      "botocore==1.40.38",
+      "Brotli==1.1.0",
+      "byte-nvjpeg @ https://tosv.byted.org/obj/high-aes-depends/byte_nvjpeg-1.0.0-cp311-cp311-linux_x86_64.whl",
+      "byted-cruise==0.7.0",
+      "byted-kms-encryption==0.0.7",
+      "byted-kmsv2inner==0.1.21",
+      "byted-wandb==0.13.90",
+      "byted_encrypted_hdfs==0.7.2",
+      "byted_pydev==0.0.20",
+      "byted_pypprof==0.0.5",
+      "bytedance-context==0.7.1",
+      "bytedance-ivory==1.1.3.post38",
+      "bytedance-metrics==0.5.1",
+      "bytedance.ba-download==0.5.6",
+      "bytedance.bach==19.9.0.3",
+      "bytedance.vcloud==2.0.17",
+      "bytedance.versioncollect==0.2.0",
+      "bytedbackgrounds==0.0.6",
+      "byteddatabus==1.0.8",
+      "byteddps==0.1.2",
+      "bytedenv==0.7.1",
+      "bytedeuler==2.7.4",
+      "bytedivory==0.0.11.post13",
+      "bytedkms==3.2.9",
+      "bytedkmsv2==0.10.60",
+      "bytedlogger==0.15.1",
+      "bytedlogid==0.2.1",
+      "bytedmeinheld==1.0.3",
+      "bytedmemfd==0.2",
+      "bytedmetrics==0.10.2",
+      "bytedoptimx==0.7.2",
+      "bytedpypolaris==3.0.49",
+      "bytedpyrocketmq==2.4.13",
+      "bytedservicediscovery==0.18.2",
+      "bytedsinfmetacenter==1.4.3",
+      "bytedtcc==1.4.4",
+      "bytedtos==1.1.22",
+      "bytedtrace==0.3.0",
+      "bytedturbox==0.22.0+cu12.6torch2.7.1",
+      "bytedunicorn==0.9.4",
+      "bytedurllibsec==0.4.1",
+      "bytedwsgimiddleware==0.9.0",
+      "bytedzti==1.0.15",
+      "bytedztijwthelper==0.0.21",
+      "bytedztispiffe==0.0.16",
+      "cacheout==0.16.0",
+      "cachetools==6.2.0",
+      "certifi==2024.8.30",
+      "cffi==2.0.0",
+      "chardet==5.2.0",
+      "charset-normalizer==3.3.2",
+      "click==8.1.7",
+      "cmake==4.1.0",
+      "coloredlogs==15.0.1",
+      "comfyui-embedded-docs==0.2.6",
+      "comfyui_frontend_package==1.28.2",
+      "comfyui_workflow_templates==0.1.86",
+      "contourpy==1.3.3",
+      "cramjam==2.6.2",
+      "crcmod==1.7",
+      "cryptography==39.0.2",
+      "cycler==0.12.1",
+      "decorator==5.2.1",
+      "deepspeed==0.17.6",
+      "Deprecated==1.2.18",
+      "diffusers==0.35.1",
+      "distro==1.9.0",
+      "dnspython==2.8.0",
+      "docker-pycreds==0.4.0",
+      "docstring_parser==0.17.0",
+      "ecdsa==0.19.1",
+      "einops==0.8.1",
+      "fastapi==0.117.1",
+      "ffmpy==0.6.1",
+      "file-magic==0.4.0",
+      "filelock==3.19.1",
+      "flash_attn @ https://tosv.byted.org/obj/high-aes-depends/flash_attn-2.8.3%2Bcu12torch2.7cxx11abiFALSE-cp311-cp311-linux_x86_64.whl",
+      "flatbuffers==25.9.23",
+      "fonttools==4.60.0",
+      "frozenlist==1.4.1",
+      "fsspec==2023.6.0",
+      "fvcore==0.1.5.post20221221",
+      "gevent==24.11.1",
+      "gitdb==4.0.12",
+      "GitPython==3.1.42",
+      "GPUtil==1.4.0",
+      "gradio==5.47.0",
+      "gradio_client==1.13.2",
+      "greenlet==3.2.4",
+      "groovy==0.1.2",
+      "grpcio==1.75.0",
+      "gunicorn==20.1.0",
+      "h11==0.14.0",
+      "hf-xet==1.1.10",
+      "hjson==3.1.0",
+      "httpcore==1.0.5",
+      "httpx==0.25.2",
+      "huggingface-hub==0.35.1",
+      "humanfriendly==10.0",
+      "idna==3.10",
+      "imageio==2.37.0",
+      "importlib_metadata==8.7.0",
+      "iniconfig==2.0.0",
+      "iopath==0.1.10",
+      "ipaddress==1.0.23",
+      "Jinja2==3.1.6",
+      "jiter==0.11.0",
+      "jmespath==1.0.1",
+      "jsonargparse==4.14.1",
+      "jsonc-parser==1.1.5",
+      "kiwisolver==1.4.9",
+      "kornia==0.8.1",
+      "kornia_rs==0.1.9",
+      "lark==1.3.0",
+      "llvmlite==0.45.0",
+      "lmdb==1.7.3",
+      "lz4==3.1.10",
+      "markdown-it-py==4.0.0",
+      "MarkupSafe==3.0.2",
+      "matplotlib==3.10.6",
+      "mdurl==0.1.2",
+      "megablocks==0.5.1",
+      "miscreant==0.3.0",
+      "mpmath==1.3.0",
+      "mprofile==0.0.15",
+      "msgpack==1.0.8",
+      "multidict==6.0.5",
+      "mypy-extensions==1.0.0",
+      "networkx==3.5",
+      "ninja==1.13.0",
+      "numba==0.62.0",
+      "numpy==1.26.4",
+      "nvidia-cublas-cu12==12.6.4.1",
+      "nvidia-cuda-cupti-cu12==12.6.80",
+      "nvidia-cuda-nvrtc-cu12==12.6.77",
+      "nvidia-cuda-runtime-cu12==12.6.77",
+      "nvidia-cudnn-cu12==9.5.1.17",
+      "nvidia-cufft-cu12==11.3.0.4",
+      "nvidia-cufile-cu12==1.11.1.6",
+      "nvidia-curand-cu12==10.3.7.77",
+      "nvidia-cusolver-cu12==11.7.1.2",
+      "nvidia-cusparse-cu12==12.5.4.2",
+      "nvidia-cusparselt-cu12==0.6.3",
+      "nvidia-nccl-cu12==2.26.2",
+      "nvidia-nvjitlink-cu12==12.6.85",
+      "nvidia-nvtx-cu12==12.6.77",
+      "omegaconf==2.3.0",
+      "onnx==1.17.0",
+      "onnxruntime-gpu==1.22.0",
+      "openai==1.109.1",
+      "opencv-python==4.11.0.86",
+      "orjson==3.11.3",
+      "packaging==24.1",
+      "pandas==2.3.2",
+      "pathspec==0.12.1",
+      "peft==0.17.1",
+      "pillow==11.3.0",
+      "pip-autoremove==0.10.0",
+      "pipdeptree==2.14.0",
+      "platformdirs==4.2.1",
+      "pluggy==1.5.0",
+      "ply==3.11",
+      "polars==1.33.1",
+      "portalocker==3.2.0",
+      "promise==2.3",
+      "propcache==0.3.2",
+      "protobuf==3.20.3",
+      "psutil==6.0.0",
+      "py==1.11.0",
+      "py-cpuinfo==9.0.0",
+      "pyarrow==11.0.0",
+      "pyasn1==0.6.1",
+      "pycparser==2.23",
+      "pycryptodome==3.19.1",
+      "pydantic==2.11.9",
+      "pydantic_core==2.33.2",
+      "pydub==0.25.1",
+      "Pygments==2.19.2",
+      "PyJWT==2.10.1",
+      "pyope==0.2.2",
+      "pyOpenSSL==23.2.0",
+      "pyparsing==3.2.5",
+      "pytest==8.3.2",
+      "python-dateutil==2.9.0.post0",
+      "python-etcd==0.4.5",
+      "python-jose==3.5.0",
+      "python-magic==0.4.27",
+      "python-multipart==0.0.20",
+      "python-snappy==0.7.3",
+      "pytz==2023.3",
+      "PyYAML==6.0.2",
+      "regex==2025.9.18",
+      "requests==2.31.0",
+      "retry==0.9.2",
+      "retrying==1.4.2",
+      "rich==14.1.0",
+      "rotary-embedding-torch==0.8.9",
+      "rsa==4.9.1",
+      "ruff==0.13.1",
+      "s3transfer==0.14.0",
+      "safehttpx==0.1.6",
+      "safetensors==0.6.2",
+      "schedule==1.2.2",
+      "scipy==1.16.2",
+      "semantic-version==2.10.0",
+      "sentry-sdk==2.39.0",
+      "setproctitle==1.3.7",
+      "shellingham==1.5.4",
+      "shortuuid==1.0.13",
+      "six==1.16.0",
+      "smmap==5.0.2",
+      "sniffio==1.3.1",
+      "spandrel==0.4.1",
+      "stanford-stk==0.7.1",
+      "starlette==0.48.0",
+      "sympy==1.14.0",
+      "tabulate==0.9.0",
+      "tenacity==8.5.0",
+      "termcolor==3.1.0",
+      "thriftpy2==0.4.20",
+      "timm==1.0.20",
+      "tokenizers==0.22.1",
+      "toml==0.10.2",
+      "tomlkit==0.13.3",
+      "torch==2.7.1+cu126",
+      "torchao==0.9.0",
+      "torchaudio==2.7.1+cu126",
+      "torchsde==0.2.6",
+      "torchvision==0.22.1+cu126",
+      "tqdm==4.67.1",
+      "trampoline==0.1.2",
+      "transformers==4.56.2",
+      "triton==3.3.1",
+      "ttvcloud==0.0.39",
+      "typer==0.19.2",
+      "typing-inspection==0.4.1",
+      "typing_extensions==4.12.2",
+      "tzdata==2025.2",
+      "ultralytics==8.3.203",
+      "ultralytics-thop==2.0.17",
+      "urllib3==1.26.20",
+      "uv==0.8.12",
+      "uvicorn==0.37.0",
+      "websockets==15.0.1",
+      "wget==3.2",
+      "whatimage @ http://voffline.byted.org/download/tos/schedule/labcv.ftp/whatimage-0.0.3-py3-none-any.whl",
+      "wrapt==1.17.3",
+      "yacs==0.1.8",
+      "yarl==1.11.1",
+      "zipp==3.23.0",
+      "zope.event==6.0",
+      "zope.interface==8.0.1",
+      "zprofile==1.0.13",
+      "zstd==1.5.7.2"
+    ],
+    "device_info": {
+      "cudaVersion": "12.6",
+      "gpuName": "NVIDIA L20",
+      "system": "Linux",
+      "version": "#5.4.250.bsk.9 SMP Debian 5.4.250.bsk.9 Fri Nov 15 08:53:38 UTC ",
+      "cuda_version": "12.6",
+      "gpu_name": "NVIDIA L20",
+      "xpu_num": "1"
+    },
+    "base_image": "aip_image_factory/custom.image.combo_infer:nvidia_seed4_infer-20251006-215922",
+    "comfy_args": {
+      "--listen": "fd02::6f:0:0:90",
+      "--port": "9001"
+    },
+    "comfyui_tag": "release_0.2.2",
+    "ba_combo": "588008921034165554",
+    "workflow_id": "594193297090571338:3",
+    "config_id": "594209885428662375",
+    "workflow_version_id": "594209885445439591",
+    "workflow_identity": "594193297090571338:3"
+  }
+}
