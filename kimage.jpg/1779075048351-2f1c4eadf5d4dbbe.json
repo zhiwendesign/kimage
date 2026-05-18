@@ -1,0 +1,453 @@
+{
+  "id": "5d341b6c-6269-471c-9176-aedfe5505cea",
+  "revision": 0,
+  "last_node_id": 14,
+  "last_link_id": 22,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        457.4444274902344,
+        614.0111083984375
+      ],
+      "size": [
+        380.35467529296875,
+        155.68203735351562
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "title": "Negative Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "水印、文字、Logo、平台标记、签名、AI generated 标签、低清晰度、模糊细节、脸部扭曲、五官不一致、不同人脸、多个人物、身份不一致、塑料皮肤、过度磨皮、过度美颜、睫毛过重、妆容过浓、身体比例错误、畸形手、额外手指、缺失手指、融合手指、手臂扭曲、腿部扭曲、脚部变形、关节异常、姿势僵硬、身体失衡、不真实面料、服装纹理破损、版型错误、cosplay 服装、过度华丽造型、奢华礼服、背景杂乱、颜色脏、过度锐化、过度美颜滤镜、廉价影楼感、动漫风、插画风、3D 渲染感、赛博朋克风、夸张科幻风。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "kkStringMergeNode",
+      "pos": [
+        873.4894353811927,
+        167.89866847423892
+      ],
+      "size": [
+        270.7564453125,
+        274
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "string1",
+          "name": "string1",
+          "type": "STRING",
+          "widget": {
+            "name": "string1"
+          },
+          "link": 1
+        },
+        {
+          "label": "string2",
+          "name": "string2",
+          "type": "STRING",
+          "widget": {
+            "name": "string2"
+          },
+          "link": 2
+        },
+        {
+          "label": "separator",
+          "name": "separator",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "separator"
+          }
+        },
+        {
+          "label": "string3",
+          "name": "string3",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string3"
+          }
+        },
+        {
+          "label": "string4",
+          "name": "string4",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string4"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "merged_string",
+          "name": "merged_string",
+          "type": "STRING",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkStringMergeNode",
+        "widget_ue_connectable": {
+          "string1": true,
+          "string2": true
+        }
+      },
+      "widgets_values": [
+        "",
+        "",
+        "。",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [
+        1693.1240234375,
+        138.04287719726562
+      ],
+      "size": [
+        411.5993347167969,
+        630.768798828125
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {},
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 9,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        451.6306457519531,
+        146.2723846435547
+      ],
+      "size": [
+        387.904296875,
+        419.6390686035156
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "title": "Positive Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "\n\n画面主题\n\n生成一张高质量的拼贴式时尚人像大片。整体背景为明亮鲜艳的蓝色无缝影棚背景，画面氛围青春、活泼、俏皮、干净、时髦，并带有轻微韩系与日系时尚杂志写真感。整体视觉应像真实杂志编辑大片，而不是普通写真或明显 AI 生成图。\n\n拼贴构图规则\n\n画面采用 9宫格杂志拼贴排版，不同画面之间使用干净的白色边框分隔，形成精致、清爽、现代的杂志编辑版式。每个分区都需要保持统一的蓝色影棚背景和整体视觉风格，但人物姿态、景别和情绪需要有所变化。白色拼贴边框应整洁、有图形感，但画面中不要出现任何文字。\n\n多姿态设计\n\n同一个人物需要出现在全部 9 个画面分区中，每个分区呈现不同的姿势、景别和动态。画面中应包含一到两个全身动态姿势，例如跳跃、奔跑、轻快小跑、自然转身或活泼移动；一个近距离脸部肖像；一个俏皮自然的半身表情画面；一个略微倾斜的自拍式构图；以及一个放松坐在蓝色影棚地面上的姿态。所有动作都必须自然可信，身体平衡合理，手部和脚部摆放真实，肢体结构准确，不要僵硬，不要失衡。\n\n表情设定\n\n人物表情应可爱、生动、自然，例如眨眼、微笑、微微张嘴、柔和看向镜头、俏皮眼神，或轻微吐舌。表情不能夸张，不能僵硬，不能做作，要像真实时尚杂志拍摄中捕捉到的自然瞬间，具有轻松、鲜活、俏皮的编辑大片感。\n\n服装自动推断\n\n不要将服装固定为上传照片中的原始穿搭。请根据参考人物的外貌、发型、年龄感、身体比例和整体气质，自动推断最适合她的时尚造型。整体造型方向应为青春、俏皮、休闲、时尚前卫，并带有轻微复古感。服装可以包含牛仔背带裤、格纹衬衫、叠穿上衣、休闲短裤、针织帽、堆堆袜、复古皮鞋，或其他轻松自然的杂志感穿搭元素。最终服装组合应根据人物脸型、发型和气质合理选择，看起来自然、时髦、适配人物本人。服装需要具备真实面料质感、自然褶皱、合理版型和舒适贴合感。不要 cosplay，不要过度华丽，不要奢华礼服感，不要过度商业广告感。\n\n主题道具设计\n\n画面中加入蔬菜和水果作为趣味时尚道具，例如番茄、胡萝卜、生菜、花椰菜、土豆、洋葱、橙子，或装满新鲜蔬果的网兜购物袋。人物可以自然地手拿番茄、拎着蔬果袋、坐在散落的蔬菜水果之间、靠近蔬果道具，或以俏皮但时髦的方式与道具互动。整体概念应呈现一种“蔬果购物主题”的趣味时尚杂志大片感：略带生活化的小凌乱，清新、有趣、幽默、有生命力，但整体仍然保持干净、时髦、有设计感。道具不能喧宾夺主，人物始终是每个分区的视觉主体。\n\n摄影质感\n\n摄影质感应接近真实专业影棚时尚拍摄。使用柔和闪光灯、明亮鲜艳的蓝色无缝背景、自然高光、真实皮肤纹理、细微毛孔、真实发丝、柔和阴影、清晰但不过度锐化的细节、轻微胶片颗粒，以及明亮但自然的色彩调性。最终图像应看起来像真实拍摄的杂志拼贴写真，而不是明显的 AI 生成图。需要确保 6个分区中的人物身份一致、五官一致、发型一致、身体比例一致，避免出现五官扭曲、畸形手、额外手指、缺失手指、肢体扭曲、脚部变形、塑料皮肤、过度磨皮、过度美颜、低清晰度、背景杂乱、动漫风、插画风或 3D 渲染感。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 13,
+      "type": "OpenAIGPTImage1",
+      "pos": [
+        1206.3109139035116,
+        137.67804790984508
+      ],
+      "size": [
+        398.0789601636793,
+        612.3137167480559
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 21
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenAIGPTImage1",
+        "cnr_id": "comfy-core",
+        "ver": "0.19.3",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "",
+        1793227687,
+        "randomize",
+        "medium",
+        "auto",
+        "1024x1536",
+        1,
+        "gpt-image-2",
+        1024,
+        1024
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 14,
+      "type": "LoadImage",
+      "pos": [
+        92.56382239096297,
+        138.18684144177098
+      ],
+      "size": [
+        293.2686247859624,
+        394.2459777175326
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_05557_.png",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    }
+  ],
+  "links": [
+    [
+      1,
+      9,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      5,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      19,
+      6,
+      0,
+      13,
+      2,
+      "STRING"
+    ],
+    [
+      21,
+      14,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      13,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load image",
+      "bounding": [
+        69.01225280761719,
+        53.90338134765625,
+        339.5865783691406,
+        503.7825927734375
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Prompts",
+      "bounding": [
+        427.09075927734375,
+        55.80941390991211,
+        731.9674682617188,
+        751.4166870117188
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "image2",
+      "bounding": [
+        1183.1885986328125,
+        52.902252197265625,
+        458.2181701660156,
+        744.9592895507812
+      ],
+      "color": "#b58b2a",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Save image",
+      "bounding": [
+        1668.92919921875,
+        58.377685546875,
+        465.33331298828125,
+        741.4700927734375
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "frontendVersion": "1.43.18",
+    "ds": {
+      "scale": 0.7247295000000012,
+      "offset": [
+        212.14434700088194,
+        422.39850997338715
+      ]
+    }
+  },
+  "version": 0.4
+}
