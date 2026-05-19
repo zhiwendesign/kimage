@@ -1,0 +1,384 @@
+{
+  "id": "9b66db4c-48e3-4128-a83c-a8495f41c540",
+  "revision": 0,
+  "last_node_id": 9,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "Note",
+      "pos": [
+        83.0814208984375,
+        198.90521240234375
+      ],
+      "size": [
+        360,
+        170
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "尺寸节点（尺寸生成）",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n生成不同比例和尺寸的 latent 张量，针对 SDXL 优化。\n\n尺寸模式\n- preset：使用 16:9 等预设比例\n- custom：使用自定义宽高\n\n最小演示\n- size_mode：preset\n- aspect_ratio：16:9\n- batch_size：1\n\n输出\n- latent\n- width\n- height\n- aspect_ratio"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 1,
+      "type": "Note",
+      "pos": [
+        -390.6680005798339,
+        159.31333285522456
+      ],
+      "size": [
+        402.2802924194334,
+        143.8208434753418
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "📐 尺寸生成模块 (size.py)",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "本文件收录该模块下所有节点的最小演示。\n说明卡内容按根目录 readme.md 的写法整理，打开后可直接对照参数和输出查看。\n合作交流：kkcomfy"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        1044.0002921013133,
+        215.19071059836472
+      ],
+      "size": [
+        214.09320312499995,
+        202.70648437499995
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 6,
+      "type": "PreviewAny",
+      "pos": [
+        1270.5198546013125,
+        211.95774184836478
+      ],
+      "size": [
+        211.956796875,
+        210.9354296875
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 4,
+      "type": "PreviewAny",
+      "pos": [
+        818.4176475700605,
+        214.2454098171148
+      ],
+      "size": [
+        210,
+        202.4937890625
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        1048.0394613200629,
+        475.1856793483642
+      ],
+      "size": [
+        214.09320312499995,
+        202.70648437499995
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 9,
+      "type": "PreviewAny",
+      "pos": [
+        822.45681678881,
+        474.2403785671143
+      ],
+      "size": [
+        210,
+        202.4937890625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 3,
+      "type": "kkSizeNode",
+      "pos": [
+        478.52449853515617,
+        207.23203759765624
+      ],
+      "size": [
+        315,
+        218
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            1,
+            4
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            2,
+            5
+          ]
+        },
+        {
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSizeNode"
+      },
+      "widgets_values": [
+        "preset",
+        "16:9",
+        512,
+        512,
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    }
+  ],
+  "links": [
+    [
+      1,
+      3,
+      1,
+      4,
+      0,
+      "INT"
+    ],
+    [
+      2,
+      3,
+      2,
+      5,
+      0,
+      "INT"
+    ],
+    [
+      3,
+      3,
+      3,
+      6,
+      0,
+      "COMBO"
+    ],
+    [
+      4,
+      3,
+      1,
+      9,
+      0,
+      "INT"
+    ],
+    [
+      5,
+      3,
+      2,
+      7,
+      0,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "📐 尺寸生成模块",
+      "bounding": [
+        40,
+        110,
+        1488.2198242187499,
+        626.2980830078126
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6209213230591553,
+      "offset": [
+        588.251095664314,
+        363.8375298860102
+      ]
+    },
+    "node_versions": {
+      "Comfyui-kktools": "module-demo"
+    },
+    "frontendVersion": "1.43.18"
+  },
+  "version": 0.4
+}
