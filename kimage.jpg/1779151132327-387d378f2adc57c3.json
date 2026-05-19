@@ -1,0 +1,276 @@
+{
+  "id": "45e800e5-182e-42ac-ab47-ef82e8bf4e4e",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Note",
+      "pos": [
+        -388.63278503418,
+        148.43492154208107
+      ],
+      "size": [
+        401.97931463068187,
+        144.3624045632102
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "💬 提示词模块",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "本文件收录该模块下所有节点的最小演示。\n说明卡内容按根目录 readme.md 的写法整理，打开后可直接对照参数和输出查看。\n合作交流：kkcomfy"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 2,
+      "type": "Note",
+      "pos": [
+        85.31886596679688,
+        218.48906616210934
+      ],
+      "size": [
+        360,
+        170
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "💬 提示词模块 (prompts.py)",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n批量加载和处理提示词文件，支持单个文件和目录模式。\n\n文件模式\n- single_file：读取单个 txt/json 文件\n- directory：读取目录下所有文本文件\n\n最小演示\n- 将 prompt_file 改成你的真实路径\n- 读取第 1 批提示词\n\n输出\n- prompt\n- batch_index\n- total_batches\n- file_info"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "kkBatchPrompt",
+      "pos": [
+        489.80376464843795,
+        224.70748687744128
+      ],
+      "size": [
+        330,
+        190
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "batch_index",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "total_batches",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "file_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkBatchPrompt"
+      },
+      "widgets_values": [
+        "./prompts/demo.txt",
+        "single_file",
+        1,
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "Note",
+      "pos": [
+        927.7321757837561,
+        215.75900193098232
+      ],
+      "size": [
+        360,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "kkLLM（多厂商LLM）",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n通过多厂商 LLM 优化提示词。\n\n使用要求\n- 需要填写有效 api_key\n- 支持 deepseek / openai / gemini / doubao\n\n最小演示\n- provider：deepseek\n- model：deepseek-chat\n- 填入 api_key 后运行\n\n输出\n- optimized_prompt\n- original_prompt\n- optimization_info"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        1792.632847313598,
+        232.45305544208907
+      ],
+      "size": [
+        366.28751332741103,
+        347.24212828003124
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 5,
+      "type": "kkLLM",
+      "pos": [
+        1341.4075798364895,
+        226.29572831037672
+      ],
+      "size": [
+        430,
+        350
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "optimized_prompt",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "original_prompt",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "optimization_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkLLM"
+      },
+      "widgets_values": [
+        "a girl in white dress, cinematic portrait",
+        "",
+        "deepseek",
+        "deepseek-chat",
+        "",
+        "",
+        "你是一个专业的AI绘画提示词优化专家。请根据用户要求优化提示词，直接输出优化后的提示词，不要添加任何解释或标记。",
+        300,
+        0.7
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      2,
+      5,
+      0,
+      7,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "💬 提示词模块",
+      "bounding": [
+        40,
+        110,
+        839.7613811232716,
+        595.1445617565274
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "💬 kkLLM（多厂商LLM）",
+      "bounding": [
+        897.2622623443862,
+        115.73396727898738,
+        1289.5168073280547,
+        593.0899436934617
+      ],
+      "color": "#8A8",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5057519433903791,
+      "offset": [
+        617.5768137624607,
+        426.4575843338319
+      ]
+    },
+    "node_versions": {
+      "Comfyui-kktools": "module-demo"
+    },
+    "frontendVersion": "1.43.18"
+  },
+  "version": 0.4
+}
