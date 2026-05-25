@@ -1,0 +1,572 @@
+{
+  "id": "5d341b6c-6269-471c-9176-aedfe5505cea",
+  "revision": 0,
+  "last_node_id": 12,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        457.4444274902344,
+        614.0111083984375
+      ],
+      "size": [
+        380.35467529296875,
+        155.68203735351562
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "title": "Negative Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "水印、文字、Logo、平台标记、签名、AI generated 标签、低清晰度、模糊细节、脸部扭曲、五官不一致、不同人脸、多个人物、身份不一致、塑料皮肤、过度磨皮、过度美颜、睫毛过重、妆容过浓、身体比例错误、畸形手、额外手指、缺失手指、融合手指、手臂扭曲、腿部扭曲、脚部变形、关节异常、姿势僵硬、身体失衡、不真实面料、服装纹理破损、版型错误、cosplay 服装、过度华丽造型、奢华礼服、背景杂乱、颜色脏、过度锐化、过度美颜滤镜、廉价影楼感、动漫风、插画风、3D 渲染感、赛博朋克风、夸张科幻风。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "kkStringMergeNode",
+      "pos": [
+        863.7059326171875,
+        157.50100708007812
+      ],
+      "size": [
+        270.7564392089844,
+        274
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "string1",
+          "name": "string1",
+          "type": "STRING",
+          "widget": {
+            "name": "string1"
+          },
+          "link": 1
+        },
+        {
+          "label": "string2",
+          "name": "string2",
+          "type": "STRING",
+          "widget": {
+            "name": "string2"
+          },
+          "link": 2
+        },
+        {
+          "label": "separator",
+          "name": "separator",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "separator"
+          }
+        },
+        {
+          "label": "string3",
+          "name": "string3",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string3"
+          }
+        },
+        {
+          "label": "string4",
+          "name": "string4",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string4"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "merged_string",
+          "name": "merged_string",
+          "type": "STRING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkStringMergeNode",
+        "widget_ue_connectable": {
+          "string1": true,
+          "string2": true
+        }
+      },
+      "widgets_values": [
+        "",
+        "",
+        "。",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 12,
+      "type": "RH_RhartImageG2ImageToImage",
+      "pos": [
+        1211.8760986328125,
+        144.2263641357422
+      ],
+      "size": [
+        400,
+        408
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image3",
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image4",
+          "name": "image4",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image5",
+          "name": "image5",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image6",
+          "name": "image6",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image7",
+          "name": "image7",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image8",
+          "name": "image8",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image9",
+          "name": "image9",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image10",
+          "name": "image10",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "api_config",
+          "name": "api_config",
+          "shape": 7,
+          "type": "RH_OPENAPI_CONFIG"
+        },
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 15
+        },
+        {
+          "label": "aspectRatio",
+          "name": "aspectRatio",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "aspectRatio"
+          }
+        },
+        {
+          "label": "skip_error",
+          "name": "skip_error",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "skip_error"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "resolution",
+          "name": "resolution",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "resolution"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "label": "url",
+          "name": "url",
+          "type": "STRING"
+        },
+        {
+          "label": "response",
+          "name": "response",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RH_RhartImageG2ImageToImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "",
+        "3:4",
+        false,
+        447976658,
+        "randomize",
+        "1k"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [
+        1693.1240234375,
+        138.04287719726562
+      ],
+      "size": [
+        411.5993347167969,
+        630.768798828125
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        103.1163330078125,
+        143.33700561523438
+      ],
+      "size": [
+        275.0843200683594,
+        381.1541442871094
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "c0e082f2cba17bdd7db2807a6695b15eb07acaeccd4ad63a07243aa32c99102d.png",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 9,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        451.6306457519531,
+        146.2723846435547
+      ],
+      "size": [
+        387.904296875,
+        419.6390686035156
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "title": "Positive Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "将这张照片转换成一张Vogue风格的时尚插画，同时严格保持人物的身份特征和面部细节不变。整体风格为极简的手绘时尚素描，采用优雅拉长的人体比例，搭配粗黑墨水勾勒的轮廓线条，笔触松散自信，充满表现力。上色方式为平涂马克笔颜色，局部点缀抽象的腮红，嘴唇以图形化方式处理，眼睛经过风格化设计，头发用富有表现力的墨水线条描绘，服装则简化为几何形状。背景为干净的白色，并叠加扫描后的纸张纹理，整体呈现出一种现代奢华感的编辑级时尚插画气质。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      9,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      5,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      13,
+      12,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      4,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      6,
+      0,
+      12,
+      11,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load image",
+      "bounding": [
+        69.01225280761719,
+        53.90338134765625,
+        339.5865783691406,
+        503.7825927734375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Prompts",
+      "bounding": [
+        427.09075927734375,
+        55.80941390991211,
+        731.9674682617188,
+        751.4166870117188
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "image2",
+      "bounding": [
+        1183.1885986328125,
+        52.902252197265625,
+        458.2181701660156,
+        744.9592895507812
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Save image",
+      "bounding": [
+        1668.92919921875,
+        58.377685546875,
+        465.33331298828125,
+        741.4700927734375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "frontendVersion": "1.23.0",
+    "ds": {
+      "scale": 0.6588450000000008,
+      "offset": [
+        -101.26701198326879,
+        130.80113391585948
+      ]
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
