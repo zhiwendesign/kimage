@@ -1,0 +1,747 @@
+{
+  "id": "eb9af51e-20ed-4849-9198-86c3520c0f2d",
+  "revision": 0,
+  "last_node_id": 22,
+  "last_link_id": 12,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Note",
+      "pos": [
+        739.7598321765055,
+        -532.0851292267071
+      ],
+      "size": [
+        306.3150402832031,
+        195.5456392415365
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "🎬 视频处理模块 (video.py)",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "本文件收录该模块下所有节点的最小演示。\n说明卡内容按根目录 readme.md 的写法整理，打开后可直接对照参数和输出查看。\n合作交流：kkcomfy"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 2,
+      "type": "Note",
+      "pos": [
+        1115.5612028404078,
+        214.72455178205482
+      ],
+      "size": [
+        324.890234375,
+        328.27540827280086
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "kkVideoFirstLastFrames（视频首尾帧提取）",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n从 VIDEO 中提取首帧、尾帧，以及首尾两帧批次。\n\n最小演示\n- 连接任意 VIDEO\n\n输出\n- first_frame\n- last_frame\n- first_last_frames\n- audio"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 4,
+      "type": "Note",
+      "pos": [
+        1108.0982107769134,
+        -498.20698109477786
+      ],
+      "size": [
+        321.2125,
+        295.3415322875975
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "kkVideoFramesAdvanced（视频抽帧高级）",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n从 VIDEO 中提取全部帧，或按时间间隔抽帧。\n\n模式\n- every_frame\n- interval_seconds\n\n最小演示\n- 连接 VIDEO\n- every_frame 模式查看 fps 和数量\n\n输出\n- images\n- fps\n- extracted_count\n- info"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6,
+      "type": "Note",
+      "pos": [
+        2816.3052205670815,
+        -461.49520064141547
+      ],
+      "size": [
+        340.88922083599846,
+        309.7873432837523
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "kkMergeVideos（视频合并）",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "功能描述\n合并多个 VIDEO 输入并输出单个 VIDEO，同时按顺序拼接每段视频对应的音频。\n\n核心参数\n- size_reference\n- width / height\n- fps\n\n最小演示\n- 连接 video1 / video2\n- size_reference=keep\n\n输出\n- video"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [
+        2207.9816206670416,
+        204.78154944051343
+      ],
+      "size": [
+        248.15391940673817,
+        314.68457506347636
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 10,
+      "type": "LoadVideo",
+      "pos": [
+        1469.2538235050185,
+        199.83986519100532
+      ],
+      "size": [
+        374,
+        520.4937656751888
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "0506验收生成.mp4",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 11,
+      "type": "kkVideoFirstLastFrames",
+      "pos": [
+        1860.6230565743153,
+        201.8646816448674
+      ],
+      "size": [
+        324.890234375,
+        86
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "first_last_frames",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkVideoFirstLastFrames"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 12,
+      "type": "SaveAudio",
+      "pos": [
+        1859.4706708841268,
+        368.5767102303276
+      ],
+      "size": [
+        324.24066683595265,
+        112
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "audio/ComfyUI"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 13,
+      "type": "LoadVideo",
+      "pos": [
+        3192.325206005054,
+        -459.466348476935
+      ],
+      "size": [
+        374,
+        318.58120103873966
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "视频_1.2.mp4",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 14,
+      "type": "LoadVideo",
+      "pos": [
+        3195.775778214987,
+        -86.99019715884283
+      ],
+      "size": [
+        374,
+        347.4748808626284
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "视频_2.mp4",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 15,
+      "type": "LoadVideo",
+      "pos": [
+        3196.16201682317,
+        311.1572137228011
+      ],
+      "size": [
+        374,
+        285.568144503339
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "视频_1.1.mp4",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 17,
+      "type": "SaveVideo",
+      "pos": [
+        3998.6918980550663,
+        -417.3969454498068
+      ],
+      "size": [
+        367.22104890364926,
+        581.0853101546631
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 5
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "video/ComfyUI",
+        "mp4",
+        "auto"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 18,
+      "type": "kkMergeVideos",
+      "pos": [
+        3624.532647442929,
+        -293.8198074785894
+      ],
+      "size": [
+        286.7193359375,
+        230
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video1",
+          "type": "VIDEO",
+          "link": 6
+        },
+        {
+          "name": "video2",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": 7
+        },
+        {
+          "name": "video3",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": 8
+        },
+        {
+          "name": "video4",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "video5",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkMergeVideos"
+      },
+      "widgets_values": [
+        "keep",
+        0,
+        0,
+        30
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 19,
+      "type": "kkVideoFramesAdvanced",
+      "pos": [
+        1802.4863229156222,
+        -469.577734105477
+      ],
+      "size": [
+        381.2125,
+        142
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "extracted_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkVideoFramesAdvanced"
+      },
+      "widgets_values": [
+        "every_frame",
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 20,
+      "type": "LoadVideo",
+      "pos": [
+        1472.6259878702947,
+        -498.4331001297889
+      ],
+      "size": [
+        270,
+        554.375
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "0506验收生成.mp4",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 21,
+      "type": "SaveImage",
+      "pos": [
+        2210.4412139072488,
+        -484.9196728475604
+      ],
+      "size": [
+        502.2681740087355,
+        550.110806599416
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 22,
+      "type": "SaveImage",
+      "pos": [
+        2479.771269158362,
+        205.389384836233
+      ],
+      "size": [
+        248.15391940673817,
+        314.68457506347636
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    }
+  ],
+  "links": [
+    [
+      1,
+      11,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      10,
+      0,
+      11,
+      0,
+      "VIDEO"
+    ],
+    [
+      4,
+      11,
+      3,
+      12,
+      0,
+      "AUDIO"
+    ],
+    [
+      5,
+      18,
+      0,
+      17,
+      0,
+      "VIDEO"
+    ],
+    [
+      6,
+      13,
+      0,
+      18,
+      0,
+      "VIDEO"
+    ],
+    [
+      7,
+      14,
+      0,
+      18,
+      1,
+      "VIDEO"
+    ],
+    [
+      8,
+      15,
+      0,
+      18,
+      2,
+      "VIDEO"
+    ],
+    [
+      10,
+      20,
+      0,
+      19,
+      0,
+      "VIDEO"
+    ],
+    [
+      11,
+      19,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      11,
+      1,
+      22,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "🎬 视频处理模块 (video.py)",
+      "bounding": [
+        1083.5573874126558,
+        -588.1612547764186,
+        1672.956418614277,
+        677.9244044559098
+      ],
+      "color": "#88A",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "kkVideoFirstLastFrames（视频首尾帧提取）",
+      "bounding": [
+        1076.2797885188313,
+        115.28833187006403,
+        1681.065635168249,
+        630.4793259806326
+      ],
+      "color": "#88A",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "kkMergeVideos（视频合并）",
+      "bounding": [
+        2785.333423361347,
+        -583.774900168974,
+        1643.6849217880608,
+        1329.8833534185774
+      ],
+      "color": "#88A",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.3504938994813935,
+      "offset": [
+        354.82043709757653,
+        1346.7849296819238
+      ]
+    },
+    "node_versions": {
+      "Comfyui-kktools": "module-demo"
+    },
+    "frontendVersion": "1.43.18"
+  },
+  "version": 0.4
+}
