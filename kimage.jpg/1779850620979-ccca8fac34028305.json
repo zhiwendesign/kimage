@@ -1,0 +1,528 @@
+{
+  "id": "5d341b6c-6269-471c-9176-aedfe5505cea",
+  "revision": 0,
+  "last_node_id": 40,
+  "last_link_id": 65,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        862.5687398656554,
+        479.210312951762
+      ],
+      "size": [
+        380.35467529296875,
+        155.68203735351562
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "title": "Negative Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "水印、文字、Logo、平台标记、签名、AI generated 标签、低清晰度、模糊细节、脸部扭曲、五官不一致、不同人脸、多个人物、身份不一致、塑料皮肤、过度磨皮、过度美颜、睫毛过重、妆容过浓、身体比例错误、畸形手、额外手指、缺失手指、融合手指、手臂扭曲、腿部扭曲、脚部变形、关节异常、姿势僵硬、身体失衡、不真实面料、服装纹理破损、版型错误、cosplay 服装、过度华丽造型、奢华礼服、背景杂乱、颜色脏、过度锐化、过度美颜滤镜、廉价影楼感、动漫风、插画风、3D 渲染感、赛博朋克风、夸张科幻风。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "kkStringMergeNode",
+      "pos": [
+        865.2716112497571,
+        153.11085717921446
+      ],
+      "size": [
+        270.7564453125,
+        274
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "string1",
+          "name": "string1",
+          "type": "STRING",
+          "widget": {
+            "name": "string1"
+          },
+          "link": 1
+        },
+        {
+          "label": "string2",
+          "name": "string2",
+          "type": "STRING",
+          "widget": {
+            "name": "string2"
+          },
+          "link": 2
+        },
+        {
+          "label": "separator",
+          "name": "separator",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "separator"
+          }
+        },
+        {
+          "label": "string3",
+          "name": "string3",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string3"
+          }
+        },
+        {
+          "label": "string4",
+          "name": "string4",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "string4"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "merged_string",
+          "name": "merged_string",
+          "type": "STRING",
+          "links": [
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkStringMergeNode",
+        "widget_ue_connectable": {
+          "string1": true,
+          "string2": true
+        }
+      },
+      "widgets_values": [
+        "",
+        "",
+        "。",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [
+        1733.717651082358,
+        138.92733888984125
+      ],
+      "size": [
+        411.5993347167969,
+        630.768798828125
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 65
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {},
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 9,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        449.7275961769153,
+        147.7141815066969
+      ],
+      "size": [
+        387.0594707871596,
+        648.1889407479875
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "title": "Positive Prompts",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "将上传的图像转换成一张极简杂志剪贴画风格的插画。保留原图中的主体、姿态和整体概念，但将其 reinterpret 为一张温暖的手工编辑拼贴作品。\n\n整体风格为极简的杂志剪贴画插画，采用平面分层纸片形状，柔和的粉彩纸张纹理，带有撕纸边缘和纸张阴影效果，辅以干净的黑色涂鸦点缀，呈现出手工剪贴簿的氛围，同时兼具现代韩系编辑设计感。构图简单可爱，留有大量干净的白色负空间。\n\n角色需要简化成可爱的韩系风格人物，面部细节极少，带有放松的小微笑，身体比例柔和圆润，穿着简单的休闲服装，整体呈现出纸雕分层剪影的效果，主体稍微偏低并偏向一侧，对面留出大片空白，布局稀疏透气，不拥挤。\n\n在画面中添加少量与场景相关的拼贴道具，例如便签纸、小爱心、植物、咖啡杯、窗户、胶带片段，以及简单的涂鸦图标。排版方面，需要添加一句优雅的手写英文标题，标题需与画面氛围相匹配，推荐使用以下短句之一：“Take a small break”、“Soft little moment”、“Everyday joy”、“Quiet mood”、“Good day, good mood”。\n\n整体氛围要求平静、舒适、温暖、可爱，具有编辑感。需要避免的内容包括：写实照片感、动漫风格、水彩质感、3D黏土感、过于细节的背景、杂乱的拼贴、奢华海报调性、深色、生硬阴影以及杂乱的文字。最终输出应保持干净、手工感、柔和，无水印，无AI伪影。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 14,
+      "type": "LoadImage",
+      "pos": [
+        97.80130107791938,
+        144.39067073084362
+      ],
+      "size": [
+        293.2686247859624,
+        394.2459777175326
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            58
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "image 9.png",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 36,
+      "type": "kkimage2_Zuco",
+      "pos": [
+        1208.72919013541,
+        143.33841459585943
+      ],
+      "size": [
+        434.4787783190566,
+        618.123127459909
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 58
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "widget": {
+            "name": "api_key"
+          },
+          "link": 60
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            65
+          ]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkimage2_Zuco"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "1024x1536",
+        1024,
+        1024,
+        "png",
+        600
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 37,
+      "type": "PrimitiveString",
+      "pos": [
+        863.7261225178177,
+        474.0784965389747
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            60
+          ]
+        }
+      ],
+      "title": "API",
+      "properties": {
+        "Node name for S&R": "PrimitiveString"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 40,
+      "type": "Note",
+      "pos": [
+        863.8076985173076,
+        584.9279379914564
+      ],
+      "size": [
+        265.1080232252385,
+        200.73589229535264
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "🎬 API购买地址",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "\nAPI购买：\nhttps://api.zuco.ai/register?aff=KAKA\n\n合作交流：kkcomfy"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      1,
+      9,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      5,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      58,
+      14,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      59,
+      6,
+      0,
+      36,
+      3,
+      "STRING"
+    ],
+    [
+      60,
+      37,
+      0,
+      36,
+      2,
+      "STRING"
+    ],
+    [
+      65,
+      36,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load image",
+      "bounding": [
+        74.24973149457371,
+        60.10721063672873,
+        339.5865783691406,
+        503.7825927734375
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Prompts",
+      "bounding": [
+        427.09075927734375,
+        55.80941390991211,
+        732.7144215888954,
+        744.1360459431157
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "image2",
+      "bounding": [
+        1180.3936554169745,
+        56.67811419968152,
+        507.15005590225974,
+        749.1874644489449
+      ],
+      "color": "#b58b2a",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Save image",
+      "bounding": [
+        1709.5228268636083,
+        59.262147239450705,
+        465.33331298828125,
+        741.4700927734375
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "frontendVersion": "1.43.18",
+    "ds": {
+      "scale": 0.7241602637711173,
+      "offset": [
+        184.95726283578847,
+        296.13484270388574
+      ]
+    }
+  },
+  "version": 0.4
+}
