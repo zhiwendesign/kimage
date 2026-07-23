@@ -1,0 +1,1278 @@
+{
+  "id": "9e44daa7-e2de-4b96-8493-26968270ece4",
+  "revision": 0,
+  "last_node_id": 93,
+  "last_link_id": 137,
+  "nodes": [
+    {
+      "id": 70,
+      "type": "KSamplerSelect",
+      "pos": [
+        1862.0137939453125,
+        542.4127807617188
+      ],
+      "size": [
+        241.24867248535156,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "采样器",
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "slot_index": 0,
+          "links": [
+            131
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "euler"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 71,
+      "type": "BasicScheduler",
+      "pos": [
+        1860.0137939453125,
+        387.4133605957031
+      ],
+      "size": [
+        243.11422729492188,
+        106
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 125
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Sigmas",
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "slot_index": 0,
+          "links": [
+            132
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 72,
+      "type": "RandomNoise",
+      "pos": [
+        1868.013916015625,
+        130.41165161132812
+      ],
+      "size": [
+        245.30502319335938,
+        105.31306457519531
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "noise_seed",
+          "name": "noise_seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "噪波生成",
+          "name": "NOISE",
+          "type": "NOISE",
+          "slot_index": 0,
+          "links": [
+            129
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        911818587262361,
+        "randomize"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 73,
+      "type": "BasicGuider",
+      "pos": [
+        1857.0137939453125,
+        284.4132080078125
+      ],
+      "size": [
+        249.32615661621094,
+        46
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 126
+        },
+        {
+          "label": "条件",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "label": "引导",
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "slot_index": 0,
+          "links": [
+            130
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 74,
+      "type": "UNETLoader",
+      "pos": [
+        378.8017883300781,
+        122.7601547241211
+      ],
+      "size": [
+        425.5577697753906,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            125,
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "flux1-dev-fp8.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux1-dev-fp8.safetensors",
+        "default"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 80,
+      "type": "Note",
+      "pos": [
+        2611.982421875,
+        371.64007568359375
+      ],
+      "size": [
+        297.0390625,
+        290
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAE 负责把 FLUX 的潜空间结果还原成可见图像。请使用 ae.safetensors；选错 VAE 可能出现通道报错、偏色、花屏或无法解码。\n\n文件：ae.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true\n存放：D:\\ComfyUI\\models\\vae\n\n该公开文件与 FLUX.1 VAE 的 SHA256 一致。下载后刷新模型列表并选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 81,
+      "type": "VAEDecode",
+      "pos": [
+        2601.036376953125,
+        134.81222534179688
+      ],
+      "size": [
+        299.7798156738281,
+        54.7701530456543
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 134
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            136
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 82,
+      "type": "Note",
+      "pos": [
+        378.8017883300781,
+        252.76144409179688
+      ],
+      "size": [
+        424.3396301269531,
+        285
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是 FLUX.1-dev FP8 扩散模型加载节点。FP8 版本比完整精度更省显存，但文件仍较大；显存不足时可启用 ComfyUI 的模型卸载或低显存模式。\n\n文件：flux1-dev-fp8.safetensors\n下载：https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true\n存放：D:\\ComfyUI\\models\\diffusion_models\n\n该文件已经是 FP8，weight_dtype 保持 default。FLUX.1-dev 受非商用许可约束。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 83,
+      "type": "VAELoader",
+      "pos": [
+        2607.722412109375,
+        248.2721405029297
+      ],
+      "size": [
+        297.8271789550781,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "ae.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 85,
+      "type": "SaveImage",
+      "pos": [
+        3044.84765625,
+        126.72453308105469
+      ],
+      "size": [
+        518.4068603515625,
+        595.802978515625
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 136
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 90,
+      "type": "Note",
+      "pos": [
+        1849.9781494140625,
+        882.5132446289062
+      ],
+      "size": [
+        262.591064453125,
+        170
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "BasicGuider 把扩散模型与正向条件组合成 guider，并交给高级采样器。本工作流没有单独的负面条件。\n\n保持 model 和 conditioning 两条连线完整。若后续需要调节 FLUX 的提示词引导强度，可在条件链中增加 FluxGuidance 后再接入。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 93,
+      "type": "Note",
+      "pos": [
+        3044.84765625,
+        777.1784057617188
+      ],
+      "size": [
+        518.4068603515625,
+        190
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终图片。filename_prefix 可以设置文件名前缀，也可以写成“项目名/前缀”自动建立子文件夹。\n\n默认输出目录：D:\\ComfyUI\\output\n\n该节点不需要下载模型。正式批量生成前，建议先确认尺寸、种子策略和文件名前缀。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 88,
+      "type": "Note",
+      "pos": [
+        2154.246337890625,
+        926.0016479492188
+      ],
+      "size": [
+        341.6138610839844,
+        174.83209228515625
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "BasicScheduler 根据模型、scheduler、步数和 denoise 生成采样所需的 sigmas。\n\n当前 simple、20 steps、denoise=1 适合作为 FLUX.1-dev 文生图起点。需要更多细节可尝试 24～30 步，但耗时会增加；纯文生图 denoise 保持 1。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 79,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2144.015380859375,
+        132.4117431640625
+      ],
+      "size": [
+        341.6744384765625,
+        476.251708984375
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "噪波生成",
+          "name": "noise",
+          "type": "NOISE",
+          "link": 129
+        },
+        {
+          "label": "引导",
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 130
+        },
+        {
+          "label": "采样器",
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 131
+        },
+        {
+          "label": "Sigmas",
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 132
+        },
+        {
+          "label": "Latent",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "label": "输出",
+          "name": "output",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            134
+          ]
+        },
+        {
+          "label": "降噪输出",
+          "name": "denoised_output",
+          "type": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 91,
+      "type": "Note",
+      "pos": [
+        2143.979736328125,
+        687.5133666992188
+      ],
+      "size": [
+        355.24285888671875,
+        189.0919189453125
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "SamplerCustomAdvanced 汇总五项输入并执行完整去噪：\n• noise：来自 RandomNoise；\n• guider：来自 BasicGuider；\n• sampler：来自 KSamplerSelect；\n• sigmas：来自 BasicScheduler；\n• latent_image：来自尺寸节点。\n\noutput 连接 VAE 解码；denoised_output 当前未使用。该节点本身没有可调参数，出现报错时按上面顺序检查五条输入线和各上游节点。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 92,
+      "type": "Note",
+      "pos": [
+        2614.263671875,
+        709.6923828125
+      ],
+      "size": [
+        297.8271789550781,
+        180
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAEDecode 把高级采样器输出的 LATENT 还原成 IMAGE。它本身不需要下载额外文件，所需模型来自 VAELoader。\n\n若出现花屏、偏色或解码失败，检查 samples、vae 两条输入线，并确认 VAE 选择 ae.safetensors。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 89,
+      "type": "Note",
+      "pos": [
+        1854.8331298828125,
+        671.9760131835938
+      ],
+      "size": [
+        262.591064453125,
+        170
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "RandomNoise 提供初始噪声和 seed。randomize 会在每次运行后更换种子，适合探索不同构图；固定 seed 便于比较提示词、步数或采样器。\n\n同一模型、尺寸、参数和 seed 才能较稳定地复现结果。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 78,
+      "type": "Note",
+      "pos": [
+        1853.9141845703125,
+        1100.4659423828125
+      ],
+      "size": [
+        262.591064453125,
+        190
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "KSamplerSelect 只负责选择采样算法，并把它交给高级采样器。FLUX.1-dev 可先使用 euler，稳定、速度快，也是当前工作流的默认设置。\n\n更换采样器会改变细节和质感；对比时请固定 seed、步数和提示词，一次只改这一项。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 75,
+      "type": "Note",
+      "pos": [
+        895.704833984375,
+        306.6072998046875
+      ],
+      "size": [
+        375.22100830078125,
+        281.4905090332031
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "FLUX 同时使用 T5-XXL 和 CLIP-L 理解提示词。当前 T5 使用 FP8，显存占用更低；类型保持 flux，device 通常保持 default。\n\nT5 文件：t5xxl_fp8_e4m3fn.safetensors\n下载：https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true\n\nCLIP 文件：clip_l.safetensors\n下载：https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true\n\n存放：D:\\ComfyUI\\models\\text_encoders\n下载后刷新模型列表并选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 86,
+      "type": "kkSizeNode",
+      "pos": [
+        1354.671630859375,
+        127.14088439941406
+      ],
+      "size": [
+        404.50506591796875,
+        214
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "size_mode",
+          "name": "size_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "size_mode"
+          }
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "custom_width",
+          "name": "custom_width",
+          "type": "INT",
+          "widget": {
+            "name": "custom_width"
+          }
+        },
+        {
+          "label": "custom_height",
+          "name": "custom_height",
+          "type": "INT",
+          "widget": {
+            "name": "custom_height"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "latent",
+          "name": "latent",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            133
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        },
+        {
+          "label": "ratio",
+          "name": "ratio",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSizeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "preset",
+        "3:4",
+        512,
+        512,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 87,
+      "type": "Note",
+      "pos": [
+        1355.1689453125,
+        387.62249755859375
+      ],
+      "size": [
+        424.21630859375,
+        250
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里设置画布比例、宽高和批次数量。Preset 按预设比例出图，Custom 使用下方 width/height。建议先用 batch_size=1 测试显存。\n\n常用尺寸：\n• 1024×1024：方形 1:1\n• 896×1152：竖版 3:4\n• 896×1120：肖像 4:5\n• 832×1216：竖版 2:3\n• 1216×832：横版 3:2\n• 1344×768：宽屏 16:9\n\n尺寸尽量使用 32 的倍数。显存不足时优先降低尺寸或批次数量。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 77,
+      "type": "Note",
+      "pos": [
+        897.6420288085938,
+        849.8133544921875
+      ],
+      "size": [
+        364.0725402832031,
+        210
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "FLUX 适合完整、具体的自然语言，不必堆砌逗号 TAG。建议按“主体 → 外观/动作 → 场景 → 构图/镜头 → 光线/色彩 → 风格/材质 → 画质”的顺序描述。\n\n这个基础工作流没有单独的负面提示词输入。想避免某些内容时，直接在正向描述中写清楚，例如“干净背景、画面中不出现文字”。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 84,
+      "type": "Note",
+      "pos": [
+        -175.29666137695312,
+        62.58237838745117
+      ],
+      "size": [
+        487.45953369140625,
+        650
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "我是卡卡，这是一个 FLUX.1-dev FP8 文生图工作流。请按每个区域里的「卡卡提示」操作。欢迎加我好友一起交流学习，微信：kkcomfy\n\n【使用前准备】\n先下载完成后放入对应目录，再刷新模型列表或重启。\n\n1. 扩散模型\n文件：flux1-dev-fp8.safetensors\n下载：https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true\n目录：D:\\ComfyUI\\models\\diffusion_models\n\n2. T5-XXL FP8 文本编码器\n文件：t5xxl_fp8_e4m3fn.safetensors\n下载：https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true\n目录：D:\\ComfyUI\\models\\text_encoders\n\n3. CLIP-L 文本编码器\n文件：clip_l.safetensors\n下载：https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true\n目录：D:\\ComfyUI\\models\\text_encoders\n\n4. VAE\n文件：ae.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true\n目录：D:\\ComfyUI\\models\\vae\n\n官方模型介绍与许可：https://huggingface.co/black-forest-labs/FLUX.1-dev\n注意：FLUX.1-dev 使用非商用许可，发布或商用前请先阅读许可条款。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 76,
+      "type": "CLIPTextEncode",
+      "pos": [
+        895.8130493164062,
+        640.5480346679688
+      ],
+      "size": [
+        366.99127197265625,
+        157.7869110107422
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 128
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            127
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "An anime-style illustration inspired by Studio Ghibli, featuring a spirited young protagonist named KAKA, wearing a flowing white dress and a wide-brimmed straw hat, riding on the back of a large friendly forest spirit that resembles a gentle wolf. In her right hand, she cheerfully holds up a rustic wooden sign, with the name \"KAKA\" painted on it in bright, playful rainbow-colored letters. They are leaping over a crystal-clear stream deep inside a lush green valley during early summer. Sunlight filters through the leaves, casting soft bokeh effects all around. Wildflowers in shades of lavender and yellow blanket the meadows. The background showcases rolling green hills and a quaint little windmill in the distance. The composition is open and airy, with a strong emphasis on nature and tranquility. KAKA's hair and dress are dynamically flowing in the wind, the sign also swaying slightly, conveying a sense of freedom and joy. Soft pastel gradients, cel-shaded yet with painterly textures, serene and poetic visual narrative.\n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 69,
+      "type": "DualCLIPLoader",
+      "pos": [
+        896.6573486328125,
+        128.70980834960938
+      ],
+      "size": [
+        364.98468017578125,
+        130
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name1",
+          "name": "clip_name1",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name1"
+          }
+        },
+        {
+          "label": "clip_name2",
+          "name": "clip_name2",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name2"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            128
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "t5xxl_fp8_e4m3fn.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true"
+          },
+          {
+            "directory_invalid": true,
+            "name": "clip_l.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "clip_l.safetensors",
+        "flux",
+        "default"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      125,
+      74,
+      0,
+      71,
+      0,
+      "MODEL"
+    ],
+    [
+      126,
+      74,
+      0,
+      73,
+      0,
+      "MODEL"
+    ],
+    [
+      127,
+      76,
+      0,
+      73,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      128,
+      69,
+      0,
+      76,
+      0,
+      "CLIP"
+    ],
+    [
+      129,
+      72,
+      0,
+      79,
+      0,
+      "NOISE"
+    ],
+    [
+      130,
+      73,
+      0,
+      79,
+      1,
+      "GUIDER"
+    ],
+    [
+      131,
+      70,
+      0,
+      79,
+      2,
+      "SAMPLER"
+    ],
+    [
+      132,
+      71,
+      0,
+      79,
+      3,
+      "SIGMAS"
+    ],
+    [
+      133,
+      86,
+      0,
+      79,
+      4,
+      "LATENT"
+    ],
+    [
+      134,
+      79,
+      0,
+      81,
+      0,
+      "LATENT"
+    ],
+    [
+      135,
+      83,
+      0,
+      81,
+      1,
+      "VAE"
+    ],
+    [
+      136,
+      81,
+      0,
+      85,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 8,
+      "title": "Prompt",
+      "bounding": [
+        858.6571044921875,
+        31.70949935913086,
+        437.7381896972656,
+        1100
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "BaseModels",
+      "bounding": [
+        338.802001953125,
+        31.76003646850586,
+        493.76898193359375,
+        560
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "Save Image",
+      "bounding": [
+        2997.715087890625,
+        40.5177001953125,
+        625.3438720703125,
+        950
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 11,
+      "title": "KSampler",
+      "bounding": [
+        1817.698974609375,
+        33.12495422363281,
+        706.796875,
+        1289.6180419921875
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 12,
+      "title": "VAE",
+      "bounding": [
+        2550.17041015625,
+        37.28164291381836,
+        422.04962158203125,
+        880
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 13,
+      "title": "Size",
+      "bounding": [
+        1310.6195068359375,
+        35.39371871948242,
+        490.3974304199219,
+        620
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "VHS_KeepIntermediate": true,
+    "KKvideo_latentpreview": false,
+    "ue_links": [],
+    "KKvideo_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "node_versions": {
+      "comfy-core": "v0.3.9-5-ga18894d"
+    },
+    "ds": {
+      "scale": 0.45000000000000023,
+      "offset": [
+        271.8983688897442,
+        286.3144519241914
+      ]
+    }
+  },
+  "version": 0.4
+}
