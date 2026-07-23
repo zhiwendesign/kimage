@@ -1,0 +1,1755 @@
+{
+  "id": "ad18abd3-bdee-4f80-8fae-d15d4f845b9d",
+  "revision": 0,
+  "last_node_id": 123,
+  "last_link_id": 245,
+  "nodes": [
+    {
+      "id": 64,
+      "type": "CFGNorm",
+      "pos": [
+        1357.5511474609375,
+        -148.73068237304688
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 177
+        },
+        {
+          "label": "strength",
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          }
+        },
+        {
+          "label": "pre_cfg",
+          "name": "pre_cfg",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "pre_cfg"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "patched_model",
+          "name": "patched_model",
+          "type": "MODEL",
+          "links": [
+            171
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGNorm",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        1,
+        false
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 67,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        1357.5511474609375,
+        -258.7278747558594
+      ],
+      "size": [
+        270,
+        68.33333587646484
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 192
+        },
+        {
+          "label": "shift",
+          "name": "shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingAuraFlow",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        3
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 12,
+      "type": "UNETLoader",
+      "pos": [
+        -754.64404296875,
+        -275.75341796875
+      ],
+      "size": [
+        482.1877136230469,
+        88.12541198730469
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            191
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "qwen_image_edit_2511_bf16.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors?download=true"
+          }
+        ],
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "qwen_image_edit_2511_bf16.safetensors",
+        "default"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 61,
+      "type": "CLIPLoader",
+      "pos": [
+        -759.4039916992188,
+        10.79841423034668
+      ],
+      "size": [
+        488.10150146484375,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            178
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors?download=true"
+          }
+        ],
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 100,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        1372.1812744140625,
+        84.33922576904297
+      ],
+      "size": [
+        247.24851989746094,
+        27.759756088256836
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "条件",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 237
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            236
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 102,
+      "type": "ReferenceLatent",
+      "pos": [
+        1359.4716796875,
+        -25.828020095825195
+      ],
+      "size": [
+        255.02793884277344,
+        51.97243881225586
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 238
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 243
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            239
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 65,
+      "type": "KSampler",
+      "pos": [
+        1671.3082275390625,
+        -249.61814880371094
+      ],
+      "size": [
+        319.23382568359375,
+        262
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 171
+        },
+        {
+          "label": "正面条件",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 239
+        },
+        {
+          "label": "负面条件",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 236
+        },
+        {
+          "label": "Latent",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 242
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Latent",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        1002570662162370,
+        "randomize",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 74,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -759.381103515625,
+        -124.58617401123047
+      ],
+      "size": [
+        488.007080078125,
+        82
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 191
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            192
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors",
+            "directory": "loras",
+            "url": "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors?download=true"
+          }
+        ],
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors",
+        1
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 91,
+      "type": "VAEEncode",
+      "pos": [
+        1680.4039306640625,
+        68.7829360961914
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 223
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 224
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Latent",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            242,
+            243
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        2533.198974609375,
+        -270.5713195800781
+      ],
+      "size": [
+        313.97216796875,
+        405.71551513671875
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 108,
+      "type": "Note",
+      "pos": [
+        321.6001281738281,
+        172.13511657714844
+      ],
+      "size": [
+        286.29010009765625,
+        170.8516845703125
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是最重要的输入：要修复或编辑的主图。它同时送入提示词编码和 VAEEncode，因此决定输出的基础构图、画布比例与潜空间内容。\n\n建议使用清晰、方向正确的 PNG/JPG。若只做像素修复，不要在这里放风格参考图。更换图片后确认预览正常；尺寸过大可能显存不足。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 109,
+      "type": "Note",
+      "pos": [
+        648.01416015625,
+        172.13511657714844
+      ],
+      "size": [
+        281.1058349609375,
+        165.72772216796875
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "图2是辅助参考图，可提供人物五官、纹理、颜色或清晰细节。提示词中要明确“参考图2的什么”，避免模型误把整张图2当作新构图。\n\n不需要第二张参考时，可以重复载入图1；不要留失效文件名，否则运行会报缺图。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 110,
+      "type": "Note",
+      "pos": [
+        963.72509765625,
+        172.3292694091797
+      ],
+      "size": [
+        281.490234375,
+        164.97242736816406
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "图3用于补充第二类参考信息，例如另一角度、材质、服装细节或无损原图。多个参考图尽量各司其职，并在提示词中按图1、图2、图3说明用途。\n\n不需要第三张参考时，可以重复载入图1，保持节点连线完整。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 112,
+      "type": "Note",
+      "pos": [
+        -752.8683471679688,
+        177.09449768066406
+      ],
+      "size": [
+        483.75836181640625,
+        204.59837341308594
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是 Qwen-Image-Edit-2511 的 BF16 扩散模型，负责核心图像编辑。文件较大，对显存和系统内存要求较高；显存不足时可使用 ComfyUI 的模型卸载或低显存模式。\n\n文件：qwen_image_edit_2511_bf16.safetensors\n下载：https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors?download=true\n存放：D:\\ComfyUI\\models\\diffusion_models\n\n下载后在本节点选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 114,
+      "type": "Note",
+      "pos": [
+        -748.6597900390625,
+        669.1984252929688
+      ],
+      "size": [
+        478.70697021484375,
+        209.9656982421875
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是 Qwen2.5-VL 7B FP8 编码器，用于同时理解编辑指令和多张参考图。type 保持 qwen_image，device 通常保持 default。\n\n文件：qwen_2.5_vl_7b_fp8_scaled.safetensors\n下载：https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors?download=true\n存放：D:\\ComfyUI\\models\\text_encoders\n\n仓库名称虽包含 HunyuanVideo，但这是官方 ComfyUI 工作流使用的同名编码器文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 117,
+      "type": "Note",
+      "pos": [
+        1360.4644775390625,
+        190.4507293701172
+      ],
+      "size": [
+        270,
+        170
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "ModelSamplingAuraFlow 为模型设置正确的采样时间表。当前 shift=3 是本工作流的匹配值，通常无需修改。\n\n它应位于 LoRA 加载之后、CFGNorm 之前；断开或绕过会改变去噪轨迹和编辑效果。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 122,
+      "type": "Note",
+      "pos": [
+        1658.8619384765625,
+        190.2154998779297
+      ],
+      "size": [
+        319.23382568359375,
+        330
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是最终执行像素修复的采样节点，参数已与 8-step Lightning LoRA 对齐。\n\n• seed：randomize 每次结果不同；固定种子便于对比提示词。\n• steps：保持 8，与当前 LoRA 配套。\n• cfg：保持 1。\n• sampler：euler。\n• scheduler：simple。\n• denoise：当前 1 会完整执行编辑；像素修复若变化过大，可先通过提示词加强“保持不变”，再谨慎小幅降低 denoise。\n\n一次只调整一个参数，并先用单张图测试。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 118,
+      "type": "Note",
+      "pos": [
+        1363.965576171875,
+        409.408447265625
+      ],
+      "size": [
+        270,
+        190
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "CFGNorm 用于稳定条件引导，抑制过曝、偏色和细节爆炸。当前 strength=1、pre_cfg=false 可作为稳定起点。\n\n像素修复出现过度重绘时，可小幅降低 strength 后对比；一次只改一个参数，并固定 seed。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 120,
+      "type": "Note",
+      "pos": [
+        1671.5223388671875,
+        578.131103515625
+      ],
+      "size": [
+        270,
+        205
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "ReferenceLatent 把图像编辑条件与图1的潜空间关联起来，让模型在原图结构上执行修复，而不是从零生成。\n\nconditioning 来自多图编辑编码，latent 来自图1的 VAEEncode。两条线都必须保留，否则身份、构图和像素位置更容易漂移。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 119,
+      "type": "Note",
+      "pos": [
+        1366.754150390625,
+        646.6325073242188
+      ],
+      "size": [
+        270,
+        175
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这个节点把编辑条件清零后送到 KSampler 的 negative 输入，配合 CFG=1 使用。\n\n保持现有连线即可，不需要额外填写负面提示词。像素修复中的禁止项应直接写进正向编辑指令。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 111,
+      "type": "Note",
+      "pos": [
+        2539.136474609375,
+        191.00791931152344
+      ],
+      "size": [
+        313.97216796875,
+        230
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终修复结果。filename_prefix 可设置文件名前缀，也可写成“项目名/前缀”建立子文件夹。\n\n默认目录：D:\\ComfyUI\\output\n\n该节点不需要下载模型。正式批量处理前先用一张图片检查修复强度、细节一致性和输出文件名。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 115,
+      "type": "Note",
+      "pos": [
+        2082.102783203125,
+        -33.09373092651367
+      ],
+      "size": [
+        317.1868591308594,
+        217.47418212890625
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAE 同时参与参考图编码和结果解码，必须使用 Qwen-Image 专用文件。若选错 VAE，常见表现是通道报错、花屏、偏色或无法解码。\n\n文件：qwen_image_vae.safetensors\n下载：https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors?download=true\n存放：D:\\ComfyUI\\models\\vae\n\n下载后刷新模型列表并选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 113,
+      "type": "Note",
+      "pos": [
+        -746.7987060546875,
+        438.3532409667969
+      ],
+      "size": [
+        473.89166259765625,
+        172.4944610595703
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这个 LoRA 把 Qwen-Image-Edit-2511 加速到 8 步，必须与下游 KSampler 的 steps=8 配套。strength_model 建议保持 1；降低会减弱加速效果，随意更换旧版 Qwen-Image LoRA 可能造成编辑失败或画质异常。\n\n文件：Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors\n下载：https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors?download=true\n存放：D:\\ComfyUI\\models\\loras"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 107,
+      "type": "Note",
+      "pos": [
+        -191.20884704589844,
+        37.8177604675293
+      ],
+      "size": [
+        429.27471923828125,
+        225.20285034179688
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里填写图像编辑指令，并自动传给正向编码节点。默认提示词适合像素修复。\n\n描述时先说“修复什么”，再明确“哪些内容必须保持不变”。局部修复要指出位置、颜色、材质和边缘关系；避免只写“变清晰”，否则模型容易重绘整张图。\n\n需要改变内容时，请删除默认提示中对应的“保持不变”限制。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 106,
+      "type": "Note",
+      "pos": [
+        -1364.468994140625,
+        -339.090576171875
+      ],
+      "size": [
+        540,
+        720
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "我是卡卡，这是一个 Qwen-Image-Edit-2511 多图像素修复工作流。图1是要修复的主图，图2、图3用于补充参考；没有参考图时也可重复使用主图。欢迎加我好友一起交流学习，微信：kkcomfy\n\n【使用前准备】\n建议先更新 ComfyUI。下载模型后放入对应目录，再刷新模型列表或重启。\n\n1. 扩散模型\n文件：qwen_image_edit_2511_bf16.safetensors\n下载：https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors?download=true\n目录：D:\\ComfyUI\\models\\diffusion_models\n\n2. 8 步 Lightning LoRA\n文件：Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors\n下载：https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors?download=true\n目录：D:\\ComfyUI\\models\\loras\n\n3. 文本/视觉编码器\n文件：qwen_2.5_vl_7b_fp8_scaled.safetensors\n下载：https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors?download=true\n目录：D:\\ComfyUI\\models\\text_encoders\n\n4. VAE\n文件：qwen_image_vae.safetensors\n下载：https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors?download=true\n目录：D:\\ComfyUI\\models\\vae\n\n官方模型介绍：https://huggingface.co/Qwen/Qwen-Image-Edit-2511"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2088.678955078125,
+        -249.46421813964844
+      ],
+      "size": [
+        287.1186828613281,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 175
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        2075.533935546875,
+        -147.20794677734375
+      ],
+      "size": [
+        308.31573486328125,
+        58
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            12,
+            224,
+            241
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "qwen_image_vae.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors?download=true"
+          }
+        ],
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 68,
+      "type": "TextEncodeQwenImageEditPlus",
+      "pos": [
+        -193.05026245117188,
+        -263.7224426269531
+      ],
+      "size": [
+        441.61834716796875,
+        256.1666564941406
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 178
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 241
+        },
+        {
+          "label": "image1",
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 213
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 204
+        },
+        {
+          "label": "image3",
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 245
+        },
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            237,
+            238
+          ]
+        }
+      ],
+      "title": "TextEncodeQwenImageEditPlus (Positive)",
+      "properties": {
+        "Node name for S&R": "TextEncodeQwenImageEditPlus",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {
+          "prompt": true
+        },
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "去掉图中的文字"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 83,
+      "type": "LoadImage",
+      "pos": [
+        648.4119873046875,
+        -265.3088073730469
+      ],
+      "size": [
+        279.727783203125,
+        376.0771179199219
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            204
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "image 9.png",
+        "image"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 104,
+      "type": "LoadImage",
+      "pos": [
+        960.0571899414062,
+        -265.7452087402344
+      ],
+      "size": [
+        316.1705322265625,
+        374.2849426269531
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            245
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "image 9.png",
+        "image"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 41,
+      "type": "LoadImage",
+      "pos": [
+        321.9980773925781,
+        -270.8421936035156
+      ],
+      "size": [
+        282.5928649902344,
+        390.2223815917969
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            213,
+            223
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.5.1",
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "tabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "pasted/44152719b3140fd19ca634111bc15f117705c5912964f4c4cbdf7a4df535dbe6.png",
+        "image"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      171,
+      64,
+      0,
+      65,
+      0,
+      "MODEL"
+    ],
+    [
+      175,
+      65,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      177,
+      67,
+      0,
+      64,
+      0,
+      "MODEL"
+    ],
+    [
+      178,
+      61,
+      0,
+      68,
+      0,
+      "CLIP"
+    ],
+    [
+      191,
+      12,
+      0,
+      74,
+      0,
+      "MODEL"
+    ],
+    [
+      192,
+      74,
+      0,
+      67,
+      0,
+      "MODEL"
+    ],
+    [
+      204,
+      83,
+      0,
+      68,
+      3,
+      "IMAGE"
+    ],
+    [
+      213,
+      41,
+      0,
+      68,
+      2,
+      "IMAGE"
+    ],
+    [
+      223,
+      41,
+      0,
+      91,
+      0,
+      "IMAGE"
+    ],
+    [
+      224,
+      10,
+      0,
+      91,
+      1,
+      "VAE"
+    ],
+    [
+      236,
+      100,
+      0,
+      65,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      237,
+      68,
+      0,
+      100,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      238,
+      68,
+      0,
+      102,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      239,
+      102,
+      0,
+      65,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      241,
+      10,
+      0,
+      68,
+      1,
+      "VAE"
+    ],
+    [
+      242,
+      91,
+      0,
+      65,
+      3,
+      "LATENT"
+    ],
+    [
+      243,
+      91,
+      0,
+      102,
+      1,
+      "LATENT"
+    ],
+    [
+      245,
+      104,
+      0,
+      68,
+      4,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Models",
+      "bounding": [
+        -785.204345703125,
+        -366.13531494140625,
+        542.2152709960938,
+        1290.3260498046875
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Prompt",
+      "bounding": [
+        -220.74769592285156,
+        -364.8865051269531,
+        490.8509216308594,
+        669.7081909179688
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Load Image",
+      "bounding": [
+        295.3049011230469,
+        -362.5728759765625,
+        1004.56787109375,
+        744.376953125
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Save image",
+      "bounding": [
+        2510.731689453125,
+        -363.270751953125,
+        366.82275390625,
+        846
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "K-Sampler",
+      "bounding": [
+        1325.7728271484375,
+        -357.88232421875,
+        700.7680053710938,
+        1203.553466796875
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "VAE",
+      "bounding": [
+        2044.6519775390625,
+        -357.8021240234375,
+        412.9744873046875,
+        820
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "KKvideo_latentpreview": false,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreview": false,
+    "groupNodes": {},
+    "ds": {
+      "scale": 0.37974983358324227,
+      "offset": [
+        1740.5709174813871,
+        862.2780339741976
+      ]
+    },
+    "VHS_KeepIntermediate": true,
+    "VHS_MetadataImage": true,
+    "ue_links": [],
+    "KKvideo_latentpreviewrate": 0,
+    "workflowRendererVersion": "LG",
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0"
+  },
+  "version": 0.4
+}
