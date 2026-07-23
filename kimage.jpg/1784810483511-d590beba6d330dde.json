@@ -1,0 +1,1030 @@
+{
+  "id": "3cd08832-3716-4ba0-91d1-9fec2e272963",
+  "revision": 0,
+  "last_node_id": 20,
+  "last_link_id": 10,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        2215.0185546875,
+        268.62811279296875
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "vae-ft-mse-840000-ema-pruned.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2210.79052734375,
+        163.3430938720703
+      ],
+      "size": [
+        275.3460693359375,
+        52.31705093383789
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 8
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 18,
+      "type": "Note",
+      "pos": [
+        2215.0185546875,
+        380.4129638671875
+      ],
+      "size": [
+        274.6820068359375,
+        210.64596557617188
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "当前使用 Stability AI 的 ft-MSE VAE 覆盖 checkpoint 内置 VAE，通常会得到更平滑、稳定的颜色和重建结果。若更喜欢模型原本的高饱和效果，可改接 CheckpointLoaderSimple 的 VAE 输出。\n\n文件：vae-ft-mse-840000-ema-pruned.safetensors\n下载：https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors?download=true\n存放：D:\\ComfyUI\\models\\vae"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 19,
+      "type": "Note",
+      "pos": [
+        2214.822509765625,
+        640.76416015625
+      ],
+      "size": [
+        275,
+        180
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAEDecode 把采样后的 LATENT 还原成 IMAGE，并送往保存节点。它本身无需下载额外文件。\n\n出现花屏、偏色或解码失败时，检查 samples、vae 两条连线，并确认外部 VAE 文件已正确加载。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 17,
+      "type": "Note",
+      "pos": [
+        1866.4661865234375,
+        484.27972412109375
+      ],
+      "size": [
+        262.3301086425781,
+        238.15745544433594
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "KSampler 汇总模型、正负提示词和空潜空间后执行采样。\n\n• seed：randomize 每次换图；固定 seed 便于对比。\n• steps：当前 20，可在 20～28 间尝试。\n• cfg：当前 8；插画常用约 6～8，过高可能颜色生硬。\n• sampler/scheduler：当前 euler + simple，稳定且速度快。\n• denoise：纯文生图保持 1。\n\n一次只改一个参数，方便判断影响。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 7,
+      "type": "kkSizeNode",
+      "pos": [
+        1502.5111083984375,
+        168.75912475585938
+      ],
+      "size": [
+        270,
+        214
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "size_mode",
+          "name": "size_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "size_mode"
+          }
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "custom_width",
+          "name": "custom_width",
+          "type": "INT",
+          "widget": {
+            "name": "custom_width"
+          }
+        },
+        {
+          "label": "custom_height",
+          "name": "custom_height",
+          "type": "INT",
+          "widget": {
+            "name": "custom_height"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "latent",
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            7
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        },
+        {
+          "label": "ratio",
+          "name": "ratio",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSizeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "preset",
+        "1:1",
+        512,
+        512,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 16,
+      "type": "Note",
+      "pos": [
+        1506.1868896484375,
+        429.987060546875
+      ],
+      "size": [
+        268.6794738769531,
+        253.0988006591797
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "SD1.5 的原生训练分辨率是 512×512。Preset 按比例生成，Custom 使用手动宽高；建议先保持 batch_size=1。\n\n常用尺寸：\n• 512×512：方形 1:1\n• 512×768：竖版 2:3\n• 576×768：竖版 3:4\n• 640×512：横版 5:4\n• 768×512：横版 3:2\n\n尺寸尽量使用 64 的倍数。过高分辨率容易出现重复人物或构图异常，可后续再做高清修复。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 14,
+      "type": "Note",
+      "pos": [
+        1014.47607421875,
+        421.4853515625
+      ],
+      "size": [
+        401.7086181640625,
+        143.80404663085938
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里描述想生成的内容。SD1.5 对英文关键词通常更稳定，建议按“画风 → 主体 → 动作 → 场景 → 构图 → 光线/颜色 → 质量”的顺序书写。\n\n括号可加强权重，例如 (watercolor:1.2)，但不要叠加过多。默认提示词可直接测试儿童绘本效果；更换题材时保留 children's book illustration、hand-drawn 等风格词。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 15,
+      "type": "Note",
+      "pos": [
+        1015.6998291015625,
+        871.9877319335938
+      ],
+      "size": [
+        400.1347351074219,
+        124.77962493896484
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里填写不希望出现的质量问题或元素。默认内容用于排除写实照片感、低质量、肢体错误和水印。\n\n负面词不是越多越好；过强可能压掉绘本笔触和构图。出现具体问题时再补对应关键词，例如 duplicate、bad eyes、messy background。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 11,
+      "type": "Note",
+      "pos": [
+        -217.9113311767578,
+        107.99057006835938
+      ],
+      "size": [
+        520,
+        650
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "我是卡卡，这是一个 SD1.5 儿童绘本/手绘插画文生图工作流。请按每个区域里的「卡卡提示」操作。欢迎加我好友一起交流学习，微信：kkcomfy\n\n【模型来源说明】\n原工作流使用“手绘插画儿童绘本SD1.5大模型_V1.safetensors”，但 Hugging Face 上没有可核验的同名公开文件。本优化版没有冒充同款链接，而是改用用途相近、可验证的儿童绘本 checkpoint：KIDSILLUSTRATIONS.safetensors。\n\n1. 儿童绘本 checkpoint\n文件：KIDSILLUSTRATIONS.safetensors\n下载：https://huggingface.co/Yntec/KIDSILLUSTRATIONS/resolve/main/KIDSILLUSTRATIONS.safetensors?download=true\n目录：D:\\ComfyUI\\models\\checkpoints\n\n2. SD ft-MSE VAE\n文件：vae-ft-mse-840000-ema-pruned.safetensors\n下载：https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors?download=true\n目录：D:\\ComfyUI\\models\\vae\n\n3. 可选：官方 SD1.5 基础模型\n文件：v1-5-pruned-emaonly.safetensors\n下载：https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors?download=true\n目录：D:\\ComfyUI\\models\\checkpoints\n\n下载完成后刷新模型列表或重启 ComfyUI。模型受 CreativeML OpenRAIL-M 许可约束，发布或商用前请阅读模型页说明。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 2,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        658.913818359375,
+        209.2534637451172
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        },
+        {
+          "label": "stop_at_clip_layer",
+          "name": "stop_at_clip_layer",
+          "type": "INT",
+          "widget": {
+            "name": "stop_at_clip_layer"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        -2
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 13,
+      "type": "Note",
+      "pos": [
+        662.8326416015625,
+        343.46514892578125
+      ],
+      "size": [
+        270,
+        200
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "CLIPSetLastLayer 控制文本编码器使用到哪一层。当前 -2（常称 Clip Skip 2）常用于动漫、插画类 SD1.5 模型，可让风格更明显。\n\n若换成写实 SD1.5 checkpoint，可尝试 -1。对比时固定 seed、提示词和其他采样参数。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 12,
+      "type": "Note",
+      "pos": [
+        365.3181457519531,
+        338.5856628417969
+      ],
+      "size": [
+        267.71142578125,
+        250.38877868652344
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "CheckpointLoaderSimple 会一次加载 MODEL、CLIP 和模型内置 VAE。当前选择的是可核验的儿童绘本插画 checkpoint；本工作流另外连接了外部 VAE，所以 checkpoint 的 VAE 输出未使用。\n\n文件：KIDSILLUSTRATIONS.safetensors\n下载：https://huggingface.co/Yntec/KIDSILLUSTRATIONS/resolve/main/KIDSILLUSTRATIONS.safetensors?download=true\n存放：D:\\ComfyUI\\models\\checkpoints\n\n下载后刷新模型列表并选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [
+        1859.78271484375,
+        169.49362182617188
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 6
+        },
+        {
+          "label": "正面条件",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 4
+        },
+        {
+          "label": "负面条件",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "label": "Latent",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Latent",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        792946937227934,
+        "randomize",
+        20,
+        8,
+        "euler",
+        "simple",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        2582.766357421875,
+        402.73211669921875
+      ],
+      "size": [
+        270,
+        290
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 20,
+      "type": "Note",
+      "pos": [
+        2577.32958984375,
+        164.8139190673828
+      ],
+      "size": [
+        270,
+        190
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终图片。filename_prefix 可设置文件名前缀，也可以写成“项目名/前缀”建立子文件夹。\n\n默认目录：D:\\ComfyUI\\output\n\n该节点不需要下载模型。正式批量生成前，建议先确认尺寸、种子策略和文件名前缀。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        357.79449462890625,
+        185.92465209960938
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "ckpt_name",
+          "name": "ckpt_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "ckpt_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            6
+          ]
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1
+          ]
+        },
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "KIDSILLUSTRATIONS.safetensors",
+            "directory": "checkpoints",
+            "url": "https://huggingface.co/Yntec/KIDSILLUSTRATIONS/resolve/main/KIDSILLUSTRATIONS.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "AWPlashing_v1.0 (1).safetensors"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1013.1980590820312,
+        169.87307739257812
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "(masterpiece, best quality:1.2), (children's book illustration style:1.1), (watercolor painting:1.1), (colored pencil sketch:1.1), soft pastel palette. A cheerful little girl wearing a bright red coat, walking through a magical forest, surrounded by cute friendly woodland animals, warm god-rays sunlight filtering through trees, clean and simple composition, expressive character faces, intricate detailed background, lush vegetation, sharp focus, highres.\n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1016.1077880859375,
+        622.2115478515625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "photorealistic, 3d render, cgi, oil painting, ugly, deformed, blurry, low quality, worst quality, normal quality, bad anatomy, extra limbs, cropped, out of frame, watermark, signature, text, noisy, messy composition, dark shadows\n"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      1,
+      2,
+      0,
+      "CLIP"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      3,
+      0,
+      6,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      5,
+      5,
+      0,
+      6,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      1,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      7,
+      7,
+      0,
+      6,
+      3,
+      "LATENT"
+    ],
+    [
+      8,
+      6,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load Model",
+      "bounding": [
+        325.03729248046875,
+        84.89730072021484,
+        640,
+        550
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Positive / Negative Prompt",
+      "bounding": [
+        980,
+        80,
+        470,
+        1050
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Image Size",
+      "bounding": [
+        1474.97314453125,
+        84.47037506103516,
+        330,
+        630
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "KSampler",
+      "bounding": [
+        1828.5306396484375,
+        81.48971557617188,
+        330,
+        690
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "VAE",
+      "bounding": [
+        2179.259033203125,
+        75.93269348144531,
+        340,
+        780
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "Save Image",
+      "bounding": [
+        2543.33203125,
+        72.55863189697266,
+        382.8927001953125,
+        701.6541137695312
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "VHS_KeepIntermediate": true,
+    "KKvideo_latentpreview": false,
+    "ue_links": [],
+    "KKvideo_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.5209868481924366,
+      "offset": [
+        348.13314886930334,
+        218.32570761707802
+      ]
+    }
+  },
+  "version": 0.4
+}
