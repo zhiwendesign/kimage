@@ -1,0 +1,1044 @@
+{
+  "id": "07fd3352-11ca-4df8-bebb-45432c155e4d",
+  "revision": 0,
+  "last_node_id": 59,
+  "last_link_id": 50,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        421.4762878417969,
+        206.1996612548828
+      ],
+      "size": [
+        197.712890625,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "条件",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -1.7125753164291382,
+        -193.57980346679688
+      ],
+      "size": [
+        330.3477783203125,
+        82
+      ],
+      "flags": {
+        "pinned": false,
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "z_image_turbo_bf16.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "z_image_turbo_bf16.safetensors",
+        "default"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        5.361283779144287,
+        -58.2916374206543
+      ],
+      "size": [
+        323.0762939453125,
+        110.04679107666016
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "qwen_3_4b.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 28,
+      "type": "SaveImage",
+      "pos": [
+        2063.954345703125,
+        -183.64573669433594
+      ],
+      "size": [
+        267.3268127441406,
+        368.3909606933594
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 36
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        1650.9881591796875,
+        -69.89258575439453
+      ],
+      "size": [
+        304.0329895019531,
+        72.13300323486328
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "ae.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 56,
+      "type": "Note",
+      "pos": [
+        1650.9881591796875,
+        45
+      ],
+      "size": [
+        304.0329895019531,
+        275
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAE 负责把采样后的潜空间数据还原成可见图像。Z-Image-Turbo 使用 ae.safetensors（与 FLUX.1 VAE 文件相同），请保留与 VAEDecode 的连接。\n\n文件：ae.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true\n存放：D:\\ComfyUI\\models\\vae\n\n下载后刷新模型列表，并在本节点选择同名文件。"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [
+        1206.559814453125,
+        -196.26507568359375
+      ],
+      "size": [
+        287.1354064941406,
+        262
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 34
+        },
+        {
+          "label": "正面条件",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "label": "负面条件",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "label": "Latent",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 50
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Latent",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        27128639282844,
+        "randomize",
+        10,
+        1,
+        "euler",
+        "sgm_uniform",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 50,
+      "type": "Note",
+      "pos": [
+        -1.7125753164291382,
+        85
+      ],
+      "size": [
+        330.3477783203125,
+        290
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是 Z-Image-Turbo 扩散模型加载节点。当前工作流使用 BF16 原精度模型，画质稳定，但需要较多显存/内存；显存不足时可开启 ComfyUI 的模型卸载或低显存模式。\n\n文件：z_image_turbo_bf16.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors?download=true\n存放：D:\\ComfyUI\\models\\diffusion_models\n\n下载后刷新模型列表，并在本节点选择同名文件。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 51,
+      "type": "Note",
+      "pos": [
+        -0.9419469833374023,
+        426.3057556152344
+      ],
+      "size": [
+        330.3477783203125,
+        305
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是 Z-Image-Turbo 的 Qwen3 4B 文本编码器加载节点，用来理解中文、英文和长句式提示词。请使用与工作流匹配的 qwen_3_4b 文件，不要换成普通 CLIP。\n\n文件：qwen_3_4b.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors?download=true\n存放：D:\\ComfyUI\\models\\text_encoders\n\n若模型或类型选项无法识别，请先更新 ComfyUI，再刷新页面。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 52,
+      "type": "Note",
+      "pos": [
+        407.3728332519531,
+        270
+      ],
+      "size": [
+        354.9388732910156,
+        250
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "Z-Image 支持中文和英文自然语言，不必堆砌逗号 TAG。建议按“主体 → 外观/动作 → 场景 → 构图/镜头 → 光线/色彩 → 风格/材质 → 画质要求”的顺序描述。\n\n需要画面出现文字时，把准确文案放在引号内，并说明语言、字体感觉、颜色和位置。复杂海报建议分区编号，减少元素遗漏。\n\n本工作流是纯文生图，没有参考图输入；提示词中“基于上传图像”等要求不会真正引用图片。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 53,
+      "type": "Note",
+      "pos": [
+        408.5326232910156,
+        566.4666137695312
+      ],
+      "size": [
+        354.9388732910156,
+        165
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这个节点把提示词条件清零后送入 KSampler 的 negative 输入，是 Turbo 工作流中关闭常规负面引导的做法。\n\n保持现有连线即可，不需要另外填写负面提示词；若移除或接错，采样结果可能发生明显变化。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 54,
+      "type": "Note",
+      "pos": [
+        840.2152099609375,
+        64.3665542602539
+      ],
+      "size": [
+        273.1415100097656,
+        300
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里设置宽度、高度和一次生成数量。建议先用 batch_size=1 测试，确认显存足够后再增加；当前值 4 会明显提高显存占用。\n\n常用尺寸参考：\n• 1024×1024：方形 1:1\n• 896×1152：竖版 3:4\n• 896×1120：肖像 4:5\n• 832×1216：竖版 2:3\n• 1216×832：横版 3:2\n• 1344×768：宽屏 16:9\n\n尺寸建议使用 32 的倍数。显存不足时优先降低尺寸或批次数量。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 58,
+      "type": "Note",
+      "pos": [
+        2063.954345703125,
+        225
+      ],
+      "size": [
+        267.3268127441406,
+        170
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终图片。filename_prefix 用于设置文件名前缀，也可以写成“项目名/前缀”自动建立子文件夹。\n\n默认输出目录：D:\\ComfyUI\\output\n\n该节点不需要下载模型。每次运行都会保存图片；正式批量生成前，建议先确认尺寸、批次数量和文件名前缀。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 57,
+      "type": "Note",
+      "pos": [
+        1653.386962890625,
+        370.7568664550781
+      ],
+      "size": [
+        304.0329895019531,
+        145
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这个节点把 KSampler 输出的 LATENT 解码为 IMAGE。它本身不需要下载额外文件，所需 VAE 来自下方的 VAELoader。\n\n若出现花屏、偏色或无法解码，请先检查 VAE 是否选择 ae.safetensors，以及两条输入连线是否完整。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 48,
+      "type": "Note",
+      "pos": [
+        -541.8380126953125,
+        -255.4186248779297
+      ],
+      "size": [
+        487.45953369140625,
+        650
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "我是卡卡，这是一个 Z-Image-Turbo 文生图工作流。请按每个区域里的「卡卡提示」操作。欢迎加我好友一起交流学习，微信：kkcomfy\n\n【使用前准备】\n建议先更新 ComfyUI；下载完成后放入下列目录，再刷新模型列表或重启 ComfyUI。\n\n1. 扩散模型（大模型）\n文件：z_image_turbo_bf16.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors?download=true\n目录：D:\\ComfyUI\\models\\diffusion_models\n\n2. 文本编码器\n文件：qwen_3_4b.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors?download=true\n目录：D:\\ComfyUI\\models\\text_encoders\n\n3. VAE\n文件：ae.safetensors\n下载：https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors?download=true\n目录：D:\\ComfyUI\\models\\vae\n\n官方模型介绍：https://huggingface.co/Tongyi-MAI/Z-Image-Turbo\nComfyUI 权重仓库：https://huggingface.co/Comfy-Org/z_image_turbo\n\n本工作流中的下载地址均来自 Hugging Face，并与节点当前选择的文件名对应。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 55,
+      "type": "Note",
+      "pos": [
+        1208.435546875,
+        108.75677490234375
+      ],
+      "size": [
+        287.1354064941406,
+        310
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是最终出图的采样节点。\n\n• seed：种子；randomize 每次换图，固定种子便于对比提示词。\n• steps：Turbo 是少步数模型，通常 8～10 步即可，过高不一定更好。\n• cfg：保持 1；Turbo 不使用常规高 CFG。\n• denoise：纯文生图保持 1。\n\n当前 euler + sgm_uniform 可直接使用。新版 ComfyUI 官方模板也可从 8 步、CFG 1、res_multistep + simple 起步。一次只改一个参数，方便判断效果。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1661.3988037109375,
+        -170.35691833496094
+      ],
+      "size": [
+        269.0779724121094,
+        46
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            36
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 59,
+      "type": "kkSizeNode",
+      "pos": [
+        838.899169921875,
+        -195.97825622558594
+      ],
+      "size": [
+        270,
+        214
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "size_mode",
+          "name": "size_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "size_mode"
+          }
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "custom_width",
+          "name": "custom_width",
+          "type": "INT",
+          "widget": {
+            "name": "custom_width"
+          }
+        },
+        {
+          "label": "custom_height",
+          "name": "custom_height",
+          "type": "INT",
+          "widget": {
+            "name": "custom_height"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "latent",
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            50
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        },
+        {
+          "label": "ratio",
+          "name": "ratio",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSizeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "preset",
+        "3:4",
+        512,
+        512,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        407.3728332519531,
+        -192.10897827148438
+      ],
+      "size": [
+        354.9388732910156,
+        350.87493896484375
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "条件",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3,
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "电商大促营销海报，背景为璀璨的红色和金色渐变，巨大的立体充气字体“KAKA”占据画面中心，字体表面有光泽感，周围漂浮着丰富的促销元素：礼物盒、金色气球、闪光星星和飘落的彩带，强烈的景深效果，前景清晰后景虚化，节日氛围浓厚，3D C4D渲染，明亮鲜艳，高饱和度，吸引眼球。"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      2,
+      2,
+      0,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      5,
+      0,
+      4,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      5,
+      0,
+      6,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      5,
+      6,
+      0,
+      4,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      4,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      8,
+      3,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      34,
+      1,
+      0,
+      4,
+      0,
+      "MODEL"
+    ],
+    [
+      36,
+      8,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      50,
+      59,
+      0,
+      4,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "Prompt",
+      "bounding": [
+        377.59295654296875,
+        -280.853515625,
+        416.76171875,
+        1030
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Load Models",
+      "bounding": [
+        -23.53013038635254,
+        -284.7756652832031,
+        382.91265869140625,
+        1050
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Size",
+      "bounding": [
+        809.71337890625,
+        -279.86383056640625,
+        349.5513000488281,
+        754.6942138671875
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "KSampler",
+      "bounding": [
+        1172.9234619140625,
+        -277.09759521484375,
+        409.1763916015625,
+        750
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "Save Image",
+      "bounding": [
+        2034.8125,
+        -268.9952087402344,
+        329.42144775390625,
+        720
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 13,
+      "title": "VAE",
+      "bounding": [
+        1600.6190185546875,
+        -274.41436767578125,
+        412.9744873046875,
+        820
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "VHS_KeepIntermediate": true,
+    "KKvideo_latentpreview": false,
+    "ue_links": [],
+    "VHS_MetadataImage": true,
+    "KKvideo_latentpreviewrate": 0,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.4950000000000003,
+      "offset": [
+        855.020137433561,
+        703.4392030498553
+      ]
+    }
+  },
+  "version": 0.4
+}
