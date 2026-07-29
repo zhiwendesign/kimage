@@ -1,0 +1,1052 @@
+{
+  "id": "67f1671b-6c90-4c79-84e0-75b0a16d905d",
+  "revision": 0,
+  "last_node_id": 48,
+  "last_link_id": 66,
+  "nodes": [
+    {
+      "id": 40,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        2499.865966796875,
+        184.47669982910156
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            65
+          ]
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            64
+          ]
+        },
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {},
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        null
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 36,
+      "type": "kkSizeNode",
+      "pos": [
+        2917.645751953125,
+        526.3250732421875
+      ],
+      "size": [
+        270,
+        214
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "size_mode",
+          "name": "size_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "size_mode"
+          }
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "custom_width",
+          "name": "custom_width",
+          "type": "INT",
+          "widget": {
+            "name": "custom_width"
+          }
+        },
+        {
+          "label": "custom_height",
+          "name": "custom_height",
+          "type": "INT",
+          "widget": {
+            "name": "custom_height"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "latent",
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            57
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        },
+        {
+          "label": "ratio",
+          "name": "ratio",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSizeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "preset",
+        "1:1",
+        512,
+        512,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 34,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        2490.2021484375,
+        345.92755126953125
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 64
+        },
+        {
+          "label": "stop_at_clip_layer",
+          "name": "stop_at_clip_layer",
+          "type": "INT",
+          "widget": {
+            "name": "stop_at_clip_layer"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            55
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        -1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 35,
+      "type": "LoraLoader",
+      "pos": [
+        2900.5625,
+        232.46255493164062
+      ],
+      "size": [
+        283.5611267089844,
+        126
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 65
+        },
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 55
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        },
+        {
+          "label": "strength_clip",
+          "name": "strength_clip",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_clip"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            58
+          ]
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            59,
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        null,
+        1,
+        1
+      ],
+      "color": "#433",
+      "bgcolor": "#655"
+    },
+    {
+      "id": 37,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3436.456298828125,
+        257.2635803222656
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 59
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            60
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 39,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3437.662109375,
+        510.53759765625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 62
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 15,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        3914.4326171875,
+        265.47900390625
+      ],
+      "size": [
+        371.2380676269531,
+        345.80047607421875
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 58
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 60
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 63
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 57
+        },
+        {
+          "label": "add_noise",
+          "name": "add_noise",
+          "type": "COMBO",
+          "widget": {
+            "name": "add_noise"
+          }
+        },
+        {
+          "label": "noise_seed",
+          "name": "noise_seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "start_at_step",
+          "name": "start_at_step",
+          "type": "INT",
+          "widget": {
+            "name": "start_at_step"
+          }
+        },
+        {
+          "label": "end_at_step",
+          "name": "end_at_step",
+          "type": "INT",
+          "widget": {
+            "name": "end_at_step"
+          }
+        },
+        {
+          "label": "return_with_leftover_noise",
+          "name": "return_with_leftover_noise",
+          "type": "COMBO",
+          "widget": {
+            "name": "return_with_leftover_noise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            37
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "enable",
+        576983608920233,
+        "randomize",
+        20,
+        2,
+        "euler_ancestral",
+        "sgm_uniform",
+        0,
+        20,
+        "disable"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 19,
+      "type": "VAEDecode",
+      "pos": [
+        4358.36083984375,
+        274.7939758300781
+      ],
+      "size": [
+        331.01507568359375,
+        61.178077697753906
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 37
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            61
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 38,
+      "type": "SaveImage",
+      "pos": [
+        4722.3173828125,
+        268.91888427734375
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 61
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 41,
+      "type": "Note",
+      "pos": [
+        2200,
+        10
+      ],
+      "size": [
+        540,
+        255
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是一个 SDXL LoRA 文生图基础工作流，整体顺序是：底模 -> LoRA -> 尺寸 -> 提示词 -> 采样 -> VAE 解码 -> 保存。\n\n使用前建议先完成三步：\n1. 在 CheckpointLoaderSimple 选择 SDXL 基础模型；\n2. 在 LoraLoader 选择需要的 LoRA；\n3. 先用 batch_size=1 测试，确认显存和风格正常后再放大尺寸或批量。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 42,
+      "type": "Note",
+      "pos": [
+        2460,
+        435
+      ],
+      "size": [
+        355,
+        215
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里加载 SDXL checkpoint，并从中取出 MODEL、CLIP 和 VAE。\n\nCLIPSetLastLayer 当前为 -1，表示不过早截断 CLIP。大多数 SDXL 底模可以直接这样用；若模型作者有特殊说明，再按说明调整。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 43,
+      "type": "Note",
+      "pos": [
+        2865,
+        15
+      ],
+      "size": [
+        360,
+        175
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里加载 LoRA。strength_model 和 strength_clip 默认都为 1，可作为起点；常见可调范围约 0.6~1.0。\n\nLoRA 过强时容易出现风格压制、细节脏乱或人物特征失真。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 44,
+      "type": "Note",
+      "pos": [
+        2865,
+        760
+      ],
+      "size": [
+        390,
+        235
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这个节点负责生成初始 latent，并设置宽高与 batch_size。\n\nSDXL 通常更适合 1024 级别分辨率；如果显存紧张，先保持较小尺寸和 batch_size=1，再逐步往上调。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 45,
+      "type": "Note",
+      "pos": [
+        3425,
+        745
+      ],
+      "size": [
+        410,
+        225
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "上方是正向提示词，下方是负向提示词。SDXL 更吃完整自然语言，建议按“主体 -> 场景 -> 光线 -> 镜头 -> 风格 -> 细节”的顺序写。\n\n负向提示词可以先从 low quality、blurry、deformed、extra fingers 这类基础项开始。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 46,
+      "type": "Note",
+      "pos": [
+        3895,
+        650
+      ],
+      "size": [
+        385,
+        220
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "KSamplerAdvanced 负责正式采样。当前参数可以作为通用起点：20 steps、CFG 2、euler_ancestral、sgm_uniform。\n\n想强化 LoRA 效果时，优先先调 LoRA 强度；想补细节时，再考虑增加步数。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 47,
+      "type": "Note",
+      "pos": [
+        4335,
+        435
+      ],
+      "size": [
+        355,
+        170
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里使用 checkpoint 输出的 VAE 把 latent 解码成图像。\n\n若出现偏色、灰雾、花屏或解码异常，优先确认底模本身是否带有匹配 VAE。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 48,
+      "type": "Note",
+      "pos": [
+        4695,
+        435
+      ],
+      "size": [
+        355,
+        170
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终图片。filename_prefix 可以改成“项目名/前缀”，ComfyUI 会自动创建子目录。\n\n正式批量生成前，建议先固定 seed 或记录参数，方便复现和比较。"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    }
+  ],
+  "links": [
+    [
+      37,
+      15,
+      0,
+      19,
+      0,
+      "LATENT"
+    ],
+    [
+      55,
+      34,
+      0,
+      35,
+      1,
+      "CLIP"
+    ],
+    [
+      57,
+      36,
+      0,
+      15,
+      3,
+      "LATENT"
+    ],
+    [
+      58,
+      35,
+      0,
+      15,
+      0,
+      "MODEL"
+    ],
+    [
+      59,
+      35,
+      1,
+      37,
+      0,
+      "CLIP"
+    ],
+    [
+      60,
+      37,
+      0,
+      15,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      61,
+      19,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      62,
+      35,
+      1,
+      39,
+      0,
+      "CLIP"
+    ],
+    [
+      63,
+      39,
+      0,
+      15,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      64,
+      40,
+      1,
+      34,
+      0,
+      "CLIP"
+    ],
+    [
+      65,
+      40,
+      0,
+      35,
+      0,
+      "MODEL"
+    ],
+    [
+      66,
+      40,
+      2,
+      19,
+      1,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "BaseModels",
+      "bounding": [
+        2435,
+        145,
+        420,
+        540
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "LoRA",
+      "bounding": [
+        2850,
+        0,
+        390,
+        390
+      ],
+      "color": "#A88",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Size",
+      "bounding": [
+        2855,
+        490,
+        410,
+        535
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Prompt",
+      "bounding": [
+        3410,
+        145,
+        450,
+        860
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "KSampler",
+      "bounding": [
+        3880,
+        145,
+        425,
+        755
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "VAE",
+      "bounding": [
+        4320,
+        145,
+        390,
+        500
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "Save Image",
+      "bounding": [
+        4680,
+        145,
+        390,
+        500
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "ds": {
+      "scale": 0.7247295000000004,
+      "offset": [
+        -2173.5522377793786,
+        53.97434269406108
+      ]
+    },
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "KKvideo_latentpreview": false,
+    "KKvideo_latentpreviewrate": 0
+  },
+  "version": 0.4
+}
