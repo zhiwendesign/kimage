@@ -1,0 +1,1533 @@
+{
+  "id": "646533e4-51a2-4f78-acef-c1aff165bc10",
+  "revision": 0,
+  "last_node_id": 197,
+  "last_link_id": 359,
+  "nodes": [
+    {
+      "id": 186,
+      "type": "EmptyLatentImage",
+      "pos": [
+        2364.0107421875,
+        690.25634765625
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 354
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 355
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            353
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 187,
+      "type": "kkGetImage",
+      "pos": [
+        2364.0107421875,
+        595.25634765625
+      ],
+      "size": [
+        230,
+        46
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 356
+        }
+      ],
+      "outputs": [
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            354
+          ]
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            355
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkGetImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 132,
+      "type": "KSampler",
+      "pos": [
+        2877.686279296875,
+        188.25009155273438
+      ],
+      "size": [
+        310,
+        262
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 351
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 331
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 334
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 353
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            357
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "scheduler": true,
+          "denoise": true,
+          "seed": true,
+          "cfg": true,
+          "sampler_name": true,
+          "steps": true
+        }
+      },
+      "widgets_values": [
+        385135880084415,
+        "randomize",
+        30,
+        3.5,
+        "euler",
+        "simple",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 189,
+      "type": "Note",
+      "pos": [
+        171.17213439941406,
+        349.8351745605469
+      ],
+      "size": [
+        410,
+        260
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨基础模型",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "CheckpointLoaderSimple 同时提供 MODEL、CLIP 和 VAE。当前工作流选择的是 SDXL 模型，因此 ControlNet 也必须与 SDXL 架构匹配。\n\n更换 checkpoint 后，建议先确认它是 SDXL 模型；若误用 SD1.5 模型，通常会出现维度不匹配或控制效果异常。模型文件放在：\nComfyUI\\models\\checkpoints"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 191,
+      "type": "Note",
+      "pos": [
+        1235.654296875,
+        849.4605102539062
+      ],
+      "size": [
+        500,
+        220
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨上传参考图",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "上传一张轮廓清楚、主体边界明确的参考图。Canny 只提取边缘关系，不会直接复制参考图的颜色和纹理。\n\n参考图比例会自动传给 EmptyLatentImage，使生成尺寸跟随输入图。图片过大时预处理和采样都会更慢；显存不足可先缩小参考图再上传。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 192,
+      "type": "Note",
+      "pos": [
+        1842.3853759765625,
+        868.4722290039062
+      ],
+      "size": [
+        410,
+        240
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨边缘预处理",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "AIO_Preprocessor 当前使用 PyraCannyPreprocessor，并以 1024 分辨率处理参考图。右侧预览用于检查边缘结果。\n\n理想结果应保留主体轮廓和关键结构，同时避免背景碎线过多。若线条太杂，可换更干净的参考图、降低预处理分辨率，或在预处理器中尝试其他 Canny 方案。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 193,
+      "type": "Note",
+      "pos": [
+        2364.0107421875,
+        865.25634765625
+      ],
+      "size": [
+        410,
+        300
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨ControlNet",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "ControlNetLoader 当前加载 control-lora-canny-rank256.safetensors。请确认它与 SDXL checkpoint 匹配。\n\nControlNetApplyAdvanced 参数：\n• strength=0.7：控制强度，常用范围约 0.4～1.0\n• start_percent=0：从采样开始介入\n• end_percent=1：持续到采样结束\n\n想保留更多参考轮廓可提高 strength；想给提示词更多自由度可降低 strength，或把 end_percent 调到 0.7～0.9。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 194,
+      "type": "Note",
+      "pos": [
+        2877.686279296875,
+        508.2499694824219
+      ],
+      "size": [
+        310,
+        300
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨采样设置",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "当前参数为 30 steps、CFG 3.5、euler、simple、denoise 1，适合作为 SDXL ControlNet 的稳定起点。\n\nrandomize 每次会更换 seed；需要对比参数时请改为固定 seed。一次只调整一个参数，便于判断影响。若结果过度贴合边缘，优先降低 ControlNet strength；若画面细节不足，再尝试增加步数。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 195,
+      "type": "Note",
+      "pos": [
+        3293.10498046875,
+        334.325927734375
+      ],
+      "size": [
+        310,
+        230
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨VAE 解码",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "VAEDecode 使用 checkpoint 自带的 VAE，把采样得到的 LATENT 转换为图片。\n\n如果出现偏色、花屏或解码报错，先确认 checkpoint 本身包含兼容 VAE，并检查 samples、vae 两条连线。需要使用外置 VAE 时，可另加 VAELoader 后替换当前 VAE 输入。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 196,
+      "type": "Note",
+      "pos": [
+        3703.529052734375,
+        900.8814697265625
+      ],
+      "size": [
+        600,
+        190
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨保存图片",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这里预览并保存最终图片。filename_prefix 可改为“项目名/前缀”，ComfyUI 会在 output 目录中自动建立对应子文件夹。\n\n正式批量生成前，建议先确认参考图、预处理边缘、ControlNet 强度、seed 策略和输出尺寸。默认输出目录：ComfyUI\\output"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 190,
+      "type": "Note",
+      "pos": [
+        679.8195190429688,
+        682.0552978515625
+      ],
+      "size": [
+        460,
+        250
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "卡卡提示丨正负提示词",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "上方是正向提示词，下方是负向提示词。ControlNet 主要约束轮廓与构图，画面内容、材质、光线和风格仍由提示词决定。\n\n调试时建议先保留主体、场景和风格等核心描述，避免一开始堆叠过多权重。若参考图控制过强，优先调整 ControlNet strength，而不是反复增加提示词权重。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        679.4404907226562,
+        464.6248779296875
+      ],
+      "size": [
+        461.6124572753906,
+        160.63189697265625
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 158
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "text": true
+        }
+      },
+      "widgets_values": [
+        "(worst quality:1.4), (low quality:1.4), lowres, blurry, out of focus, noise, jpeg artifacts, overexposed, underexposed, oversaturated, flat lighting, cartoon, anime, manga, illustration, line art, sketch, 3d render, cgi, plastic skin, waxy skin, excessive skin smoothing, doll face, uncanny face, childish appearance, deformed face, asymmetrical eyes, cross-eyed, malformed pupils, bad anatomy, distorted body, long neck, extra limbs, extra fingers, missing fingers, fused fingers, bad hands, duplicate flowers, floating flowers, distorted frame, broken frame, messy composition, cropped head, cropped flowers, text, logo, watermark, signature"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 188,
+      "type": "Note",
+      "pos": [
+        -357.33612060546875,
+        114.90789031982422
+      ],
+      "size": [
+        469.8872985839844,
+        525.6981201171875
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "用前必看丨卡卡提示",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "这是一个 SDXL ControlNet Canny 工作流，按画布从左到右依次操作：加载基础模型 → 编写提示词 → 上传参考图 → 边缘预处理 → 应用 ControlNet → 采样 → VAE 解码 → 保存图片。\n\n【运行前检查】\n1. Checkpoint 已放入 ComfyUI\\models\\checkpoints\n2. ControlNet 模型已放入 ComfyUI\\models\\controlnet\n3. 已安装 AIO_Preprocessor 对应的自定义节点\n4. 已安装 kkGetImage / kk 节点包\n\n首次运行建议使用 512～1024 像素参考图、batch_size=1。缺少模型或节点时，先在 ComfyUI Manager 中安装并重启 ComfyUI。"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 135,
+      "type": "VAEDecode",
+      "pos": [
+        3293.10498046875,
+        194.32606506347656
+      ],
+      "size": [
+        310,
+        75
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 357
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 230
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            323,
+            358
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 15,
+      "type": "LoadImage",
+      "pos": [
+        1235.654296875,
+        189.4603271484375
+      ],
+      "size": [
+        500,
+        610
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            345,
+            359
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "#sdppp_simple_content": "canvas",
+        "#sdppp_label": "",
+        "ver": "0.20.1",
+        "#sdppp_variant": "default",
+        "#sdppp_simple_boundary": "canvas",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "image": true,
+          "upload": true
+        },
+        "#sdppp_simple_mask": "canvas"
+      },
+      "widgets_values": [
+        "c5c3258cb7f1b2c30afda85b773f5381969ffc06e2041235e7a22bf3dc1fa61d.jpg",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 197,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        4398.75048828125,
+        162.65594482421875
+      ],
+      "size": [
+        591.7099609375,
+        664.11572265625
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "label": "image_a",
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 359
+        },
+        {
+          "dir": 3,
+          "label": "image_b",
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 358
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "label": "image_urls",
+          "name": "image_urls",
+          "shape": 3,
+          "type": "STRING"
+        },
+        {
+          "dir": 4,
+          "label": "images",
+          "name": "images",
+          "shape": 3,
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "comparer_mode": "Slide",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_yzfvn_00001_xgdfq_1785850051.jpg&type=temp&subfolder=&rand=0.5211724623631248&Rh-Comfy-Auth=eyJ1c2VySWQiOiJkM2Q3MTVhNmM5MDhjMWZkNDU4ZmYwOTI3ZWM3YzhmNiIsInNpZ25FeHBpcmUiOjE3ODY0NTMzMTgyNTcsInRzIjoxNzg1ODQ4NTE4MjU3LCJzaWduIjoiY2FjYTZkYzU0ZTk1ODI5YTMwZmZjOWVhNzNmZmY5OTYifQ==&Rh-Identify=d3d715a6c908c1fd458ff0927ec7c8f6"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_yzfvn_00002_euzhb_1785850053.jpg&type=temp&subfolder=&rand=0.11030502188396996&Rh-Comfy-Auth=eyJ1c2VySWQiOiJkM2Q3MTVhNmM5MDhjMWZkNDU4ZmYwOTI3ZWM3YzhmNiIsInNpZ25FeHBpcmUiOjE3ODY0NTMzMTgyNTcsInRzIjoxNzg1ODQ4NTE4MjU3LCJzaWduIjoiY2FjYTZkYzU0ZTk1ODI5YTMwZmZjOWVhNzNmZmY5OTYifQ==&Rh-Identify=d3d715a6c908c1fd458ff0927ec7c8f6"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        171.17213439941406,
+        189.83494567871094
+      ],
+      "size": [
+        410,
+        100
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "ckpt_name",
+          "name": "ckpt_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "ckpt_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            351
+          ]
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            158,
+            310
+          ]
+        },
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            145,
+            230
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "ckpt_name": true
+        }
+      },
+      "widgets_values": [
+        "SDXL1.0photo电影艺术.safetensors"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 56,
+      "type": "CLIPTextEncode",
+      "pos": [
+        679.4404907226562,
+        189.6248016357422
+      ],
+      "size": [
+        460,
+        230
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 310
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            95
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "text": true
+          },
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "text": true
+        }
+      },
+      "widgets_values": [
+        "(masterpiece:1.2), (best quality:1.2), (photorealistic:1.35), (hyperrealistic portrait:1.25), 8k, ultra detailed, cinematic fashion photography, a beautiful 22-year-old adult woman, centered frontal portrait, looking directly at camera, symmetrical composition, delicate oval face, soft natural facial features, clear hazel brown eyes, subtle eyelashes, natural pink lips, fair translucent skin, realistic skin texture, subtle pores, soft blush, medium-length chestnut brown bob haircut, straight bangs, individual hair strands, cream white beret, pink rose and small flower hair ornament,\n\nwearing an elegant ivory lace high-neck collar, oversized satin bow with a small pearl brooch, pale blush pink lace-trimmed vintage camisole, off-shoulder ivory silk shawl, romantic Victorian-inspired styling, refined fabric texture, realistic lace details,\n\nsurrounded by abundant fresh flowers, white cosmos flowers, pale pink roses, baby's breath, small white blossoms, lush green leaves, floral wreath composition, ornate antique golden oval frame behind the woman, flowers naturally wrapping around the frame, balanced botanical arrangement,\n\nsoft lake and distant mountain background, warm morning sunlight, golden hour, natural backlight, soft rim light, realistic shadows, gentle highlights, shallow depth of field, creamy bokeh, cinematic color grading, warm ivory and blush pink color palette, elegant, romantic, ethereal, luxurious editorial photography, realistic anatomy, highly detailed face, sharp focus on eyes"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 86,
+      "type": "AIO_Preprocessor",
+      "pos": [
+        1871.932861328125,
+        187.17666625976562
+      ],
+      "size": [
+        410,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 345
+        },
+        {
+          "label": "preprocessor",
+          "name": "preprocessor",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "preprocessor"
+          }
+        },
+        {
+          "label": "resolution",
+          "name": "resolution",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "resolution"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            185,
+            189,
+            356
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AIO_Preprocessor",
+        "cnr_id": "comfyui_controlnet_aux",
+        "ver": "136f125c89aed92ced1b6fbb491e13719b72fcc0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "preprocessor": true,
+          "resolution": true
+        }
+      },
+      "widgets_values": [
+        "PyraCannyPreprocessor",
+        1024
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 19,
+      "type": "PreviewImage",
+      "pos": [
+        1856.9737548828125,
+        322.3471984863281
+      ],
+      "size": [
+        410,
+        500
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 12,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        2371.16748046875,
+        335.9762878417969
+      ],
+      "size": [
+        410,
+        190
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 95
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 16
+        },
+        {
+          "label": "control_net",
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 19
+        },
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 185
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 145
+        },
+        {
+          "label": "strength",
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          }
+        },
+        {
+          "label": "start_percent",
+          "name": "start_percent",
+          "type": "FLOAT",
+          "widget": {
+            "name": "start_percent"
+          }
+        },
+        {
+          "label": "end_percent",
+          "name": "end_percent",
+          "type": "FLOAT",
+          "widget": {
+            "name": "end_percent"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            331
+          ]
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "slot_index": 1,
+          "links": [
+            334
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "strength": true,
+          "start_percent": true,
+          "end_percent": true
+        }
+      },
+      "widgets_values": [
+        0.7000000000000002,
+        0,
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 13,
+      "type": "ControlNetLoader",
+      "pos": [
+        2364.0107421875,
+        185.25656127929688
+      ],
+      "size": [
+        410,
+        84
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "control_net_name",
+          "name": "control_net_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "control_net_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONTROL_NET",
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "control_net_name": true
+        }
+      },
+      "widgets_values": [
+        "control-lora-canny-rank128.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 182,
+      "type": "SaveImage",
+      "pos": [
+        3703.529052734375,
+        200.88189697265625
+      ],
+      "size": [
+        600,
+        650
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 323
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      16,
+      7,
+      0,
+      12,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      19,
+      13,
+      0,
+      12,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      95,
+      56,
+      0,
+      12,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      145,
+      1,
+      2,
+      12,
+      4,
+      "VAE"
+    ],
+    [
+      158,
+      1,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      185,
+      86,
+      0,
+      12,
+      3,
+      "IMAGE"
+    ],
+    [
+      189,
+      86,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      230,
+      1,
+      2,
+      135,
+      1,
+      "VAE"
+    ],
+    [
+      310,
+      1,
+      1,
+      56,
+      0,
+      "CLIP"
+    ],
+    [
+      323,
+      135,
+      0,
+      182,
+      0,
+      "IMAGE"
+    ],
+    [
+      331,
+      12,
+      0,
+      132,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      334,
+      12,
+      1,
+      132,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      345,
+      15,
+      0,
+      86,
+      0,
+      "IMAGE"
+    ],
+    [
+      351,
+      1,
+      0,
+      132,
+      0,
+      "MODEL"
+    ],
+    [
+      353,
+      186,
+      0,
+      132,
+      3,
+      "LATENT"
+    ],
+    [
+      354,
+      187,
+      0,
+      186,
+      0,
+      "INT"
+    ],
+    [
+      355,
+      187,
+      1,
+      186,
+      1,
+      "INT"
+    ],
+    [
+      356,
+      86,
+      0,
+      187,
+      0,
+      "IMAGE"
+    ],
+    [
+      357,
+      132,
+      0,
+      135,
+      0,
+      "LATENT"
+    ],
+    [
+      358,
+      135,
+      0,
+      197,
+      1,
+      "IMAGE"
+    ],
+    [
+      359,
+      15,
+      0,
+      197,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 5,
+      "title": "Base Model",
+      "bounding": [
+        131.17208862304688,
+        89.83496856689453,
+        490,
+        560
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "Prompt",
+      "bounding": [
+        639.4404907226562,
+        89.62474060058594,
+        540,
+        860
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "Reference Image",
+      "bounding": [
+        1195.654296875,
+        89.46025085449219,
+        580,
+        1020
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "Preprocessor",
+      "bounding": [
+        1802.3853759765625,
+        88.47222137451172,
+        490,
+        1060
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "ControlNet",
+      "bounding": [
+        2324.0107421875,
+        85.25640106201172,
+        490,
+        1120
+      ],
+      "color": "#7f5aa2",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "KSampler",
+      "bounding": [
+        2837.686279296875,
+        88.24987030029297,
+        390,
+        760
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 11,
+      "title": "VAE",
+      "bounding": [
+        3253.10498046875,
+        94.32572937011719,
+        390,
+        510
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 12,
+      "title": "Save Image",
+      "bounding": [
+        3663.529052734375,
+        100.88145446777344,
+        680,
+        1030
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "KKvideo_latentpreview": false,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.1,
+      "offset": [
+        7349.690583168343,
+        4396.981787552966
+      ]
+    },
+    "VHS_KeepIntermediate": true,
+    "workspace_info": {
+      "id": "0c2ffffe-2279-436d-a129-388b72144ec9"
+    },
+    "workflow_optimized_from": "Controlnet.json",
+    "ue_links": [],
+    "VHS_MetadataImage": true,
+    "KKvideo_latentpreviewrate": 0,
+    "workflow_optimization_note": "按 kkFlux 风格重新分区、配色、布局并补充卡卡提示；原功能节点与连线保持不变。",
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0"
+  },
+  "version": 0.4
+}
