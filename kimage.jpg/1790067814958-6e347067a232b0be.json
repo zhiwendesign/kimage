@@ -1,0 +1,657 @@
+{
+  "id": "670c4275-39c5-4584-ad3a-cdb2062b7e94",
+  "revision": 0,
+  "last_node_id": 112,
+  "last_link_id": 148,
+  "nodes": [
+    {
+      "id": 36,
+      "type": "PreviewImage",
+      "pos": [
+        930.9682780440821,
+        -531.6301086990295
+      ],
+      "size": [
+        421.8608135724139,
+        480.51154015357076
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 131
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "生成结果预览",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 99,
+      "type": "kkSizeNode",
+      "pos": [
+        1259.5231786412824,
+        100.41394200756676
+      ],
+      "size": [
+        270,
+        214
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "ratio",
+          "type": "STRING",
+          "links": [
+            137
+          ]
+        }
+      ],
+      "title": "设置输出比例",
+      "properties": {
+        "Node name for S&R": "kkSizeNode"
+      },
+      "widgets_values": [
+        "preset",
+        "16:9",
+        512,
+        512,
+        1
+      ],
+      "widgets_values_named": {
+        "size_mode": "preset",
+        "aspect_ratio": "16:9",
+        "custom_width": 512,
+        "custom_height": 512,
+        "batch_size": 1
+      },
+      "color": "#433",
+      "bgcolor": "#655"
+    },
+    {
+      "id": 108,
+      "type": "Note",
+      "pos": [
+        38.08930433045935,
+        -591.6749757950661
+      ],
+      "size": [
+        342.1457612890264,
+        264.52331668348484
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "📚 GPT Image 2.5 工作流说明",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "本工作流用于Skills 和 GPT Image 2.5 生成图片。\n\n使用流程：\n1. 在「上传图像」模块加载人物或风格参考图；\n2. 在「API 配置」模块填写图像模型与 LLM 的接口信息；\n3. 在「Skills」模块上传提示词模板，由 LLM 整理生成提示词；\n4. 在「图像与尺寸输入」模块选择输出画幅比例；\n5. 运行「GPT 图像生成」，并在结果预览中查看图片。\n\n注意事项：\n• 请先确认两个 API 配置均可用；\n• 更换模板或参考图后建议重新执行完整流程；\n• API Key 属于敏感信息，分享工作流前请先删除。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      ],
+      "widgets_values_named": {
+        "text": "本工作流用于Skills 和 GPT Image 2.5 生成图片。\n\n使用流程：\n1. 在「上传图像」模块加载人物或风格参考图；\n2. 在「API 配置」模块填写图像模型与 LLM 的接口信息；\n3. 在「Skills」模块上传提示词模板，由 LLM 整理生成提示词；\n4. 在「图像与尺寸输入」模块选择输出画幅比例；\n5. 运行「GPT 图像生成」，并在结果预览中查看图片。\n\n注意事项：\n• 请先确认两个 API 配置均可用；\n• 更换模板或参考图后建议重新执行完整流程；\n• API Key 属于敏感信息，分享工作流前请先删除。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 95,
+      "type": "kkGPT-image_API",
+      "pos": [
+        1616.6033753849956,
+        109.31930758726416
+      ],
+      "size": [
+        368.0445407651382,
+        428
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ratio",
+          "shape": 7,
+          "type": "STRING",
+          "link": 137
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 147
+        },
+        {
+          "name": "image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "模板束",
+          "shape": 7,
+          "type": "IMAGEN_STUDIO_PIPE",
+          "link": null
+        },
+        {
+          "name": "PPT束",
+          "shape": 7,
+          "type": "IMAGEN_STUDIO_PIPE",
+          "link": null
+        },
+        {
+          "name": "API配置",
+          "shape": 7,
+          "type": "KK_IMAGE_API_CONFIG",
+          "link": 144
+        },
+        {
+          "name": "prompt",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            131
+          ]
+        },
+        {
+          "name": "raw_json",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "PPT束",
+          "type": "IMAGEN_STUDIO_PIPE",
+          "links": null
+        },
+        {
+          "name": "日志",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "GPT Image 生成",
+      "properties": {
+        "Node name for S&R": "kkGPT-image_API"
+      },
+      "widgets_values": [
+        "",
+        "gpt-image-2.5-sunburst",
+        "3:4",
+        "2K",
+        "max",
+        1,
+        "https://mindapi.cc",
+        3,
+        6,
+        15,
+        ""
+      ],
+      "widgets_values_named": {
+        "api_key": "",
+        "model": "gpt-image-2.5-sunburst",
+        "aspect_ratio": "3:4",
+        "resolution": "2K",
+        "quality": "max",
+        "count": 1,
+        "base_url": "https://mindapi.cc",
+        "并发数": 3,
+        "重试次数": 6,
+        "限流等待秒": 15,
+        "prompt": ""
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 109,
+      "type": "LoadImage",
+      "pos": [
+        430.18593796477893,
+        -523.5574938721307
+      ],
+      "size": [
+        426.1677617598066,
+        479.28527078052105
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            147
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "1.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "1.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 110,
+      "type": "kkSkills模板选择器",
+      "pos": [
+        377.25907253573627,
+        84.07932795358516
+      ],
+      "size": [
+        432.38414405974424,
+        598.336879572724
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "Markdown文件",
+          "shape": 7,
+          "type": "KK_MARKDOWN_FILE",
+          "link": null
+        },
+        {
+          "name": "Tag",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "封面图",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Markdown文件",
+          "type": "KK_MARKDOWN_FILE",
+          "links": [
+            148
+          ]
+        },
+        {
+          "name": "Skill名称",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "状态",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkSkills模板选择器"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "Skill ID": "",
+        "Skills模板选择器": ""
+      },
+      "color": "#644481",
+      "bgcolor": "rgba(22, 17, 29, 0.96)"
+    },
+    {
+      "id": 100,
+      "type": "kkLLM",
+      "pos": [
+        852.4385751704407,
+        83.73198236218799
+      ],
+      "size": [
+        297.5267542131546,
+        350
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "Markdown文件",
+          "shape": 7,
+          "type": "KK_MARKDOWN_FILE",
+          "link": 148
+        },
+        {
+          "name": "API配置",
+          "shape": 7,
+          "type": "KK_IMAGE_API_CONFIG",
+          "link": 145
+        }
+      ],
+      "outputs": [
+        {
+          "name": "original_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "optimized_prompt",
+          "type": "STRING",
+          "links": [
+            146
+          ]
+        },
+        {
+          "name": "optimization_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "LLM 提示词处理",
+      "properties": {
+        "Node name for S&R": "kkLLM"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "deepseek",
+        "deepseek-v4-flash",
+        "",
+        "",
+        "",
+        500,
+        0.7
+      ],
+      "widgets_values_named": {
+        "base_prompt": "",
+        "api_key": "",
+        "provider": "deepseek",
+        "model": "deepseek-v4-flash",
+        "custom_model": "",
+        "base_url": "",
+        "system_message": "",
+        "max_length": 500,
+        "temperature": 0.7
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 104,
+      "type": "kk_API配置",
+      "pos": [
+        43.59594951750413,
+        81.07773624254793
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "API配置",
+          "type": "KK_IMAGE_API_CONFIG",
+          "links": [
+            144
+          ]
+        }
+      ],
+      "title": "图像 API 配置",
+      "properties": {
+        "Node name for S&R": "kk_API配置"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "Base URL": "",
+        "API Key": ""
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 106,
+      "type": "kk_API配置",
+      "pos": [
+        43.59594951750413,
+        231.0777362425479
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "API配置",
+          "type": "KK_IMAGE_API_CONFIG",
+          "links": [
+            145
+          ]
+        }
+      ],
+      "title": "LLM API 配置",
+      "properties": {
+        "Node name for S&R": "kk_API配置"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "Base URL": "",
+        "API Key": ""
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    }
+  ],
+  "links": [
+    [
+      131,
+      95,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      137,
+      99,
+      3,
+      95,
+      0,
+      "STRING"
+    ],
+    [
+      144,
+      104,
+      0,
+      95,
+      5,
+      "KK_IMAGE_API_CONFIG"
+    ],
+    [
+      145,
+      106,
+      0,
+      100,
+      1,
+      "KK_IMAGE_API_CONFIG"
+    ],
+    [
+      146,
+      100,
+      1,
+      95,
+      6,
+      "STRING"
+    ],
+    [
+      147,
+      109,
+      0,
+      95,
+      1,
+      "IMAGE"
+    ],
+    [
+      148,
+      110,
+      0,
+      100,
+      0,
+      "KK_MARKDOWN_FILE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "02 · API 配置",
+      "bounding": [
+        13.595949517504119,
+        1.0777362425479202,
+        330,
+        420
+      ],
+      "color": "#b06634",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "03 · Skills",
+      "bounding": [
+        359.99427314579657,
+        -0.6013196913587826,
+        849.2363008871527,
+        704.5986716606603
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "04 · 图像与尺寸输入",
+      "bounding": [
+        1232.2077636189404,
+        7.0911301948112655,
+        334.7933459311216,
+        375.9451455445545
+      ],
+      "color": "#A88",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "05 · GPT 图像生成",
+      "bounding": [
+        1585.1773886883445,
+        8.782147342176541,
+        430.6652276484306,
+        600.5893630045526
+      ],
+      "color": "#a1309b",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "06 · 结果预览",
+      "bounding": [
+        908.1028609251139,
+        -620.7398471762664,
+        477.8450357910822,
+        598.9367883330672
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "01 · 上传图像",
+      "bounding": [
+        406.146974334087,
+        -620.5906121269926,
+        477.8450357910822,
+        598.9367883330672
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7291617055305673,
+      "offset": [
+        749.2549695530605,
+        613.5490286090456
+      ]
+    },
+    "frontendVersion": "1.52.7"
+  },
+  "version": 0.4
+}
