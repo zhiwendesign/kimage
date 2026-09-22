@@ -1,0 +1,308 @@
+{
+  "id": "670c4275-39c5-4584-ad3a-cdb2062b7e94",
+  "revision": 0,
+  "last_node_id": 114,
+  "last_link_id": 153,
+  "nodes": [
+    {
+      "id": 103,
+      "type": "kkMarkdown上传",
+      "pos": [
+        30.569523175159393,
+        85.0734234739896
+      ],
+      "size": [
+        300,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Markdown文件",
+          "type": "KK_MARKDOWN_FILE",
+          "links": [
+            151
+          ]
+        },
+        {
+          "name": "Tag",
+          "type": "STRING",
+          "links": [
+            152
+          ]
+        }
+      ],
+      "title": "上传提示词模板",
+      "properties": {
+        "Node name for S&R": "kkMarkdown上传"
+      },
+      "widgets_values": [
+        "kktools_markdown/28_同一张脸生成日漫三联画_改造后.md",
+        null,
+        "",
+        "",
+        null,
+        null
+      ],
+      "widgets_values_named": {
+        "markdown_file": "kktools_markdown/28_同一张脸生成日漫三联画_改造后.md",
+        "folder_path": null,
+        "archive_file": "",
+        "Tag": "",
+        "选择并上传 MD 文件": null,
+        "选择并上传 ZIP 压缩包": null
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 114,
+      "type": "Note",
+      "pos": [
+        -612.9934536292606,
+        378.15886593117983
+      ],
+      "size": [
+        561.5368686784465,
+        228.19189922142914
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "⚠️ 文件与分享注意事项",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "• MD 文件与 ZIP 压缩包按实际需要选择，避免同时上传内容冲突的两个版本；\n• Tag 建议简短、稳定，并与模板用途一致；\n• 封面图应能直观区分该 Skill，替换图片后请重新运行；\n• 更换模板、Tag 或封面图后，应重新执行完整流程并检查右侧状态；\n• 分享工作流前，请检查并移除本地文件路径、个人素材及其他不应公开的信息；\n• 如果状态异常，先核对上传文件是否存在、格式是否正确，再停止并修正输入。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      ],
+      "widgets_values_named": {
+        "text": "• MD 文件与 ZIP 压缩包按实际需要选择，避免同时上传内容冲突的两个版本；\n• Tag 建议简短、稳定，并与模板用途一致；\n• 封面图应能直观区分该 Skill，替换图片后请重新运行；\n• 更换模板、Tag 或封面图后，应重新执行完整流程并检查右侧状态；\n• 分享工作流前，请检查并移除本地文件路径、个人素材及其他不应公开的信息；\n• 如果状态异常，先核对上传文件是否存在、格式是否正确，再停止并修正输入。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      },
+      "color": "#5a4027",
+      "bgcolor": "#755436"
+    },
+    {
+      "id": 113,
+      "type": "Note",
+      "pos": [
+        -617.1205012216587,
+        78.6343005624283
+      ],
+      "size": [
+        576.9660695565218,
+        237.5934412947223
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "📘 使用步骤",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "用途：将 Markdown 提示词模板、Tag 与封面图组合后，交给 Skills 模板选择器登记和复用。\n\n操作顺序：\n1. 在「上传提示词模板」中选择单个 MD 文件或 ZIP 压缩包；\n2. 按需要填写 Tag，便于分类和检索；\n3. 在「上传 Skill 封面图」中选择对应图片；\n4. 运行工作流，在右侧查看 Skill 名称和处理状态；\n5. 确认状态正常后，再将右侧输出连接到后续工作流。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      ],
+      "widgets_values_named": {
+        "text": "用途：将 Markdown 提示词模板、Tag 与封面图组合后，交给 Skills 模板选择器登记和复用。\n\n操作顺序：\n1. 在「上传提示词模板」中选择单个 MD 文件或 ZIP 压缩包；\n2. 按需要填写 Tag，便于分类和检索；\n3. 在「上传 Skill 封面图」中选择对应图片；\n4. 运行工作流，在右侧查看 Skill 名称和处理状态；\n5. 确认状态正常后，再将右侧输出连接到后续工作流。\n\n合作交流：kkcomfy\n工作流下载：kkcomfy.art"
+      },
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 112,
+      "type": "kkSkills模板选择器",
+      "pos": [
+        772.6537700741925,
+        82.26572476361625
+      ],
+      "size": [
+        934.0701490538183,
+        567.2725297488269
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "Markdown文件",
+          "shape": 7,
+          "type": "KK_MARKDOWN_FILE",
+          "link": 151
+        },
+        {
+          "name": "Tag",
+          "shape": 7,
+          "type": "STRING",
+          "link": 152
+        },
+        {
+          "name": "封面图",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 153
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Markdown文件",
+          "type": "KK_MARKDOWN_FILE",
+          "links": null
+        },
+        {
+          "name": "Skill名称",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "状态",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "登记与选择 Skills 模板",
+      "properties": {
+        "Node name for S&R": "kkSkills模板选择器"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "Skill ID": "",
+        "Skills模板选择器": ""
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 111,
+      "type": "LoadImage",
+      "pos": [
+        360.4013754085724,
+        86.67991044595162
+      ],
+      "size": [
+        349.3763902452256,
+        524.8121558295354
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            153
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "上传 Skill 封面图",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "人物_xingyue16.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "人物_xingyue16.png",
+        "upload": "image"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      151,
+      103,
+      0,
+      112,
+      0,
+      "KK_MARKDOWN_FILE"
+    ],
+    [
+      152,
+      103,
+      1,
+      112,
+      1,
+      "STRING"
+    ],
+    [
+      153,
+      111,
+      0,
+      112,
+      2,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 3,
+      "title": "📘 · 操作说明",
+      "bounding": [
+        -645.5395025975796,
+        -0.9108069793373217,
+        636.139332164418,
+        640.9880528305515
+      ],
+      "color": "#59636f",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "01 · 上传 Skill 素材",
+      "bounding": [
+        10,
+        0,
+        720.5177137586807,
+        639.9082183837888
+      ],
+      "color": "#6f956f",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "02 · 登记与选择 Skills 模板",
+      "bounding": [
+        750,
+        0,
+        979.4078513359682,
+        661.3146767656331
+      ],
+      "color": "#527a65",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6545454545454548,
+      "offset": [
+        1351.4682905092004,
+        644.5491731055995
+      ]
+    },
+    "frontendVersion": "1.52.7"
+  },
+  "version": 0.4
+}
