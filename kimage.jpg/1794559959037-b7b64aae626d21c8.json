@@ -1,0 +1,618 @@
+{
+  "id": "c059ad2f-7d26-4da8-a7d5-030d2e3d2047",
+  "revision": 0,
+  "last_node_id": 95,
+  "last_link_id": 107,
+  "nodes": [
+    {
+      "id": 88,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        555,
+        300
+      ],
+      "size": [
+        273.4576171875,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            98
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            99
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "title": "姿态模型",
+      "widgets_values": [
+        "sdpose_wholebody_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "sdpose_wholebody_fp16.safetensors"
+      },
+      "color": "#433",
+      "bgcolor": "#655"
+    },
+    {
+      "id": 90,
+      "type": "LoadDA3Model",
+      "pos": [
+        555,
+        175
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "DA3_MODEL",
+          "type": "DA3_MODEL",
+          "links": [
+            102
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadDA3Model"
+      },
+      "title": "深度模型",
+      "widgets_values": [
+        "depth_anything_3_mono_large.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "model_name": "depth_anything_3_mono_large.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 89,
+      "type": "kkVideoDepth",
+      "pos": [
+        985,
+        600
+      ],
+      "size": [
+        319.1421875,
+        174
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 101
+        },
+        {
+          "name": "da3_model",
+          "type": "DA3_MODEL",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "depth_video",
+          "type": "VIDEO",
+          "links": [
+            105,
+            107
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkVideoDepth"
+      },
+      "title": "深度估计",
+      "widgets_values": [
+        504,
+        "upper_bound_resize",
+        "v2_style",
+        "grayscale",
+        true
+      ],
+      "widgets_values_named": {
+        "resolution": 504,
+        "resize_method": "upper_bound_resize",
+        "normalization": "v2_style",
+        "output_mode": "grayscale",
+        "keep_audio": true
+      },
+      "color": "#267d8a",
+      "bgcolor": "rgba(15, 34, 38, 0.96)"
+    },
+    {
+      "id": 85,
+      "type": "kkVideoCompare",
+      "pos": [
+        1415,
+        165
+      ],
+      "size": [
+        644.7978395647646,
+        563.2424801616783
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video1",
+          "type": "VIDEO",
+          "link": 103
+        },
+        {
+          "name": "video2",
+          "type": "VIDEO",
+          "link": 104
+        },
+        {
+          "name": "video3",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": 105
+        },
+        {
+          "name": "video4",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "video5",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "comparison_video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkVideoCompare"
+      },
+      "title": "视频对比预览",
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 86,
+      "type": "kkVideoPose",
+      "pos": [
+        985,
+        165
+      ],
+      "size": [
+        326.29462127939075,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 97
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 98
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 99
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pose_video",
+          "type": "VIDEO",
+          "links": [
+            104,
+            106
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "kkVideoPose"
+      },
+      "title": "姿态估计",
+      "widgets_values": [
+        16,
+        true,
+        true,
+        true,
+        true,
+        true,
+        4,
+        3,
+        0.3,
+        true
+      ],
+      "widgets_values_named": {
+        "batch_size": 16,
+        "draw_body": true,
+        "draw_head": true,
+        "draw_hands": true,
+        "draw_face": true,
+        "draw_feet": true,
+        "stick_width": 4,
+        "face_point_size": 3,
+        "score_threshold": 0.3,
+        "keep_audio": true
+      },
+      "color": "#a1309b",
+      "bgcolor": "rgba(38, 18, 42, 0.96)"
+    },
+    {
+      "id": 87,
+      "type": "LoadVideo",
+      "pos": [
+        75,
+        145
+      ],
+      "size": [
+        374,
+        738.8888888888889
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            97,
+            101,
+            103
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "title": "输入视频",
+      "widgets_values": [
+        "SnapTikZ.App_7696853531449511175.mp4",
+        "image"
+      ],
+      "color": "#255f66",
+      "bgcolor": "rgba(15, 24, 27, 0.96)",
+      "widgets_values_named": {
+        "file": "SnapTikZ.App_7696853531449511175.mp4",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 91,
+      "type": "SaveVideo",
+      "pos": [
+        2165,
+        165
+      ],
+      "size": [
+        270,
+        578
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 106
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "title": "保存姿态视频",
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/ComfyUI",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      },
+      "color": "#255f66",
+      "bgcolor": "rgba(15, 24, 27, 0.96)"
+    },
+    {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        2460,
+        165
+      ],
+      "size": [
+        270,
+        578
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 107
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "title": "保存深度视频",
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/ComfyUI",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      },
+      "color": "#255f66",
+      "bgcolor": "rgba(15, 24, 27, 0.96)"
+    },
+    {
+      "id": 95,
+      "type": "Note",
+      "pos": [
+        35,
+        -720
+      ],
+      "size": [
+        620,
+        720
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "📘 画布说明",
+      "properties": {
+        "widget_ue_connectable": {},
+        "text": ""
+      },
+      "widgets_values": [
+        "本工作流用于对视频执行姿态估计与深度估计，并将原视频、姿态视频、深度视频在对比节点中预览，最后分别导出。\n\n使用步骤：\n1. 在「输入视频」节点选择视频。\n2. 根据需要替换「姿态模型」和「深度模型」。\n3. 调整「姿态估计」与「深度估计」参数。\n4. 运行后在「视频对比预览」查看三路结果。\n5. 在「结果导出」中分别保存姿态视频和深度视频。\n\n提示：输入视频会同时送入两条处理分支；保留音频选项需根据源视频和输出格式确认。\n\n所需模型：\n1. 姿态模型：sdpose_wholebody_fp16.safetensors\n下载链接：https://huggingface.co/Comfy-Org/SDPose/resolve/main/checkpoints/sdpose_wholebody_fp16.safetensors\n存放位置：ComfyUI/models/checkpoints/\n\n2. 深度模型：depth_anything_3_mono_large.safetensors\n下载链接：https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_mono_large.safetensors\n存放位置：ComfyUI/models/geometry_estimation/"
+      ],
+      "widgets_values_named": {
+        "text": "本工作流用于对视频执行姿态估计与深度估计，并将原视频、姿态视频、深度视频在对比节点中预览，最后分别导出。\n\n使用步骤：\n1. 在「输入视频」节点选择视频。\n2. 根据需要替换「姿态模型」和「深度模型」。\n3. 调整「姿态估计」与「深度估计」参数。\n4. 运行后在「视频对比预览」查看三路结果。\n5. 在「结果导出」中分别保存姿态视频和深度视频。\n\n提示：输入视频会同时送入两条处理分支；保留音频选项需根据源视频和输出格式确认。\n\n所需模型：\n1. 姿态模型：sdpose_wholebody_fp16.safetensors\n下载链接：https://huggingface.co/Comfy-Org/SDPose/resolve/main/checkpoints/sdpose_wholebody_fp16.safetensors\n存放位置：ComfyUI/models/checkpoints/\n\n2. 深度模型：depth_anything_3_mono_large.safetensors\n下载链接：https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_mono_large.safetensors\n存放位置：ComfyUI/models/geometry_estimation/"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      97,
+      87,
+      0,
+      86,
+      0,
+      "VIDEO"
+    ],
+    [
+      98,
+      88,
+      0,
+      86,
+      1,
+      "MODEL"
+    ],
+    [
+      99,
+      88,
+      2,
+      86,
+      2,
+      "VAE"
+    ],
+    [
+      101,
+      87,
+      0,
+      89,
+      0,
+      "VIDEO"
+    ],
+    [
+      102,
+      90,
+      0,
+      89,
+      1,
+      "DA3_MODEL"
+    ],
+    [
+      103,
+      87,
+      0,
+      85,
+      0,
+      "VIDEO"
+    ],
+    [
+      104,
+      86,
+      0,
+      85,
+      1,
+      "VIDEO"
+    ],
+    [
+      105,
+      89,
+      0,
+      85,
+      2,
+      "VIDEO"
+    ],
+    [
+      106,
+      86,
+      0,
+      91,
+      0,
+      "VIDEO"
+    ],
+    [
+      107,
+      89,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "01 · 输入视频",
+      "bounding": [
+        35,
+        100,
+        450,
+        825
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "02 · 模型加载",
+      "bounding": [
+        510,
+        100,
+        380,
+        420
+      ],
+      "color": "#b06634",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "03 · 姿态估计",
+      "bounding": [
+        950,
+        100,
+        410,
+        460
+      ],
+      "color": "#a1309b",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "04 · 深度估计",
+      "bounding": [
+        950,
+        540,
+        410,
+        280
+      ],
+      "color": "#267d8a",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "05 · 对比预览",
+      "bounding": [
+        1380,
+        100,
+        720,
+        770
+      ],
+      "color": "#88A",
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "06 · 结果导出",
+      "bounding": [
+        2130,
+        100,
+        720,
+        850
+      ],
+      "color": "#267d8a",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.55,
+      "offset": [
+        70,
+        820
+      ]
+    },
+    "frontendVersion": "1.57.4"
+  },
+  "version": 0.4
+}
